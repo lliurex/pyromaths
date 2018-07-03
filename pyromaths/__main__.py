@@ -104,6 +104,15 @@ def argument_parser():
             )
         )
     generate_parser.add_argument(
+        '-d', '--dirty',
+        action='store_const',
+        const=True,
+        default=False,
+        help=(
+            "Do not clean temporary directory after compilation."
+            )
+        )
+    generate_parser.add_argument(
         '-o', '--output',
         type=str,
         default='exercice.pdf',
@@ -161,7 +170,7 @@ def do_generate(options):
         'corrige': True,
         'exercices': exercise_list,
         }
-    with Fiche(parametres) as fiche:
+    with Fiche(parametres, dirty=options.dirty) as fiche:
         fiche.write_tex()
         for command in options.pipe:
             formatted = command.format(fiche.texname)

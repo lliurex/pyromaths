@@ -23,8 +23,10 @@
 import codecs
 import contextlib
 import functools
+import logging
 import os
 import subprocess
+import shutil
 import sys
 import tempfile
 import textwrap
@@ -54,20 +56,20 @@ def supprime_extension(filename, ext):
 class Fiche(contextlib.AbstractContextManager):
     basename = "exercise"
 
-    def __init__(self, context, *, template="pyromaths.tex"):
+    def __init__(self, context, *, template="pyromaths.tex", dirty=False):
         self.context = context
         self.template = template
+        self.dirty = dirty
 
     def __enter__(self):
-        self.tempdir = tempfile.TemporaryDirectory(prefix="pyromaths-")
+        self.workingdir = tempfile.mkdtemp(prefix="pyromaths-")
         return self
 
-    @property
-    def workingdir(self):
-        return self.tempdir.name
-
     def __exit__(self, exc_type, exc_value, traceback):
-        self.tempdir.cleanup()
+        if self.dirty:
+            logging.info("Temporary directory '%s' not removed (as requested).", self.workingdir)
+        else:
+            shutil.rmtree(self.workingdir)
 
     def tempfile(self, ext=None):
         if ext is None:
