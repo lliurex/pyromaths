@@ -15,7 +15,7 @@ def readme():
 
 # Chargement des variables VERSION, COPYRIGHT_YEAR
 # Ceci n'est pas fait par un `import pyromaths.version` pour ne pas importer
-# des dépendances qui ne sont pas encore installées.
+# des dependances qui ne sont pas encore installees.
 with codecs.open("pyromaths/version.py", encoding="utf8", errors="replace") as file:
     exec(compile(file.read(), "version.py", "exec"))
 
