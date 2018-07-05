@@ -54,7 +54,7 @@ clean = rm -rf *.egg-info && rm -rf $(BUILDIR) &&\
 
 # src must be after rpm, otherwise rpm produces a .tar.gz file that replaces the
 # .tar.gz source file (should $$FORMATS include gztar).
-all: egg rpm deb src
+all: wheel rpm deb src
 
 help:
 	#
@@ -92,17 +92,17 @@ clean:
 
 version:
 	# Apply target version ($(VERSION)) to sources
-	$(sed-i) "s/VERSION\s*=\s*'.*'/VERSION = '$(VERSION)'/" pyromaths/Values.py
+	$(sed-i) "s/VERSION\s*=\s*'.*'/VERSION = '$(VERSION)'/" pyromaths/version.py
 
 src: version
 	# Make full-source archive(s) (formats=$(FORMATS))
 	$(clean)
 	$(setup) sdist --formats=$(FORMATS) -d $(DIST) $(OUT)
 
-egg: version
-	# Make python egg
+wheel: version
+	# Make python wheel
 	$(clean)
-	$(setup) bdist_egg -d $(DIST) $(OUT)
+	$(setup) bdist_wheel -d $(DIST) $(OUT)
 
 rpm: version
 	# Make RPM package

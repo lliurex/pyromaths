@@ -9,14 +9,14 @@ import os
 
 def readme():
     """Lecture du README"""
-    with open("README.md") as file:
+    with codecs.open("README.md", encoding="utf8", errors="replace") as file:
         return file.read()
 
 
 # Chargement des variables VERSION, COPYRIGHT_YEAR
 # Ceci n'est pas fait par un `import pyromaths.version` pour ne pas importer
 # des dépendances qui ne sont pas encore installées.
-with open("pyromaths/version.py") as file:
+with codecs.open("pyromaths/version.py", encoding="utf8", errors="replace") as file:
     exec(compile(file.read(), "version.py", "exec"))
 
 setup(
