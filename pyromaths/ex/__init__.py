@@ -142,19 +142,6 @@ class LegacyExercise(TexExercise):
     def tex_answer(self):
         return "\n".join(self.ans)
 
-def __module(filename):
-    """Expect an absolute path, subpath of this module's path. Return a relative path."""
-    # Get root of this application
-    root = '/'.join(__file__.split('/')[:-len(__name__.split('.')) - 1])
-    # Get filename, relative to said root
-    relative = filename[len(root)+1:]
-    # Remove extension
-    relative = relative[:-len('.py')]
-    # Turn file system path into python package
-    relative = relative.replace('/', '.')
-
-    return relative
-
 def __import(name=__name__, parent=None):
     ''' Import 'name' from 'parent' package. '''
     if not isinstance(name, str):
