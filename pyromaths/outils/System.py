@@ -32,7 +32,7 @@ import tempfile
 import textwrap
 
 from pyromaths.outils import jinja2tex
-from pyromaths.Values import CONFIGDIR, DATADIR
+from pyromaths import directories
 
 #==============================================================
 #        Gestion des extensions de fichiers
@@ -92,7 +92,7 @@ class Fiche(contextlib.AbstractContextManager):
     def write_tex(self):
         environment = jinja2tex.LatexEnvironment(
             loader=jinja2tex.FileSystemLoader([
-                os.path.join(DATADIR, 'templates'),
+                os.path.join(directories.DATADIR, 'templates'),
                 ])
         )
         with codecs.open(self.texname, mode='w', encoding='utf-8') as exofile:

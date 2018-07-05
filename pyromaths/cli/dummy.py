@@ -23,7 +23,6 @@ import os
 import shutil
 import textwrap
 
-from pyromaths.Values import CONFIGDIR, DATADIR
 from pyromaths.ex import TexExercise
 from pyromaths.outils.System import Fiche
 

@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath('../../'))
 import gettext
 gettext.install('pyromaths')
 
-from pyromaths.Values import VERSION, COPYRIGHT_YEAR
+from pyromaths.version import VERSION, COPYRIGHT_YEAR
 
 # -- General configuration -----------------------------------------------------
 

@@ -19,6 +19,7 @@ import types
 from ..outils import jinja2tex
 from .test import test_path
 from ..outils.System import Fiche
+from .. import directories
 
 class TexExercise:
     """Exercise with TeX support."""
@@ -40,8 +41,7 @@ class TexExercise:
 
     @classmethod
     def thumb(cls):
-        from pyromaths.Values import data_dir
-        return os.path.join(data_dir(), 'ex', 'img', "%s.png" % cls.name())
+        return os.path.join(directories.EXODIR, 'img', "%s.png" % cls.name())
 
     def tex_statement(self):
         """Return problem statement in TeX format."""
@@ -266,12 +266,7 @@ class ExerciseBag(collections.UserDict):
 # Exercices créés à partir de templates Jinja2
 
 def templatedir():
-    from pyromaths import Values
-    return os.path.join(
-        Values.data_dir(),
-        "ex",
-        "templates",
-        )
+    return os.path.join(directories.EXODIR, "templates")
 
 class Jinja2Exercise(TexExercise):
     """Exercice utilisant un template jinja2."""

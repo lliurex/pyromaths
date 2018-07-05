@@ -41,7 +41,7 @@ gettext.install('pyromaths')
 import pyromaths
 from pyromaths.outils import System
 from pyromaths.cli import PyromathsException
-from pyromaths import Values
+from pyromaths import directories
 
 # Logging configuration
 logging.basicConfig(level=logging.INFO)
@@ -67,12 +67,7 @@ class ExerciseNotFound(PyromathsException):
 
 def test_path(name, seed, choice):
     """Return the path of file containing expected test result."""
-    return os.path.join(
-        Values.data_dir(),
-        'ex',
-        'tests',
-        "%s.%s.%s" % (name, seed, choice)
-        )
+    return os.path.join(directories.EXODIR, 'tests', "%s.%s.%s" % (name, seed, choice))
 
 class UnittestExercise(unittest.TestCase):
     """Test an exercise, with a particular seed."""

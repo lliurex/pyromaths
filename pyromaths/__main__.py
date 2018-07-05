@@ -30,22 +30,17 @@ import shutil
 import subprocess
 import sys
 
-from os.path import join, dirname, realpath
 import gettext
 
-locale_dir = join(dirname(__file__), '../../../locale/')
-locale_dir = realpath(locale_dir)
-
-gettext.bindtextdomain('pyromaths', locale_dir)
+from pyromaths import directories
+gettext.bindtextdomain('pyromaths', directories.LOCALEDIR)
 gettext.textdomain('pyromaths')
 _ = gettext.gettext
-# Quick and dirty definition of `_` as the identity function
-#gettext.install('pyromaths')
 
 from pyromaths.cli import exercise_argument, PyromathsException
 from pyromaths.ex import ExerciseBag
 from pyromaths.outils.System import Fiche
-from pyromaths.Values import VERSION
+from pyromaths.version import VERSION
 
 # Logging configuration
 logging.basicConfig(level=logging.INFO)

@@ -26,43 +26,6 @@ APP     := $(DIST)/Pyromaths.app/Contents
 # Project files
 FILES   := AUTHORS COPYING NEWS pyromaths README setup.py MANIFEST.in src data
 
-### MANIFESTS
-#
-# Base manifest (README, src/ and test/ auto-included):
-MANIFEST :=                                     \
-    include AUTHORS COPYING NEWS                \n\
-    exclude MANIFEST.in	                        \n\
-    graft data                                  \n
-# Minimal install (i.e. without test/ dir):
-MANIFEST-min := $(MANIFEST)                     \
-    prune test                                  \n
-# Full project sources:
-MANIFEST-all := $(MANIFEST)                     \
-    graft debian                                \n\
-    graft utils                                 \n\
-    graft Doc/source                            \n\
-    include Doc/Makefile                        \n\
-    include Makefile                            \n
-# Unix:
-MANIFEST-unix := $(MANIFEST-min)                \
-    prune data/windows                          \n\
-    exclude data/qtmac_fr.qm                    \n\
-    exclude data/qtmac_fr.ts                    \n\
-    exclude data/images/pyromaths.icns          \n\
-    exclude data/images/pyromaths.ico           \n
-# Mac app:
-MANIFEST-mac := $(MANIFEST-min)                 \
-    prune data/linux                            \n\
-    prune data/windows                          \n\
-    exclude data/images/pyromaths.ico           \n\
-    exclude data/images/pyromaths-banniere.png  \n
-# Win app:
-MANIFEST-win := $(MANIFEST-min)                 \
-    prune data/linux                            \n\
-    exclude data/qtmac_fr.qm                    \n\
-    exclude data/qtmac_fr.ts                    \n\
-    exclude data/images/pyromaths.icns          \n
-
 ### SHORTCUTS & COMPATIBILITY
 #
 ifeq ($(OS),Windows_NT)
@@ -85,7 +48,7 @@ setup := $(PYTHON) setup.py
 ### MACROS
 #
 # Remove manifest file, egg-info dir and target build dir, clean-up sources.
-clean = rm -f MANIFEST.in && rm -rf *.egg-info && rm -rf $(BUILDIR) &&\
+clean = rm -rf *.egg-info && rm -rf $(BUILDIR) &&\
         find . -name '*~' | xargs rm -f && find . -iname '*.pyc' | xargs rm -f
 
 
@@ -134,26 +97,22 @@ version:
 src: version
 	# Make full-source archive(s) (formats=$(FORMATS))
 	$(clean)
-	echo "$(MANIFEST-all)" > MANIFEST.in
 	$(setup) sdist --formats=$(FORMATS) -d $(DIST) $(OUT)
 
 egg: version
 	# Make python egg
 	$(clean)
-	echo "$(MANIFEST-unix)" > MANIFEST.in
 	$(setup) bdist_egg -d $(DIST) $(OUT)
 
 rpm: version
 	# Make RPM package
 	$(clean)
-	echo "$(MANIFEST-unix)" > MANIFEST.in
 	$(setup) bdist --formats=rpm -b $(BUILD) -d $(DIST) $(OUT)
 	rm $(DIST)/pyromaths-$(VERSION).tar.gz
 
 min: version
 	# Make minimalist .tar.bz source archive in $(BUILD)
 	$(clean)
-	echo "$(MANIFEST-unix)" > MANIFEST.in
 	$(setup) sdist --formats=bztar -d $(BUILD) $(OUT)
 
 deb: min
