@@ -49,4 +49,12 @@ setup(
     long_description=readme(),
     long_description_content_type="text/markdown",
     zip_safe=False,
+    project_urls={
+        "Documentation": "http://pyromaths.readthedocs.org",
+        "Download": "http://www.pyromaths.org/telecharger/",
+        "Forum": "http://forum.pyromaths.org",
+        "Sources": "https://framagit.org/pyromaths/pyromaths",
+        "Tickets": "https://framagit.org/pyromaths/pyromaths/issues",
+        "Version en ligne": "http://www.pyromaths.org/enligne/",
+    },
 )
