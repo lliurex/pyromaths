@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Installer"""
+"""Installateur"""
 
 from setuptools import setup, find_packages
 import codecs
