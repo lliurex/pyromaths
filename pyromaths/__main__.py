@@ -51,6 +51,18 @@ LOGGER = logging.getLogger()
 def _tag_type(string):
     return set(tag for tag in string.split("+") if tag)
 
+ALLOWED_FORMATS = ('tex', 'pdf', 'latexmk')
+
+def _format_type(string):
+    formats = string.split(",")
+    for chunk in formats:
+        if chunk not in ALLOWED_FORMATS:
+            raise argparse.ArgumentTypeError("Format '{}' must be one of {}.".format(
+                chunk,
+                ", ".join("'{}'".format(frmt) for frmt in ALLOWED_FORMATS),
+                ))
+    return formats
+
 def argument_parser():
     """Return an argument parser"""
     parser = argparse.ArgumentParser(
@@ -150,10 +162,18 @@ def argument_parser():
     generate_parser.add_argument(
         '-o', '--output',
         type=str,
-        default='exercice.pdf',
+        default='exercice',
         help=(
-            "Output filename. Default is 'exercice.pdf'."
+            "Output filename (without extension). Default is 'exercice'."
             ),
+        )
+    generate_parser.add_argument(
+        '-f', '--format',
+        default='pdf',
+        help=textwrap.dedent("""\
+            Format de l'exercice à générer, parmi "tex" (source au format LaTeX), "pdf" (exercice compilé), "latexmkrc" (fichier de configuration utilisé pour la compilation du fichier LaTeX). Il est possible de générer plusieurs formats séparés par des virgules, comme par exemple --format=tex,pdf.
+            """),
+        type=_format_type,
         )
 
     # Test
@@ -206,18 +226,27 @@ def do_generate(options):
         'exercices': exercise_list,
         }
     with Fiche(parametres, dirty=options.dirty) as fiche:
-        fiche.write_tex()
-        for command in options.pipe:
-            formatted = command.format(fiche.texname)
-            if formatted == command:
-                formatted = '{} {}'.format(command, fiche.texname)
-            subprocess.run(
-                    formatted,
-                    shell=True,
-                    cwd=fiche.workingdir,
-                    )
-        fiche.write_pdf()
-        shutil.copy(fiche.pdfname, options.output)
+        # LatexmkRC
+        if 'latexmk' in options.format:
+            fiche.write_latexmkrc()
+            shutil.copy(fiche.latexmkrcname, "latexmkrc")
+        # LaTeX
+        if 'tex' in options.format or 'pdf' in options.format:
+            fiche.write_tex()
+            for command in options.pipe:
+                formatted = command.format(fiche.texname)
+                if formatted == command:
+                    formatted = '{} {}'.format(command, fiche.texname)
+                subprocess.run(
+                        formatted,
+                        shell=True,
+                        cwd=fiche.workingdir,
+                        )
+            if 'tex' in options.format:
+                shutil.copy(fiche.texname, "{}.tex".format(options.output))
+        if 'pdf' in options.format:
+            fiche.write_pdf()
+            shutil.copy(fiche.pdfname, "{}.pdf".format(options.output))
 
 def do_ls(options): # pylint: disable=unused-argument
     """Perform the `ls` command."""
