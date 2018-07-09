@@ -26,9 +26,11 @@ import argparse
 import gettext
 import logging
 import random
+import re
 import shutil
 import subprocess
 import sys
+import textwrap
 
 import gettext
 
@@ -45,6 +47,9 @@ from pyromaths.version import VERSION
 # Logging configuration
 logging.basicConfig(level=logging.INFO)
 LOGGER = logging.getLogger()
+
+def _tag_type(string):
+    return set(tag for tag in string.split("+") if tag)
 
 def argument_parser():
     """Return an argument parser"""
@@ -68,11 +73,46 @@ def argument_parser():
             "an argument to other commands."
             ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=textwrap.dedent("""\
+                # Filtrer les exercices
+
+                Les options --tags et --desc permettent de filtrer quels exercices afficher. Par exemple, pour n'afficher que les exercices de seconde dont la description contient le mot « variations », utiliser :
+
+                    pyromaths ls --desc variation --tag +Seconde
+                """),
         )
     ls.add_argument(
         "-v", "--verbose",
         help="Affiche davantage de détails.",
         action="store_true",
+        )
+    ls.add_argument(
+        "-d", "--desc",
+        help=textwrap.dedent("""\
+               Ne liste que les exercice dont la description correspond à l'argument de cette fonction, considéré comme une expression régulière.
+               Si plusieurs arguments --desc sont donnés, liste les exercices correspondant à l'un des arguments.
+               """),
+        action="append",
+        default=list(),
+        type=re.compile,
+        )
+    ls.add_argument(
+        "-t", "--tags",
+        help=textwrap.dedent("""\
+               Ne liste que les exercice taggés avec tous des tags fournis en argument (sous la forme "+tag1+tag2+tag3").
+               Si plusieurs arguments --tags sont donnés, liste les exercices vérifiant l'un des arguments --tags.
+               La liste des tags peut être affichée avec la commande `pyromaths tags`.
+               """),
+        action="append",
+        default=list(),
+        type=_tag_type,
+        )
+
+    # List tags
+    ls = subparsers.add_parser( # pylint: disable=unused-variable
+        'tags',
+        help="List available tags.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
         )
 
     # Generate
@@ -181,7 +221,7 @@ def do_generate(options):
 
 def do_ls(options): # pylint: disable=unused-argument
     """Perform the `ls` command."""
-    bag = ExerciseBag()
+    bag = ExerciseBag().filter_tags(*options.tags).filter_desc(*options.desc)
     for name in sorted(bag, key=str.lower):
         if options.verbose:
             print(u"{}: {} {}".format(
@@ -192,11 +232,20 @@ def do_ls(options): # pylint: disable=unused-argument
         else:
             print(name)
 
+def do_tags(options): # pylint: disable=unused-argument
+    """Perform the `tags` command."""
+    bag = ExerciseBag()
+    tags = set().union(
+        *(set(exo.tags) for exo in bag.values())
+        )
+    print("\n".join(sorted(tags, key=str.lower)))
+
 COMMANDS = {
     "generate": do_generate,
     "ls": do_ls,
     "test": do_test,
     "dummy": do_dummy,
+    "tags": do_tags,
     }
 
 def main():

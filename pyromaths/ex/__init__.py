@@ -220,9 +220,13 @@ class ExerciseBag(collections.UserDict):
     Des méthodes permettent d'accéder à ces exercices avec d'autres présentations.
     """
 
-    def __init__(self):
+    def __init__(self, *, exercises=None):
         super().__init__()
-        for exo in _iter_exercises():
+        if exercises is None:
+            iterable = _iter_exercises()
+        else:
+            iterable = exercises
+        for exo in iterable:
             if exo.name() in self:
                 logging.error(
                     "Deux exercices portent le même nom '%s': %s et %s.",
@@ -261,6 +265,26 @@ class ExerciseBag(collections.UserDict):
             [niveau, sorted(levels[niveau], key=operator.methodcaller("name"))]
             for niveau in NIVEAUX
             ]
+
+    def filter_tags(self, *clauses):
+        if not clauses:
+            return self
+        exercises = set()
+        for conjunction in clauses:
+            for exo in self.values():
+                if conjunction.issubset(set(exo.tags)):
+                    exercises.add(exo)
+        return self.__class__(exercises = exercises)
+
+    def filter_desc(self, *descriptions):
+        if not descriptions:
+            return self
+        exercises = set()
+        for desc in descriptions:
+            for exo in self.values():
+                if desc.search(exo.description()):
+                    exercises.add(exo)
+        return self.__class__(exercises = exercises)
 
 ################################################################################
 # Exercices créés à partir de templates Jinja2

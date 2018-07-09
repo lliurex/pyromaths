@@ -58,7 +58,7 @@ CANDIDATS = [
 class EtatStableSysteme2(Jinja2Exercise):
     """Recherche d'état stable (avec un système)"""
 
-    tags = ["Term ES"]
+    tags = ["Term ES", "matrice", "système", "graphe probabiliste", "spécialité"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -82,7 +82,7 @@ class InterpolationMatrices(Jinja2Exercise):
     """Interpolation polynomiale en utilisant des matrices"""
     # Plus ou moins inspiré du sujet de bac ES Amérique du Nord, juin 2015.
 
-    tags = ["Term ES"]
+    tags = ["Term ES", "matrice", "système", "interpolation", "spécialité"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
