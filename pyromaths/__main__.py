@@ -184,7 +184,11 @@ def do_ls(options): # pylint: disable=unused-argument
     bag = ExerciseBag()
     for name in sorted(bag, key=str.lower):
         if options.verbose:
-            print(u"{}: {}".format(name, bag[name].description()))
+            print(u"{}: {} {}".format(
+                name,
+                bag[name].description(),
+                bag[name].tags,
+                ))
         else:
             print(name)
 
