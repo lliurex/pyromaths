@@ -2,9 +2,11 @@
 
 # Installe les exercices de tests pour qu'ils puissent être compilés
 
+set -e
+
 DOCDIR=$(pwd)/$(dirname $0)
 ROOT=$DOCDIR/../../..
-TEMPLATEDIR=$ROOT/data/ex/templates
+TEMPLATEDIR=$ROOT/pyromaths/data/exercices/templates
 EXERCICEDIR=$ROOT/pyromaths/ex/troisiemes
 
 cd $TEMPLATEDIR

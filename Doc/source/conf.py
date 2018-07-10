@@ -29,7 +29,7 @@ from pyromaths.version import VERSION, COPYRIGHT_YEAR
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'sphinx.ext.viewcode', 'sphinx.ext.doctest', 'sphinxarg.ext']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'sphinx.ext.viewcode', 'sphinx.ext.doctest', 'sphinxarg.ext', 'sphinx.ext.intersphinx']
 #, 'sphinxarg.ext']
 
 import textwrap
@@ -262,3 +262,5 @@ texinfo_documents = [
 
 # How to display URL addresses: 'footnote', 'no', or 'inline'.
 #texinfo_show_urls = 'footnote'
+
+intersphinx_mapping = {"https://docs.python.org/": None}

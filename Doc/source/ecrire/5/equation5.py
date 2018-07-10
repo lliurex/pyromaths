@@ -29,10 +29,10 @@ from pyromaths.outils.jinja2utils import facteur
 
 class EquationPremierDegre5(Jinja2Exercise):
     """Résolution d'équations du premier degré à coefficients entiers."""
-    tags = ['Troisième']
+    tags = ['Troisième', 'Équation', 'Premier degré']
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
         self.context = {
             "a": random.choice([1, -1]) * random.randint(2, 9),
