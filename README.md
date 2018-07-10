@@ -18,18 +18,18 @@ Pour GNU/Linux, Mac OS, Windows, visitez [la page d'installation](https://www.py
 
 - Clonez le dépôt pour télécharger les sources.
 
-      git clone https://framagit.org/pyromaths/pyromaths.git
-      cd pyromaths
+        git clone https://framagit.org/pyromaths/pyromaths.git
+        cd pyromaths
 
 - Créer un virtualenv utilisant python3.
 
-      virtualenv -ppython3 pyromaths-venv
+        virtualenv -ppython3 pyromaths-venv
 
 - Installez les dépendances
 
-      pip install -r requirements.txt
+        pip install -r requirements.txt
 
 - Vous pouvez maintenant utiliser pyromaths, avec l'une ou l'autre des commandes suivantes.
 
-      python -m pyromaths
-      ./utils/pyromaths
+        python -m pyromaths
+        ./utils/pyromaths
