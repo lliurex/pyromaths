@@ -1,4 +1,4 @@
-Version XX.XX
+Version 18.7
 * Séparation de pyromaths en deux projets : pyromaths (client en ligne de commande) et client QT.
 * Passage à Python3 (et nombreux changements dans l'API interne, qui n'est pas rétro-compatible).
 * Tags
@@ -13,7 +13,7 @@ Version XX.XX
   * `generate` :
     * Ajout d'une option --format, permettant de choisir le format de sortie (LaTeX, pdf, latexmkrc).
 
-Version 18.06
+Version 18.6
 * Nouvel exercice niveau terminale ES (spécialité) : Déterminer l'état stable d'un graphe probabiliste (en utilisant un système d'équations).
 * Nouvel exercice niveau terminale ES (spécialité) : Résoudre un système d'équations en utilisant les matrices.
 * Nouvel exercice niveau seconde : Bilan sur les trinômes.
