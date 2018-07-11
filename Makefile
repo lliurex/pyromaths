@@ -7,7 +7,7 @@
 # Pyromaths version
 VERSION ?= 18.7
 # Archive format(s) produced by 'make src' (bztar,gztar,zip...)
-FORMATS ?= bztar,zip
+FORMATS ?= bztar,zip,gztar
 # Verbosity and logging
 #OUT     ?= > /dev/null       # uncomment: quieter output
 OUT     ?= >> /tmp/log            # uncomment: log output to file
@@ -98,6 +98,12 @@ src: version
 	# Make full-source archive(s) (formats=$(FORMATS))
 	$(clean)
 	$(setup) sdist --formats=$(FORMATS) -d $(DIST) $(OUT)
+
+pypi: wheel src
+	# Publish to Pypi
+	@echo "################################################################################"
+	@echo "# To upload to Pypi, run:"
+	@echo twine upload -s dist/pyromaths-VERSION.whl dist/pyromaths-VERSION.tar.gz
 
 wheel: version
 	# Make python wheel
