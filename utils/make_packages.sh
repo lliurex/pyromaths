@@ -64,15 +64,29 @@ esac
 
 echo "*** Update pyromaths web-site links..."
 cat > ${PYROPATH}/pyrosite.txt << EOF
+:title: Version ${VERSION}
+:date: $(date +"%Y-%m-%d %H:%M")
+:category: telecharger
+:description: Liens vers la version ${VERSION}
 
-* !/static/img/debian.png(Linux)! "Pyromaths pour Linux - deb":/telecharger/pyromaths_${VERSION}_all.deb
-* !/static/img/redhat.png(Linux)! "Pyromaths pour Linux - rpm":/telecharger/pyromaths-${VERSION}-1.noarch.rpm
-* !/static/img/macosx.png(Mac OS X)! "Pyromaths pour Mac OS X":/telecharger/pyromaths-${VERSION}-macos.dmg
-* !/static/img/winvista.png(Windows)! "Pyromaths pour Windows":/telecharger/pyromaths-${VERSION}-win32.exe
-* !/static/img/source.png(Sources)! "Sources de Pyromaths":/telecharger/pyromaths-${VERSION}-sources.tar.bz2
+* |debian| `Pyromaths pour Linux - deb </telecharger/pyromaths_${VERSION}-1_all.deb>`_
+* |redhat| `Pyromaths pour Linux - rpm </telecharger/pyromaths-${VERSION}-1.noarch.rpm>`_
+* |macos| `Pyromaths pour Mac OS X </telecharger/pyromaths-${VERSION}-macos.dmg>`_
+* |windows| `Pyromaths pour Windows </telecharger/pyromaths_${VERSION}.exe>`_
+* |sources| `Sources de Pyromaths </telecharger/pyromaths-${VERSION}-sources.tar.bz2>`_
 
-<hr/>
+.. |debian| image:: images/debian.png
+    :alt: Debian Linux
+.. |redhat| image:: images/redhat.png
+    :alt: RedHat Linux
+.. |macos| image:: images/macosx.png
+    :alt: Mac OS X
+.. |windows| image:: images/winvista.png
+    :alt: Windows
+.. |sources| image:: images/source.png
+    :alt: Sources
 
-h4. Nouveautés de cette version :
+Nouveautés de cette version :
+=============================
 
 EOF

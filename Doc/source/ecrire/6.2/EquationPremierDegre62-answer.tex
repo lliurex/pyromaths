@@ -1,8 +1,8 @@
 \exercice*
 
 \begin{align*}
-  (( a )) x (( "%+d"|format(b) )) &= (( c )) x (( "%+d"|format(d) )) \\
-  (( a )) x (( "%+d"|format(-c) ))x &= (( d )) (( "%+d"|format(-b) )) \\
+  (( a )) x (( b|facteur("so") )) &= (( c )) x (( d|facteur("so") )) \\
+  (( a )) x (( -c|facteur("so") ))x &= (( d )) (( -b|facteur("so") )) \\
   (* if a == c *)
     0 &= (( d - b )) \\
   (* else *)
@@ -19,7 +19,7 @@
          (* if 100*(d-b)/(a-c) == (100*(d-b)/(a-c))|int *)
              =
          (* else *)
-             \approx
+             \simeq
          (* endif *)
          (( ((d-b)/(a-c)) | facteur("2") ))
   (* endif *)
@@ -35,7 +35,7 @@
   (* if 100*(d-b)/(a-c) == (100*(d-b)/(a-c))|int *)
       =
   (* else *)
-      \approx
+      \simeq
   (* endif *)
   (( ((d-b)/(a-c)) | facteur("2") ))$.
 (* endif *)

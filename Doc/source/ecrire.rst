@@ -33,15 +33,15 @@ Les personnes pressées peuvent jeter un œil à deux exercices implémentés da
 
 - un exemple simple (avec très peu de cas particuliers) : la recherche d'état stable.
 
-    - :download:`code Python <../../src/pyromaths/ex/lycee/matrices.py>`
-    - :download:`template de l'énoncé <../../data/ex/templates/EtatStableSysteme2-statement.tex>`
-    - :download:`template de la solution <../../data/ex/templates/EtatStableSysteme2-answer.tex>`
+    - classe :class:`EtatStableSysteme2` du module :download:`matrices.py <../../pyromaths/ex/lycee/matrices.py>`
+    - :download:`template de l'énoncé <../../pyromaths/data/exercices/templates/EtatStableSysteme2-statement.tex>`
+    - :download:`template de la solution <../../pyromaths/data/exercices/templates/EtatStableSysteme2-answer.tex>`
 
 - un exemple plus complexe (avec cas particuliers) : bilan sur les polynômes du second degré en seconde.
 
-    - :download:`code Python <../../src/pyromaths/ex/lycee/SecondDegre.py>` ;
-    - :download:`template de l'énoncé <../../data/ex/templates/BilanTrinomeSansDiscriminant-statement.tex>` ;
-    - :download:`template de la solution <../../data/ex/templates/BilanTrinomeSansDiscriminant-answer.tex>`.
+    - classe :class:`BilanTrinomeSansDiscriminant` du module :download:`SecondDegre.py <../../pyromaths/ex/lycee/SecondDegre.py>` ;
+    - :download:`template de l'énoncé <../../pyromaths/data/exercices/templates/BilanTrinomeSansDiscriminant-statement.tex>` ;
+    - :download:`template de la solution <../../pyromaths/data/exercices/templates/BilanTrinomeSansDiscriminant-answer.tex>`.
 
 
 Prérequis
@@ -58,7 +58,7 @@ Connaissances
 Créer un exercice pour Pyromaths nécessite de savoir utiliser un minimum :
 
 - :math:`LaTeX` ;
-- Python (version 2) ;
+- Python (version 3) ;
 - git.
 
 Une connaissance de la bibliothèque Python `jinja2 <http://jinja2.pocoo.org>`__ est un plus, mais les bases s'apprennent rapidement et sont décrites plus loins dans ce document.
@@ -66,22 +66,22 @@ Une connaissance de la bibliothèque Python `jinja2 <http://jinja2.pocoo.org>`__
 Outils
 ------
 
-À part `git <http://git-scm.com>`__, tous les outils nécessaires pour créer un exercice sont des dépendances de Pyromaths. `Installez <http://www.pyromaths.org/installer/>`__, et faites fonctionner Pyromath : les outils nécessaires pour ce tutoriel seront alors disponibles.
+À part `git <http://git-scm.com>`__, tous les outils nécessaires pour créer un exercice sont des dépendances de Pyromaths. Installez `la version de développement <https://framagit.org/pyromaths/pyromaths/#d%C3%A9velopper-pyromaths>`__, et faites fonctionner Pyromath : les outils nécessaires pour ce tutoriel seront alors disponibles.
 
 Environnement de travail
 ========================
 
-Commençons par télécharger les sources de Pyromaths, en utilisant le logiciel `git`. Si vous avez un compte `Github <http://github.com>`__, utilisez :
+Commençons par télécharger les sources de Pyromaths, en utilisant le logiciel `git`. Si vous avez un compte `Framagit <http://framagit.com>`__, utilisez :
 
 .. code-block:: shell
 
-   $ git clone git@github.com:Pyromaths/pyromaths.git
+   $ git clone git@framagit.org/pyromaths/pyromaths.git
 
 Si vous n'avez pas de tel compte, utilisez :
 
 .. code-block:: shell
 
-   $ git clone https://github.com/Pyromaths/pyromaths.git
+   $ git clone https://framagit.org/pyromaths/pyromaths.git
 
 Puis déplacez vous dans le répertoire `pyromaths` ainsi créé. À partir de maintenant, sauf mention contraire, toutes les commandes sont à exécuter depuis ce répertoire.
 
@@ -101,11 +101,15 @@ Il sera plus confortable, pour vous comme pour nous, que vous travailliez dans u
 Brouillon
 =========
 
-La première étape est d'écrire un exercice en :math:`LaTeX`, sans passer par Python, sans aléa : juste pour observer le rendu final. Utilisez l'outil :ref:`pyromaths-cli.py <pyromaths-cli>`.
+La première étape est d'écrire un exercice en :math:`LaTeX`, sans passer par Python, sans aléa : juste pour observer le rendu final. Utilisez l'outil en ligne de commandes :ref:`pyromaths <pyromaths-cli>`.
 
 .. code-block:: shell
 
-   $ utils/pyromaths-cli.py dummy
+   $ pyromaths dummy
+
+.. note::
+
+   Si pyromaths n'est pas (encore) installé chez vous, ou une version trop ancienne, vous pouvez télécharger le dépôt et utiliser le binaire ``utils/pyromaths`` à la place de ``pyromaths`` pour utiliser la version de développement.
 
 Cette commande a pour effet de créer un modèle d'exercice, sous la forme d'un PDF qui est affiché à l'écran, et d'un fichier :math:`LaTeX` :file:`exercices.tex`.
 
@@ -126,12 +130,14 @@ Première version (sans aléa)
 
 Nous allons maintenant intégrer cet exercice à Pyromaths, sans aléa pour le moment.
 
-Choisissez un identifiant pour votre exercice : un nom composé uniquement de lettres sans accents et de chiffres, sans espaces, comme `ConversionDegresRadians`, `TheoremeDePythagore`, `CoordonneesDuMilieu`, etc. Pour notre exemple, nous choissons `EquationPremierDegre` (qui sera décliné en `EquationPremierDegre2`, `EquationPremierDegre3`, etc. au fil de ce tutoriel).
+Choisissez un identifiant pour votre exercice : un nom composé uniquement de lettres sans accents et de chiffres, sans espaces, comme ``ConversionDegresRadians``, ``TheoremeDePythagore``, ``CoordonneesDuMilieu``, etc. Pour notre exemple, nous choissons ``EquationPremierDegre`` (qui sera décliné en ``EquationPremierDegre2``, ``EquationPremierDegre3``, etc. au fil de ce tutoriel).
+
+Notez que si le nom commence par un tiret bas (par exemple ``_TheoremeDePythagore``), l'exercice sera ignoré (cela peut-être utile pour « désactiver » un exercice en cours de création).
 
 Code Python
 -----------
 
-Le code Python de l'exercice doit être placé dans un des sous-dossiers de ``src/pyromaths/ex/``. Dans notre cas, ce sera ``src/pyromaths/ex/troisiemes``. Ensuite, modifiez un des fichiers `.py` déjà existant, ou créez-en un nouveau. Gardez une certaine logique : un exercice sur Pythagore a sa place dans le même fichier qu'un autre exercice sur Pythagore ; un exercice de trigonométrie n'a pas sa place dans un fichier ``matrices.py``. Dans notre cas, nous crréons un nouveau fichier contenant le code suivant.
+Le code Python de l'exercice doit être placé dans un des sous-dossiers de ``pyromaths/ex/``. Dans notre cas, ce sera ``pyromaths/ex/troisiemes``. Ensuite, modifiez un des fichiers `.py` déjà existant, ou créez-en un nouveau. Gardez une certaine logique : un exercice sur Pythagore a sa place dans le même fichier qu'un autre exercice sur Pythagore ; un exercice de trigonométrie n'a pas sa place dans un fichier ``matrices.py``. Dans notre cas, nous crréons un nouveau fichier contenant le code suivant.
 
 .. literalinclude:: ecrire/2/equation2.py
    :linenos:
@@ -139,14 +145,14 @@ Le code Python de l'exercice doit être placé dans un des sous-dossiers de ``sr
 Modifiez les parties suivantes :
 
 - ligne 8 : votre nom, et l'année courante ;
-- ligne 29 : l'identifiant de l'exercice ;
-- ligne 31 : la description de l'exercice ;
-- ligne 32 : le niveau de l'exercice (le nombre avant le point sert à trier les niveaux ; celui après le point est le texte qui sera visible à l'utilisateur).
+- ligne 27 : l'identifiant de l'exercice ;
+- ligne 28 : la description de l'exercice ;
+- ligne 30 : les tags (étiquettes) de l'exercice (ceux-ci doivent contenir le niveau, plus d'autres à votre guise ; pour connaître la liste des tags déjà utilisés, utilisez ``pyromaths tags``).
 
 Code :math:`LaTeX`
 ------------------
 
-Le code :math:`LaTeX`, quant à lui, doit être placé dans le répertoire ``data/ex/templates``, dans deux fichiers au nom de votre exercices. Reprenez votre fichier :download:`exercices.tex <ecrire/1/exercices.tex>`, et extrayez les lignes correspondant à l'énoncé, que vous écrivez dans le fichier :download:`EquationPremierDegre2-statement.tex <ecrire/2/EquationPremierDegre2-statement.tex>`, et celles correspondant au corrigé dans le fichier :download:`EquationPremierDegre2-answer.tex <ecrire/2/EquationPremierDegre2-answer.tex>`.
+Le code :math:`LaTeX`, quant à lui, doit être placé dans le répertoire ``pyromaths/data/exercices/templates``, dans deux fichiers au nom de votre exercices. Reprenez votre fichier :download:`exercices.tex <ecrire/1/exercices.tex>`, et extrayez les lignes correspondant à l'énoncé, que vous écrivez dans le fichier :download:`EquationPremierDegre2-statement.tex <ecrire/2/EquationPremierDegre2-statement.tex>`, et celles correspondant au corrigé dans le fichier :download:`EquationPremierDegre2-answer.tex <ecrire/2/EquationPremierDegre2-answer.tex>`.
 
 L'énoncé est alors dans le fichier :download:`EquationPremierDegre2-statement.tex <ecrire/2/EquationPremierDegre2-statement.tex>`.
 
@@ -167,7 +173,7 @@ Vous pouvez maintenant tester la génération de votre exercice, en exécutant l
 
 .. code-block:: shell
 
-   $ utils/pyromaths-cli.py generate EquationPremierDegre2
+   $ pyromaths generate EquationPremierDegre2
 
 Vous obtenez alors le fichier :download:`exercice.pdf <ecrire/2/exercice.pdf>`.
 
@@ -183,7 +189,7 @@ Dans cette partie, pour générer l'exercice et suivre votre travail, la command
 
 .. code-block:: shell
 
-   $ utils/pyromaths-cli.py generate EquationPremierDegre3:2
+   $ pyromaths generate EquationPremierDegre3:2
 
 Remarquez que par rapport à la commande utilisée dans la partie précédente, un ``:2`` a été ajouté à la fin de la ligne. Il correspond à la graine (`seed`) du générateur pseudo-aléatoire.
 
@@ -208,8 +214,7 @@ Du côté de Python, il faut tirer au hasard quatre nombres entiers entre -10 et
 
 .. literalinclude::  ecrire/3/equation3.py
    :linenos:
-   :lineno-start: 27
-   :lines: 27-44
+   :pyobject: EquationPremierDegre3.__init__
 
 Code :math:`LaTeX`
 ------------------
@@ -225,12 +230,11 @@ Du côté de :math:`LaTeX`, nous allons profiter de la bibliothèque jinja2 pour
    - les variables peuvent être évaluées avec des doubles parenthèses. Pour insérer la valeur de la variable ``a`` du contexte, il faut utiliser ``(( a ))`` ;
    - des structures de contrôle (condition, boucle) peuvent être utilisées entourées par ``(*`` et ``*)``.
 
-   Notons que les chaînes définissant ces blocs ont été modifiées par rapport aux chaînes initiales, car trop proches de la syntaxe :math:`LaTeX`. Ceci est documenté sur `le site officiel <http://jinja.pocoo.org/docs/2.10/api/#jinja2.Environment>`__, et mis en œuvre dans la classe :class:`pyromaths.ex.Jinja2Exercice`.
+   Notons que les chaînes définissant ces blocs ont été modifiées par rapport aux chaînes initiales, car trop proches de la syntaxe :math:`LaTeX`. Ceci est documenté sur `le site officiel <http://jinja.pocoo.org/docs/2.10/api/#jinja2.Environment>`__, et mis en œuvre dans la classe :class:`pyromaths.outils.jinja2tex.LatexEnvironment`.
 
-   .. literalinclude:: ../../src/pyromaths/ex/__init__.py
+   .. literalinclude:: ../../pyromaths/outils/jinja2tex.py
       :linenos:
-      :lineno-start: 200
-      :lines: 200-215
+      :pyobject: LatexEnvironment
 
 L'énoncé est assez simple : il suffit de faire appel aux variables du contexte.
 
@@ -249,7 +253,7 @@ La rédaction du corrigé se fait de la même manière, en remarquant que le cod
 Débuggage
 ---------
 
-Durant cette phase, il est probable que le code :math:`LaTeX` produit soit un peu compliqué, et contienne des erreurs. Il serait alors pratique de pouvoir observer (si ce n'est plus) ce code avant compilation. C'est possible avec l'option ``--pipe`` de :ref:`pyromaths-cli.py <pyromaths-cli>`.
+Durant cette phase, il est probable que le code :math:`LaTeX` produit soit un peu compliqué, et contienne des erreurs. Il serait alors pratique de pouvoir observer (si ce n'est plus) ce code avant compilation. C'est possible avec l'option ``--pipe`` de :ref:`cli <pyromaths-cli>`.
 
 Cette option permet de définir des commandes (du shell) qui seront executées sur le fichier :math:`LaTeX`, avant sa compilation. Par exemple :
 
@@ -261,7 +265,7 @@ Cette option permet de définir des commandes (du shell) qui seront executées s
 Bilan
 -----
 
-Nous avons produit l'exercice :download:`exercice.pdf <ecrire/3/exercice.pdf>`. Il fonctionne, mais il y a trois problèmes dans le corrigé : premièrement, alors que la solution est exacte, le signe :math:`\approx` est utilisé ; ensuite, bien que la solution soit entière, le code a produit ``3,0`` plutôt que ``3`` ; enfin, un troisième problème n'apparaît pas ici, mais sera expliqué et résolu plus loin dans ce document.
+Nous avons produit l'exercice :download:`exercice.pdf <ecrire/3/exercice.pdf>`. Il fonctionne, mais il y a trois problèmes dans le corrigé : premièrement, alors que la solution est exacte, le signe :math:`\simeq` est utilisé ; ensuite, bien que la solution soit entière, le code a produit ``3,0`` plutôt que ``3`` ; enfin, un troisième problème n'apparaît pas ici, mais sera expliqué et résolu plus loin dans ce document.
 
 .. figure:: ecrire/3/corrige.png
    :align: center
@@ -271,12 +275,12 @@ Nous avons produit l'exercice :download:`exercice.pdf <ecrire/3/exercice.pdf>`. 
 Structures de contrôle
 ======================
 
-Dans la correction de l'exercice, le signe utilisé pour donner la solution est :math:`\approx`, que la solution soit exacte ou non. Cela peut être corrigé avec une structure de contrôle.
+Dans la correction de l'exercice, le signe utilisé pour donner la solution est :math:`\simeq`, que la solution soit exacte ou non. Cela peut être corrigé avec une structure de contrôle.
 
 Structures de contrôles
 -----------------------
 
-Pour corriger le second, il suffit de tester si la solution est exacte ou non. Pour cela, nous testons si la solution (multipliée par 100) est égale à la partie entière de la solution, multipliée par 100 elle aussi.
+Pour corriger la relation d'équivalence (égalité ou approximation), il suffit de tester si la solution est exacte ou non. Pour cela, nous testons si la solution (multipliée par 100) est égale à la partie entière de la solution, multipliée par 100 elle aussi.
 
 .. literalinclude::  ecrire/4/EquationPremierDegre4-answer.tex
    :language: latex
@@ -315,23 +319,22 @@ Supposons par exemple que nous voulons afficher l'équation de la droite d'équa
 - Si :math:`a=2` et :math:`b=-2`, nous obtenons ``y=2x+-2`` au lieu de ``y=2x-2``.
 - Si :math:`a=0` et :math:`b=0`, nous obtenons ``y=0x+0`` au lieu de ``y=0``.
 
-Cela fait beaucoup de cas à traiter. Tous (sauf le dernier) peuvent être résolu en utilisant le *filter* :func:`pyromaths.outils.jinja2.facteur`.
+Cela fait beaucoup de cas à traiter. Tous (sauf le dernier) peuvent être résolu en utilisant le *filter* :func:`pyromaths.outils.jinja2utils.facteur`.
 
 `Filters` personnalisés
 -----------------------
 
 Un `filter` est une fonction qui peut être transmise au template afin d'être appelée depuis le template. Ils sont décrits sur `la documentation officielle <http://jinja.pocoo.org/docs/2.10/api/#custom-filters>`__.
 
-.. currentmodule:: pyromaths.outils.jinja2
+.. currentmodule:: pyromaths.outils.jinja2utils
 
-Une fonction du module :mod:`pyromaths.outils.jinja2` existe pour corriger les problèmes cités plus haut : :func:`facteur` permet de formatter correctement les facteurs dans une expression. Encore faut-il que cette fonction soit accessible depuis le `template` :math:`LaTeX`.
+Une fonction du module :mod:`pyromaths.outils.jinja2utils` existe pour corriger les problèmes cités plus haut : :func:`facteur` permet de formatter correctement les facteurs dans une expression. Encore faut-il que cette fonction soit accessible depuis le `template` :math:`LaTeX`.
 
 Ajoutons la méthode suivante à la classe :class:`~pyromaths.ex.troisiemes.equation.EquationPremierDegre4` :
 
 .. literalinclude::  ecrire/5/equation5.py
    :linenos:
-   :lineno-start: 47
-   :lines: 47-53
+   :pyobject: EquationPremierDegre5.environment
 
 Celle-ci a pour effet d'ajouter à l'environnement jinja2 la fonction :func:`facteur` comme un `filter`, qui est alors accessible depuis le `template`. Dans cette ligne, le nombre :math:`\frac{d-b}{a-c}` est arrondi à deux décimales après la virgule, et affiché en respectant les règles françaises (notamment avec une virgule comme séparateur décimal).
 
@@ -364,6 +367,13 @@ Un `filter` n'est rien d'autre qu'une fonction python. D'autres `filters` peuven
 
     Des exemples d'utilisation de cette fonction sont fournis avec :func:`sa documentation <facteur>`.
 
+Arrondis étranges
+-----------------
+
+Un autre problème pouvant survenir avec l'affichage des nombres est la présence d'arrondis pour le moins étranges. Par exemple, en Python, l'expression ``1.1 + 2.2`` produit ``3.3000000000000003``. C'est normal, car les nombres étant stockés en binaire, les nombres 1,1 et 2,2, bien qu'étant des nombres « ronds » en décimal, ne le sont pas en binaire, et les approximations utilisées produisent ce résultat.
+
+Pour éviter ce genre d'arrondi, il est possible d'utiliser le type :class:`decimal.Decimal` pour les nombres à virgule. Cette classe est conçue comme étant une représentation « pour les humains » d'un nombre à virgule (contrairement au type :class:`float`, qui est une représentation « pour les ordinateurs »), et arrondi correctement les calculs. Nous n'en avons *a priori* pas besoin ici.
+
 Bilan
 -----
 
@@ -374,7 +384,7 @@ Gestion des cas particuliers
 
 Deux problèmes subsistent.
 
-- Dans certains cas (par exemple ``utils/pyromaths-cli.py generate EquationPremierDegre4:15``, les deux coefficients :math:`a` et :math:`c` de l'équation :math:`ax+b=cx+d` sont égaux, et notre programme, qui suppose qu'il existe une solution unique, essaye de la calculer, et divise par 0.
+- Dans certains cas (par exemple ``pyromaths generate EquationPremierDegre4:15``, les deux coefficients :math:`a` et :math:`c` de l'équation :math:`ax+b=cx+d` sont égaux, et notre programme, qui suppose qu'il existe une solution unique, essaye de la calculer, et divise par 0.
 - Lorsque nous arrivons (par exemple) à l'équation ``2x=6``, l'étape suivante est de diviser les deux membres par deux. Mais cette étape est inutile lorsque, par hasard, ``x`` est multiplié par 1, comme dans l'exemple suivant.
 
     .. figure:: ecrire/6/1x.png
@@ -395,8 +405,7 @@ C'est en Python, en revanche, que tous les cas particuliers sont traités. Nous 
 
 .. literalinclude::  ecrire/6.1/equation61.py
    :linenos:
-   :lineno-start: 32
-   :lines: 32-80
+   :pyobject: EquationPremierDegre61
 
 Le code est plus complet, mais plus difficile à lire.
 
@@ -407,8 +416,7 @@ Puisque les cas particuliers sont traités avec Jinja2, le code Python est rédu
 
 .. literalinclude::  ecrire/6.2/equation62.py
    :linenos:
-   :lineno-start: 32
-   :lines: 32-53
+   :pyobject: EquationPremierDegre62
 
 Le code :math:`LaTeX`, en revanche, est plus fourni.
 
@@ -426,8 +434,7 @@ Avec cette méthode, pas besoin de toucher aux `templates` : nous modifions simp
 
 .. literalinclude::  ecrire/6.3/equation63.py
    :linenos:
-   :lineno-start: 37
-   :lines: 37-59
+   :pyobject: EquationPremierDegre63.__init__
 
 Bilan
 -----
@@ -459,7 +466,7 @@ Dans quelques mois ou années, quelqu'un (peut-être vous) voudrait modifier que
 
 .. code-block:: shell
 
-   $ utils/pyromaths-cli.py test create EquationPremierDegre
+   $ pyromaths test create EquationPremierDegre
 
 Cette commande va générer un exercice, l'afficher (dans un lecteur de pdf externe), et vous demander confirmation. Si l'exercice est correct, validez, et cet exercice sera ajouté aux tests.
 
@@ -467,13 +474,13 @@ Si vous voulez ajouter un exercice particulier (car vous savez qu'il correspond 
 
 .. code-block:: shell
 
-   $ utils/pyromaths-cli.py test create EquationPremierDegre:1729
+   $ pyromaths test create EquationPremierDegre:1729
 
 Plus tard, pour vérifier que votre exercice n'a pas été modifier, vérifiez les tests en utilisant ce même programme.
 
 .. code-block:: shell
 
-   $ utils/pyromaths-cli.py test check
+   $ pyromaths test check
 
 Publication !
 =============
@@ -483,16 +490,16 @@ Ajout des fichiers créés ou modifiés
 
 Utilisez ``git add`` pour ajouter les fichiers créés ou modifiés. À priori, cela concerne au moins :
 
-- un fichier python contenant la classe de votre exercice (dans un des dossiers ``src/pyromaths/ex/*``) ;
-- deux fichiers de template :math:`LaTeX` (dans le dossier ``data/ex/templates``) ;
-- la vignette, et le fichier ``md5sum.json`` (dans le dossier ``data/ex/img``) ;
-- les fichiers de test (dans le dossier ``data/ex/tests``) ;
+- un fichier python contenant la classe de votre exercice (dans un des dossiers ``pyromaths/ex/*``) ;
+- deux fichiers de template :math:`LaTeX` (dans le dossier ``pyromaths/data/exercices/templates``) ;
+- la vignette, et le fichier ``md5sum.json`` (dans le dossier ``pyromaths/data/exercices/img``) ;
+- les fichiers de test (dans le dossier ``pyromaths/data/exercices/tests``) ;
 - et peut-être d'autre, selon votre travail.
 
 Proposition de l'exercice
 -------------------------
 
-Il ne reste qu'à nous proposer votre exercice, de préférence en utilisant une *pull request* sur Github, à défaut en prenant contact avec nous sur `le forum <http://forum.pyromaths.org>`__.
+Il ne reste qu'à nous proposer votre exercice, de préférence en utilisant une *pull request* sur Gitlab, à défaut en prenant contact avec nous sur `le forum <http://forum.pyromaths.org>`__.
 
 Conclusion
 ==========

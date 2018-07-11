@@ -1,3 +1,18 @@
+Version XX.XX
+* Séparation de pyromaths en deux projets : pyromaths (client en ligne de commande) et client QT.
+* Passage à Python3 (et nombreux changements dans l'API interne, qui n'est pas rétro-compatible).
+* Tags
+  * Possibilité d'ajouter des tags à des exercices
+  * Le niveau d'un exercice n'est plus défini par une chaîne, mais par une liste de tags (un exercice peut donc avoir plusieurs niveaux).
+* Binaire, et sous commandes.
+  * Pyromaths peut être appelé comme un module python3 : `python3 -m pyromaths`.
+  * `ls` :
+    * Ajout des options --tags et --desc, pour filtrer les exercices.
+  * `tags` :
+    * Création d'une commande `pyromaths tags` permettant d'afficher la liste de tous les tags.
+  * `generate` :
+    * Ajout d'une option --format, permettant de choisir le format de sortie (LaTeX, pdf, latexmkrc).
+
 Version 18.06
 * Nouvel exercice niveau terminale ES (spécialité) : Déterminer l'état stable d'un graphe probabiliste (en utilisant un système d'équations).
 * Nouvel exercice niveau terminale ES (spécialité) : Résoudre un système d'équations en utilisant les matrices.

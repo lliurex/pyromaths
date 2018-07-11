@@ -5,7 +5,7 @@
 ### CONFIG
 #
 # Pyromaths version
-VERSION ?= 18.6.3
+VERSION ?= 18.7
 # Archive format(s) produced by 'make src' (bztar,gztar,zip...)
 FORMATS ?= bztar,zip
 # Verbosity and logging
@@ -26,51 +26,14 @@ APP     := $(DIST)/Pyromaths.app/Contents
 # Project files
 FILES   := AUTHORS COPYING NEWS pyromaths README setup.py MANIFEST.in src data
 
-### MANIFESTS
-#
-# Base manifest (README, src/ and test/ auto-included):
-MANIFEST :=                                      \
-    include AUTHORS COPYING NEWS                 \n\
-    exclude MANIFEST.in	                         \n\
-    prune test                                   \n\
-    prune utils                                  \n\
-    graft data                                   \n
-# Minimal install (i.e. without test/ dir):
-MANIFEST-min := $(MANIFEST)                     \
-    graft data                                  \n\
-    prune test                                  \n
-# Full project sources:
-MANIFEST-all := $(MANIFEST)                     \
-    graft debian                                \n\
-    graft utils                                 \n\
-    graft data                                  \n\
-    graft Doc                                   \n\
-    graft Doc/source                            \n\
-    include Makefile                            \n
-# Unix:
-MANIFEST-unix := $(MANIFEST-min)                \
-    exclude data/qtmac_fr.qm                    \n\
-    exclude data/images/pyromaths.icns          \n\
-    exclude data/images/pyromaths.ico           \n
-# Mac app:
-MANIFEST-mac := $(MANIFEST-min)                 \
-    prune data/linux                            \n\
-    exclude data/images/pyromaths.ico           \n\
-    exclude data/images/pyromaths-banniere.png  \n
-# Win app:
-MANIFEST-win := $(MANIFEST-min)                 \
-    prune data/linux                            \n\
-    exclude data/qtmac_fr.qm                    \n\
-    exclude data/images/pyromaths.icns          \n
-
 ### SHORTCUTS & COMPATIBILITY
 #
 ifeq ($(OS),Windows_NT)
 	# Windows
-	PYTHON ?= c:/Python27/python.exe
+	PYTHON ?= c:/Python3/python.exe
 else
 	# Unix
-	PYTHON ?= python
+	PYTHON ?= python3
 	ifeq ($(shell uname -s),Darwin)
 		# Mac/BSD
 		sed-i := sed -i ''
@@ -79,18 +42,19 @@ else
 		sed-i := sed -i
 	endif
 endif
+$(info $$PYTHON is [${PYTHON}])
 setup := $(PYTHON) setup.py
 
 ### MACROS
 #
 # Remove manifest file, egg-info dir and target build dir, clean-up sources.
-clean = rm -f MANIFEST.in && rm -rf src/*.egg-info && rm -rf $(BUILDIR) &&\
+clean = rm -rf *.egg-info && rm -rf $(BUILDIR) &&\
         find . -name '*~' | xargs rm -f && find . -iname '*.pyc' | xargs rm -f
 
 
 # src must be after rpm, otherwise rpm produces a .tar.gz file that replaces the
 # .tar.gz source file (should $$FORMATS include gztar).
-all: egg rpm deb src
+all: wheel rpm deb src
 
 help:
 	#
@@ -128,31 +92,27 @@ clean:
 
 version:
 	# Apply target version ($(VERSION)) to sources
-	$(sed-i) "s/VERSION\s*=\s*'.*'/VERSION = '$(VERSION)'/" src/pyromaths/Values.py
+	$(sed-i) "s/VERSION\s*=\s*'.*'/VERSION = '$(VERSION)'/" pyromaths/version.py
 
 src: version
 	# Make full-source archive(s) (formats=$(FORMATS))
 	$(clean)
-	echo "$(MANIFEST-all)" > MANIFEST.in
 	$(setup) sdist --formats=$(FORMATS) -d $(DIST) $(OUT)
 
-egg: version
-	# Make python egg
+wheel: version
+	# Make python wheel
 	$(clean)
-	echo "$(MANIFEST-unix)" > MANIFEST.in
-	$(setup) bdist_egg -d $(DIST) $(OUT)
+	$(setup) bdist_wheel -d $(DIST) $(OUT)
 
 rpm: version
 	# Make RPM package
 	$(clean)
-	echo "$(MANIFEST-unix)" > MANIFEST.in
 	$(setup) bdist --formats=rpm -b $(BUILD) -d $(DIST) $(OUT)
 	rm $(DIST)/pyromaths-$(VERSION).tar.gz
 
 min: version
 	# Make minimalist .tar.bz source archive in $(BUILD)
 	$(clean)
-	echo "$(MANIFEST-unix)" > MANIFEST.in
 	$(setup) sdist --formats=bztar -d $(BUILD) $(OUT)
 
 deb: min
@@ -205,13 +165,10 @@ app: version data/qtmac_fr.qm
 exe:
 	# Make standalone Windows executable
 	# ..Remove previous builds
-	rmdir /s /q $(BUILDIR)
-	rm $(DIST)/Pyromaths-*-win32.exe
-	# ..Create stripped-down sources
-	md $(BUILDIR)
-	xcopy data $(BUILDIR)/data /i /s
-	xcopy src $(BUILDIR)/src /i /s
-	copy $(FILES) $(BUILDIR)
-	move $(BUILDIR)/pyromaths $(BUILDIR)/Pyromaths.py
-	# ..Create standalone exe
-	cd $(BUILDIR) && $(setup) innosetup -b $(BUILD) -d $(DIST)
+	cp $(PYRO)/data/windows/installer.cfg $(PYRO)
+	cp $(PYRO)/data/windows/nsi_template.nsi $(PYRO)
+	pynsist installer.cfg
+	mkdir -p $(DIST)
+	mv $(BUILD)/nsis/Pyromaths_$(VERSION).exe $(DIST)
+	rm $(PYRO)/installer.cfg 
+	rm $(PYRO)/nsi_template.nsi
