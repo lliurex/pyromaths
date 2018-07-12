@@ -57,4 +57,5 @@ setup(
         "Tickets": "https://framagit.org/pyromaths/pyromaths/issues",
         "Version en ligne": "http://www.pyromaths.org/enligne/",
     },
+    namespace_packages=['pyromaths'],
 )
