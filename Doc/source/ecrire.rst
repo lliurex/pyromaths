@@ -221,6 +221,8 @@ Code :math:`LaTeX`
 
 Du côté de :math:`LaTeX`, nous allons profiter de la bibliothèque jinja2 pour utiliser les variables rendues disponibles dans le contexte.
 
+.. _jinja2:
+
 .. note::
 
    Cette note se veut une courte introduction à Jinja2. Pour aller plus loins, rendez-vous sur `le site du projet <http://jinja.pocoo.org/docs/2.10/templates/>`__.
