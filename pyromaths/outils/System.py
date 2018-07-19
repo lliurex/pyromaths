@@ -92,6 +92,7 @@ class Fiche(contextlib.AbstractContextManager):
     def write_tex(self):
         environment = jinja2tex.LatexEnvironment(
             loader=jinja2tex.FileSystemLoader([
+                os.path.join(directories.CONFIGDIR, 'templates'),
                 os.path.join(directories.DATADIR, 'templates'),
                 ])
         )
