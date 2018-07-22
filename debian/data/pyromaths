@@ -9,11 +9,11 @@ _pyromaths()
         --help | --version)
             return
             ;;
-        generate)
-            COMPREPLY+=($( compgen -W "$($1 ls)" -- "$cur"))
+        ls | dummy | test | tags)
             return
             ;;
-        ls | gui | dummy | test)
+        generate | *)
+            COMPREPLY+=($( compgen -W "$($1 ls)" -- "$cur"))
             return
             ;;
     esac;
@@ -28,5 +28,4 @@ _pyromaths()
 } &&
 complete -F _pyromaths pyromaths
 
-# ex: filetype=sh```
-
+# ex: filetype=sh
