@@ -26,14 +26,6 @@ APP     := $(DIST)/Pyromaths.app/Contents
 # Project files
 FILES   := AUTHORS COPYING NEWS pyromaths README setup.py MANIFEST.in
 
-### MANIFESTS
-#
-# Base manifest (README, src/ and test/ auto-included):
-MANIFEST :=                                     \
-    include AUTHORS COPYING NEWS                \n\
-    exclude MANIFEST.in	                        \n\
-    graft pyromaths/data                                  \n\
-
 ### SHORTCUTS & COMPATIBILITY
 #
 ifeq ($(OS),Windows_NT)
@@ -102,10 +94,7 @@ version:
 	# Apply target version ($(VERSION)) to sources
 	$(sed-i) "s/VERSION\s*=\s*'.*'/VERSION = '$(VERSION)'/" pyromaths/version.py
 
-MANIFEST.in:
-	echo "$(MANIFEST)" > MANIFEST.in
-
-src: MANIFEST.in version
+src: version
 	# Make full-source archive(s) (formats=$(FORMATS))
 	$(clean)
 	$(setup) sdist --formats=$(FORMATS) -d $(DIST) $(OUT)
@@ -116,7 +105,7 @@ pypi: wheel src
 	@echo "# To upload to Pypi, run:"
 	@echo twine upload -s dist/pyromaths-VERSION.whl dist/pyromaths-VERSION.tar.gz
 
-wheel: MANIFEST.in version
+wheel: version
 	# Make python wheel
 	$(clean)
 	$(setup) bdist_wheel -d $(DIST) $(OUT)
