@@ -2,6 +2,8 @@
 
 Lancer :
 
+    # Création du fichier MANIFEST.in
+    make MANIFEST.in
     # Paquet sources
     python setup.py sdist
     # Paquet wheel

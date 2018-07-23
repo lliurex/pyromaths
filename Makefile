@@ -55,7 +55,7 @@ setup := $(PYTHON) setup.py
 
 ### MACROS
 #
-# Remove manifest file, egg-info dir and target build dir, clean-up sources.
+# Remove egg-info dir and target build dir, clean-up sources.
 clean = rm -rf *.egg-info && rm -rf $(BUILDIR) &&\
         find . -name '*~' | xargs rm -f && find . -iname '*.pyc' | xargs rm -f
 
@@ -102,10 +102,12 @@ version:
 	# Apply target version ($(VERSION)) to sources
 	$(sed-i) "s/VERSION\s*=\s*'.*'/VERSION = '$(VERSION)'/" pyromaths/version.py
 
-src: version
+MANIFEST.in:
+	echo "$(MANIFEST)" > MANIFEST.in
+
+src: MANIFEST.in version
 	# Make full-source archive(s) (formats=$(FORMATS))
 	$(clean)
-	echo "$(MANIFEST)" > MANIFEST.in
 	$(setup) sdist --formats=$(FORMATS) -d $(DIST) $(OUT)
 
 pypi: wheel src
@@ -114,10 +116,9 @@ pypi: wheel src
 	@echo "# To upload to Pypi, run:"
 	@echo twine upload -s dist/pyromaths-VERSION.whl dist/pyromaths-VERSION.tar.gz
 
-wheel: version
+wheel: MANIFEST.in version
 	# Make python wheel
 	$(clean)
-	echo "$(MANIFEST)" > MANIFEST.in
 	$(setup) bdist_wheel -d $(DIST) $(OUT)
 
 rpm: version
