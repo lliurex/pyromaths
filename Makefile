@@ -135,7 +135,7 @@ deb: min
 	cp -r debian $(BUILDIR)
 	(
 		cd $(BUILDIR)
-		debuild -i -D -tc -kspalax@gresille.org
+		debuild -i -D -tc -kB39EE5B6 -S $(OUT)
 	)
 	mkdir -p $(DIST)
 	mv $(BUILD)/pyromaths_$(VERSION)-*_all.deb $(DIST)
