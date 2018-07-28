@@ -121,14 +121,22 @@ min: version
 	$(clean)
 	$(setup) sdist --formats=bztar -d $(BUILD) $(OUT)
 
+.ONESHELL:
 deb: min
 	# Make DEB archive
+	set -ev
 	$(clean)
-	cd $(BUILD) && tar -xjf pyromaths-$(VERSION).tar.bz2              &&\
-	    mv pyromaths-$(VERSION) $(BUILDIR)                            &&\
-	    mv pyromaths-$(VERSION).tar.bz2 pyromaths_$(VERSION).orig.tar.bz2
+	(
+		cd $(BUILD)
+		tar -xjf pyromaths-$(VERSION).tar.bz2
+		mv pyromaths-$(VERSION) $(BUILDIR)
+		mv pyromaths-$(VERSION).tar.bz2 pyromaths_$(VERSION).orig.tar.bz2
+	)
 	cp -r debian $(BUILDIR)
-	cd $(BUILDIR) && debuild -i -D -tc -kB39EE5B6 $(OUT) || exit 0
+	(
+		cd $(BUILDIR)
+		debuild -i -D -tc -kspalax@gresille.org
+	)
 	mkdir -p $(DIST)
 	mv $(BUILD)/pyromaths_$(VERSION)-*_all.deb $(DIST)
 
