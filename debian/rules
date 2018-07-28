@@ -6,7 +6,9 @@
 #PYTHON3=$(shell py3versions -vr)
 
 %:
-	dh $@ --with python3 --buildsystem=pybuild 
+	dh $@ \
+		--with python3 --buildsystem=pybuild \
+		--with bash-completion
 
 override_dh_auto_clean:
 
