@@ -12,6 +12,8 @@ Version 18.7
     * Création d'une commande `pyromaths tags` permettant d'afficher la liste de tous les tags.
   * `generate` :
     * Ajout d'une option --format, permettant de choisir le format de sortie (LaTeX, pdf, latexmkrc).
+* Exercices
+  * InterpolationMatrices : Correction du choix des coefficients (ils étaint parfois égaux à 0, ce qui provoquait des écritures comme $f(x)=0x²+2x+0$ ; ils peuvent maintenant être décimaux (c'était normalement déjà possible, mais un bug interdisait ce cas).
 
 Version 18.6
 * Nouvel exercice niveau terminale ES (spécialité) : Déterminer l'état stable d'un graphe probabiliste (en utilisant un système d'équations).
