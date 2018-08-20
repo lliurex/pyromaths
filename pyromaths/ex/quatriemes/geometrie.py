@@ -23,7 +23,7 @@ import random
 from decimal import Decimal
 from math import acos, asin, atan, pi, sin, cos, tan
 
-from fractions import Fraction
+from pyromaths.classes.Fractions import Fraction
 from pyromaths.outils.Geometrie import couples_pythagore, choix_points
 from pyromaths.ex import LegacyExercise
 
