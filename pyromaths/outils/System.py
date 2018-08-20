@@ -53,7 +53,7 @@ def supprime_extension(filename, ext):
 
 ################################################################################
 
-class Fiche(contextlib.AbstractContextManager):
+class Fiche:
     basename = "exercise"
 
     def __init__(self, context, *, template="pyromaths.tex", dirty=False):
