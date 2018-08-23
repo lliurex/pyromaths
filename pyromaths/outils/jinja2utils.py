@@ -33,7 +33,7 @@ def facteur(nombre, court="",
             produit=False,
             variable="",
            ):
-    r"""Renvoit le code :math:`\LaTeX` correspondant au nombre, dans un ``\\numprint{}``, en gérant de nombreux cas particuliers.
+    r"""Renvoit le code :math:`LaTeX` correspondant au nombre, dans un ``\\numprint{}``, en gérant de nombreux cas particuliers.
 
     Les cas d'utilisation de cette fonction sont détaillés dans le :ref:`tutoriel pour écrire un nouvel exercice <ecrire-facteur>`.
 

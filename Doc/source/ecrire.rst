@@ -359,7 +359,7 @@ Un `filter` n'est rien d'autre qu'une fonction python. D'autres `filters` peuven
              y = (( a|facteur("*x") )) (( b|facteur("*so") ))
          (* endif *)
 
-    - Si :math:`a=2`  et :math:`b=3`, le code :math:`\LaTeX` produit est ``y=2x+3``.
+    - Si :math:`a=2`  et :math:`b=3`, le code :math:`LaTeX` produit est ``y=2x+3``.
     - Si :math:`a=0`  et :math:`b=0`, le test ``if`` permet d'afficher la bonne équation.
     - Si :math:`a=0`  l'option ``"*x"`` permet de ne rien afficher.
     - Si :math:`a=1`  l'option ``"*x"`` permet d'afficher ``x`` plutôt que ``1x``.
