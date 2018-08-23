@@ -197,7 +197,7 @@ Remarquez que par rapport à la commande utilisée dans la partie précédente, 
 
   Un ordinateur ne sait pas générer du hasard. Il faut ruser.
 
-  Dans notre exercice, nous avons besoin de nombres entiers entre 0 et 9. Pour avoir des nombres aléatoires, à chaque fois que nous utilisons un nombre aléatoire, nous prenons une décimale de π : d'abord `1`, puis `4`, puis `1`, puis `5`, et ainsi de suite. Cela à l'aire aléatoire à première vue, mais deux exécutions successives donneront exactement le même exercice. Améliorons cela.
+  Dans notre exercice, nous avons besoin de nombres entiers entre 0 et 9. Pour avoir des nombres aléatoires, à chaque fois que nous utilisons un nombre aléatoire, nous prenons une décimale de π : d'abord `1`, puis `4`, puis `1`, puis `5`, et ainsi de suite. Cela a l'air aléatoire à première vue, mais deux exécutions successives donneront exactement le même exercice. Améliorons cela.
 
   Nous gardons le même système, mais au lieu de commencer à la première décimale de π, nous utilisons désormais sur l'heure courante : si le programme est lancé à 13h37, nous utilisons alors les décimales de π à partir de la 1337e. Ainsi, deux exécutions successives donneront deux exercices différents.
 
