@@ -52,11 +52,11 @@ setup(
     zip_safe=False,
     project_urls={
         "Documentation": "http://pyromaths.readthedocs.org",
-        "Download": "http://www.pyromaths.org/telecharger/",
-        "Forum": "http://forum.pyromaths.org",
+        "Download": "https://www.pyromaths.org/telecharger/",
+        "Forum": "https://forum.pyromaths.org",
         "Sources": "https://framagit.org/pyromaths/pyromaths",
         "Tickets": "https://framagit.org/pyromaths/pyromaths/issues",
-        "Version en ligne": "http://www.pyromaths.org/enligne/",
+        "Version en ligne": "https://enligne.pyromaths.org/",
     },
     #namespace_packages=['pyromaths'],
 )
