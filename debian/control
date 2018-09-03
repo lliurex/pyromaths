@@ -10,6 +10,7 @@ Homepage: http://www.pyromaths.org/
 Package: pyromaths
 Architecture: all
 Depends: ${python3:Depends}, ${misc:Depends}, python3-jinja2, texlive-pstricks, texlive-latex-base, texlive-latex-extra, texlive-fonts-recommended, texlive-latex-recommended, latexmk, asymptote, texlive-pictures, texlive-lang-french
+Recommends: pyromaths-qt
 Description: Exerciseur de mathématiques créant des fiches LaTeX
  Pyromaths est un programme qui a pour but de créer des exercices
  type de mathématiques niveau collège et lycée ainsi que leur corrigé. C'est

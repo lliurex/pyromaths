@@ -8,7 +8,7 @@ Si vous voulez participer à la traduction, consultez [cette page](https://frama
 
 Pour utiliser pyromaths, il faut :
 
-* Python (version 3.6 ou supérieure) ;
+* Python (version 3.5 ou supérieure) ;
 * quelques bibliothèques python qui seront installées automatiquement avec pyromaths ;
 * LaTeX (par exemple [TeXLive](https://tug.org/texlive/)), et de nombreux paquets, y compris le binaire ``latexmk`` (voir les instructions sur [le site web de Pyromaths](https://www.pyromaths.org/installer/)).
 

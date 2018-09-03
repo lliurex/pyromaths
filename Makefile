@@ -5,7 +5,7 @@
 ### CONFIG
 #
 # Pyromaths version
-VERSION ?= 18.7
+VERSION ?= 18.9.1
 # Archive format(s) produced by 'make src' (bztar,gztar,zip...)
 FORMATS ?= bztar,zip,gztar
 # Verbosity and logging
@@ -135,7 +135,7 @@ deb: min
 	cp -r debian $(BUILDIR)
 	(
 		cd $(BUILDIR)
-		debuild -i -D -tc -kB39EE5B6 -S $(OUT)
+		debuild -i -D -tc -kB39EE5B6 -b $(OUT)
 	)
 	mkdir -p $(DIST)
 	mv $(BUILD)/pyromaths_$(VERSION)-*_all.deb $(DIST)
@@ -143,14 +143,23 @@ deb: min
 repo: min
 	# update apt repository
 	$(clean)
-	cd $(BUILD) && tar -xjf pyromaths-$(VERSION).tar.bz2              &&\
-	    mv pyromaths-$(VERSION) $(BUILDIR)                            &&\
+	set -e
+	(
+		cd $(BUILD) 
+		tar -xjf pyromaths-$(VERSION).tar.bz2
+	    mv pyromaths-$(VERSION) $(BUILDIR)
 	    mv pyromaths-$(VERSION).tar.bz2 pyromaths_$(VERSION).orig.tar.bz2
+	)
 	cp -r debian $(BUILDIR)
-	cd $(BUILDIR) && debuild -i -tc -kB39EE5B6 -S $(OUT)
-	cd $(BUILD)
-	#dput -l $(BUILD)/pyromaths_$(VERSION)-1_amd64.changes
-	dput -l -f ppa:jerome-ortais/ppa $(BUILD)/pyromaths_$(VERSION)-1_source.changes
+	(
+		cd $(BUILDIR) 
+		debuild -S -sa -kB39EE5B6 -S $(OUT)
+	)
+	(
+		cd $(BUILD)
+		#dput -l $(BUILD)/pyromaths_$(VERSION)-1_amd64.changes
+		dput -l -f ppa:jerome-ortais/ppa $(BUILD)/pyromaths_$(VERSION)-1_source.changes
+	)
 
 data/%.qm: data/%.ts
 	# Translate new/updated language files
@@ -175,14 +184,3 @@ app: version data/qtmac_fr.qm
 	rm -rf $(APP)/Frameworks/pyromaths
 	# ..Remove all architectures but x86_64..."
 	ditto --rsrc --arch x86_64 --hfsCompression $(DIST)/Pyromaths.app $(DIST)/Pyromaths-x86_64.app
-
-exe:
-	# Make standalone Windows executable
-	# ..Remove previous builds
-	cp $(PYRO)/data/windows/installer.cfg $(PYRO)
-	cp $(PYRO)/data/windows/nsi_template.nsi $(PYRO)
-	pynsist installer.cfg
-	mkdir -p $(DIST)
-	mv $(BUILD)/nsis/Pyromaths_$(VERSION).exe $(DIST)
-	rm $(PYRO)/installer.cfg 
-	rm $(PYRO)/nsi_template.nsi

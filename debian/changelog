@@ -1,5 +1,6 @@
-pyromaths (18.7-1) bionic; urgency=medium
+pyromaths (18.9.1-1) bionic; urgency=medium
 
+  [ Jérôme Ortais & Louis Paternault ]
   * Séparation de pyromaths en deux projets : pyromaths (client en ligne de commande) et client QT.
   * Passage à Python3 (et nombreux changements dans l'API interne, qui n'est pas rétro-compatible). 
   * Tags 
@@ -14,7 +15,7 @@ pyromaths (18.7-1) bionic; urgency=medium
     * `generate` :  
       * Ajout d'une option --format, permettant de choisir le format de sortie (LaTeX, pdf, latexmkrc).
 
- -- Jérôme Ortais <jerome.ortais@pyromaths.org>  Wed, 11 Jul 2018 22:52:15 +0200
+ -- Jérôme Ortais <jerome.ortais@pyromaths.org>  Mon, 03 Sep 2018 15:45:42 +0200
 
 pyromaths (18.6.2-1) bionic; urgency=medium
 

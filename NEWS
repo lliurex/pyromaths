@@ -1,4 +1,4 @@
-Version 18.7
+Version 18.9
 * Séparation de pyromaths en deux projets : pyromaths (client en ligne de commande) et client QT.
 * Passage à Python3 (et nombreux changements dans l'API interne, qui n'est pas rétro-compatible).
 * Tags
