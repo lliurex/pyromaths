@@ -70,11 +70,11 @@ cat > ${PYROPATH}/pyrosite.txt << EOF
 :category: telecharger
 :description: Liens vers la version ${VERSION}
 
-* |debian| `Pyromaths pour Linux - deb <https://enligne.pyromaths.org/downloads/pyromaths_${VERSION}-1_all.deb>`_
-* |redhat| `Pyromaths pour Linux - rpm <https://enligne.pyromaths.org/downloads/pyromaths-${VERSION}-1.noarch.rpm>`_
-* |macos| `Pyromaths pour Mac OS X <https://enligne.pyromaths.org/downloads/pyromaths-${VERSION}-macos.dmg>`_
-* |windows| `Pyromaths pour Windows <https://enligne.pyromaths.org/downloads/pyromaths_${VERSION}.exe>`_
-* |sources| `Sources de Pyromaths <https://pypi.org/project/pyromaths/>`_
+* |debian| \`Pyromaths pour Linux - deb <https://www.pyromaths.org/downloads/pyromaths_${VERSION}-1_all.deb>\`_
+* |redhat| \`Pyromaths pour Linux - rpm <https://www.pyromaths.org/downloads/pyromaths-${VERSION}-1.noarch.rpm>\`_
+* |macos| \`Pyromaths pour Mac OS X <https://www.pyromaths.org/downloads/pyromaths-${VERSION}-macos.dmg>\`_
+* |windows| \`Pyromaths pour Windows <https://www.pyromaths.org/downloads/Pyromaths-QT_${VERSION}.exe>\`_
+* |sources| \`Sources de Pyromaths <https://pypi.org/project/pyromaths/>\`_
 
 .. |debian| image:: images/debian.png
     :alt: Debian Linux

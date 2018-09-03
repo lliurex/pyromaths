@@ -103,7 +103,7 @@ pypi: wheel src
 	# Publish to Pypi
 	@echo "################################################################################"
 	@echo "# To upload to Pypi, run:"
-	@echo twine upload -s dist/pyromaths-VERSION.whl dist/pyromaths-VERSION.tar.gz
+	@echo twine upload -s dist/pyromaths-$(VERSION)-py3-none-any.whl dist/pyromaths-$(VERSION).tar.gz
 
 wheel: version
 	# Make python wheel
