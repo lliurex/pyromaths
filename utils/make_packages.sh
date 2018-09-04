@@ -47,10 +47,6 @@ make clean
 make all
 make repo
 
-echo "*** Create Windows binary..."
-echo "Hit 'enter' when Windows package is ready."
-read touche
-
 echo "*** Tag git develop ***"
 echo "Do you want to commit and tag the git develop branch (o/N)?"
 read touche
@@ -61,33 +57,3 @@ case "$touche" in
   #git push --tags:
   ;;
 esac
-
-echo "*** Update pyromaths web-site links..."
-cat > ${PYROPATH}/pyrosite.txt << EOF
-:title: Version ${VERSION}
-:slug: version-$(echo ${VERSION} | sed 's/\./-/g')
-:date: $(date +"%Y-%m-%d %H:%M")
-:category: telecharger
-:description: Liens vers la version ${VERSION}
-
-* |debian| \`Pyromaths pour Linux - deb <https://www.pyromaths.org/downloads/pyromaths_${VERSION}-1_all.deb>\`_
-* |redhat| \`Pyromaths pour Linux - rpm <https://www.pyromaths.org/downloads/pyromaths-${VERSION}-1.noarch.rpm>\`_
-* |macos| \`Pyromaths pour Mac OS X <https://www.pyromaths.org/downloads/pyromaths-${VERSION}-macos.dmg>\`_
-* |windows| \`Pyromaths pour Windows <https://www.pyromaths.org/downloads/Pyromaths-QT_${VERSION}.exe>\`_
-* |sources| \`Sources de Pyromaths <https://pypi.org/project/pyromaths/>\`_
-
-.. |debian| image:: images/debian.png
-    :alt: Debian Linux
-.. |redhat| image:: images/redhat.png
-    :alt: RedHat Linux
-.. |macos| image:: images/macosx.png
-    :alt: Mac OS X
-.. |windows| image:: images/winvista.png
-    :alt: Windows
-.. |sources| image:: images/source.png
-    :alt: Sources
-
-Nouveautés de cette version :
-=============================
-
-EOF
