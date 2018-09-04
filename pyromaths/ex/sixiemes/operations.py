@@ -38,8 +38,8 @@ def valeurs():
             break
     puisb = Arithmetique.valeur_alea(-2, 0)
     nbb = nbb * 10 ** puisb
-    deca = [str(nba)[i] for i in range(len(str(nba)))]
-    decb = [str(nbb)[i] for i in range(len(str(nbb)))]
+    deca = list(Affichage.decimaux(nba).replace(r'\,', '').replace(',', '.'))
+    decb = list(Affichage.decimaux(nbb).replace(r'\,', '').replace(',', '.'))
     if random.randrange(2):
         (nba, deca, nbb, decb) = (nbb, decb, nba, deca)
     if deca.count('.'):
@@ -121,7 +121,7 @@ def retenues_diff(ligne1, ligne2):
     ret = 0
     for i in range(lg - 1):
         if not (ligne1[(lg - i) - 1] == ',' and ret):
-            if mon_int(ligne1[(lg - i) - 1]) < mon_int(ligne2[(lg - i) - 
+            if mon_int(ligne1[(lg - i) - 1]) < mon_int(ligne2[(lg - i) -
                     1]) + ret:
                 ligne1[(lg - i) - 1] = '$_1$%s' % ligne1[(lg - i) - 1]
                 tmpret = 1
@@ -137,7 +137,7 @@ def tex_somme(exo, cor):
     (ligne1, ligne2) = ([''], ['+'])
     (nba, nbb, deca, decb, lavtvirg, laprvirg) = valeurs()
     total = nba + nbb
-    dectotal = [str(total)[i] for i in range(len(str(total)))]
+    dectotal = list(Affichage.decimaux(total).replace(r'\,', '').replace(',', '.'))
     if dectotal.index('.') <= lavtvirg:
         ligne3 = ['']
     else:
@@ -148,19 +148,18 @@ def tex_somme(exo, cor):
     ligne0 = retenues_somme(ligne1, ligne2)
     if ligne0[0] == '1':
         ligne0[0] = '\\tiny 1'
-    exo.append('\\item La somme des termes %s et %s.\\par' % (Affichage.decimaux(nba),
-             Affichage.decimaux(nbb)))
-    cor.append('\\item La somme des termes %s et %s.\\par' % (Affichage.decimaux(nba),
-             Affichage.decimaux(nbb)))
-    cor.append('\\begin{tabular}[t]{*{%s}{c}}' % (lavtvirg + 
-             laprvirg + 1))
+    exo.append('\\item La somme des termes %s et %s.\\par' %
+            (Affichage.decimaux(nba), Affichage.decimaux(nbb)))
+    cor.append('\\item La somme des termes %s et %s.\\par' %
+            (Affichage.decimaux(nba), Affichage.decimaux(nbb)))
+    cor.append('\\begin{tabular}[t]{*{%s}{c}}' % (lavtvirg + laprvirg + 1))
     cor.append('%s \\\\' % ' & \\tiny '.join(ligne0))
     cor.append('%s \\\\' % ' & '.join(ligne1))
     cor.append('%s \\\\\n\\hline' % ' & '.join(ligne2))
     cor.append('%s \\\\' % ' & '.join(ligne3))
     cor.append('\\end{tabular}\\par')
     formule = '%s+%s = %s' % (Affichage.decimaux(nba, 1),
-                     Affichage.decimaux(nbb, 1), Affichage.decimaux(nba + 
+                     Affichage.decimaux(nbb, 1), Affichage.decimaux(nba +
                      nbb, 1))
     cor.append((u'\\[ \\boxed{%s} \\] ').expandtabs(2 * 3) % (formule))
 
@@ -170,7 +169,7 @@ def tex_difference(exo, cor):
     if nba < nbb:
         (nba, nbb, deca, decb) = (nbb, nba, decb, deca)
     total = nba - nbb
-    dectotal = [str(total)[i] for i in range(len(str(total)))]
+    dectotal = list(Affichage.decimaux(total).replace(r'\,', '').replace(',', '.'))
     if dectotal.index('.') <= lavtvirg:
         ligne3 = ['']
     else:
@@ -179,18 +178,18 @@ def tex_difference(exo, cor):
     ligne2 = lignes(ligne2, decb, lavtvirg, laprvirg)
     ligne3 = lignes(ligne3, dectotal, lavtvirg, laprvirg)
     (ligne1, ligne2) = retenues_diff(ligne1, ligne2)
-    exo.append(u"\\item La différence des termes %s et %s.\\par" % 
+    exo.append(u"\\item La différence des termes %s et %s.\\par" %
              (Affichage.decimaux(nba), Affichage.decimaux(nbb)))
-    cor.append(u"\\item La différence des termes %s et %s.\\par" % 
+    cor.append(u"\\item La différence des termes %s et %s.\\par" %
              (Affichage.decimaux(nba), Affichage.decimaux(nbb)))
-    cor.append('\\begin{tabular}[t]{*{%s}{c}}' % (lavtvirg + 
+    cor.append('\\begin{tabular}[t]{*{%s}{c}}' % (lavtvirg +
              laprvirg + 1))
     cor.append('%s \\\\' % ' & '.join(ligne1))
     cor.append('%s \\\\\n\\hline' % ' & '.join(ligne2))
     cor.append('%s \\\\' % ' & '.join(ligne3))
     cor.append('\\end{tabular}\\par')
     formule = '%s-%s = %s' % (Affichage.decimaux(nba, 1),
-                     Affichage.decimaux(nbb, 1), Affichage.decimaux(nba - 
+                     Affichage.decimaux(nbb, 1), Affichage.decimaux(nba -
                      nbb, 1))
     cor.append((u'\\[ \\boxed{%s} \\] ').expandtabs(2 * 3) % (formule))
 
@@ -212,15 +211,13 @@ def ligneprod(ligne, dec, lg):
 
 def tex_produit(exo, cor):
     (nba, nbb, puisa, puisb) = valeurs_prod()
-    deca = [','.join(str(nba * 10 ** puisa).rsplit('.'))[i] \
-                    for i in range(len(str(nba * 10 ** puisa)))]
-    decb = [','.join(str(nbb * 10 ** puisb).rsplit('.'))[i] \
-                    for i in range(len(str(nbb * 10 ** puisb)))]
+    deca = list(Affichage.decimaux(nba).replace(r'\,', '').replace(',', '.'))
+    decb = list(Affichage.decimaux(nbb).replace(r'\,', '').replace(',', '.'))
 
     (dec3, dummy) = pose_mult(nba, nbb)
     (dec3bis, dummy) = pose_mult(nbb, nba)
     total = ((nba * 10 ** puisa) * nbb) * 10 ** puisb
-    dec4 = [str(total)[i] for i in range(len(str(total)))]
+    dec4 = list(Affichage.decimaux(total).replace(r'\,', '').replace(',', '.'))
     if dec4.count('.'):
         i = dec4.index('.')
         if (len(dec4) - i) - 1 < -(puisa + puisb):
@@ -229,9 +226,9 @@ def tex_produit(exo, cor):
         dec4.pop(i)  # supprime le point décimal
         dec4[i - 1] = '%s\\Huge ,' % dec4[i - 1]  # et ajoute une Huge virgule au chiffre des unités
     lg = max(len(dec4), max(len(deca), len(decb)))  # nombre de colonnes dans le tableau
-    exo.append('\\item Le produit des facteurs %s et %s.\\par' % (Affichage.decimaux(nba * 
+    exo.append('\\item Le produit des facteurs %s et %s.\\par' % (Affichage.decimaux(nba *
              10 ** puisa), Affichage.decimaux(nbb * 10 ** puisb)))
-    cor.append('\\item Le produit des facteurs %s et %s.\\par' % (Affichage.decimaux(nba * 
+    cor.append('\\item Le produit des facteurs %s et %s.\\par' % (Affichage.decimaux(nba *
              10 ** puisa), Affichage.decimaux(nbb * 10 ** puisb)))
     cor.append('\\begin{enumerate}')
     cor.append(u'\\item Première méthode :\\par')
@@ -267,9 +264,9 @@ def tex_produit(exo, cor):
 
     #### Remplacement de la fonction Arithmetique.ecrit_tex :
 
-    formule = '%s\\times%s = %s' % (Affichage.decimaux(nba * 
-                     10 ** puisa, 1), Affichage.decimaux(nbb * 10 ** 
-                     puisb, 1), Affichage.decimaux((nba * nbb) * 10 ** (puisa + 
+    formule = '%s\\times%s = %s' % (Affichage.decimaux(nba *
+                     10 ** puisa, 1), Affichage.decimaux(nbb * 10 **
+                     puisb, 1), Affichage.decimaux((nba * nbb) * 10 ** (puisa +
                      puisb), 1))
     cor.append((u'\\[ \\boxed{%s} \\] ').expandtabs(2 * 3) % (formule))
 
@@ -399,7 +396,7 @@ def tex_formule_dix(l, exo, cor):
         if alea > 1:
             exo.append('\\item $%s \\quad\\times\\quad %s \\quad = \\quad \\dotfill$' %
                        (Affichage.decimaux(l[0], 1), Affichage.decimaux(l[1], 1)))
-            cor.append('\\item $%s \\times %s = \\mathbf{%s}$' % 
+            cor.append('\\item $%s \\times %s = \\mathbf{%s}$' %
                        (Affichage.decimaux(l[0], 1), Affichage.decimaux(l[1], 1), Affichage.decimaux(l[0] * l[1], 1)))
         elif alea > 0:
             exo.append('\\item $%s \\quad\\times\\quad \\dotfill \\quad = \\quad %s$' %
