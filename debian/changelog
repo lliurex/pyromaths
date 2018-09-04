@@ -1,3 +1,9 @@
+pyromaths (18.9.2-1) bionic; urgency=medium
+
+  * Correction d'un bug dans l'exercice Operations `pyromaths generate Operations:6`
+
+ -- Jérôme Ortais <jerome.ortais@pyromaths.org>  Tue, 04 Sep 2018 17:59:01 +0200
+
 pyromaths (18.9.1-1) bionic; urgency=medium
 
   [ Jérôme Ortais & Louis Paternault ]
