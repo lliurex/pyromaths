@@ -546,7 +546,7 @@ class Francais(Question):
 
     def __init__(self, indice0):
         super().__init__(indice0)
-        self.terme0 = Entier(random.randint(-10, 10))
+        self.terme0 = Entier(random.randint(1, 10)*(-1)**random.randrange(2))
         self.fonction = random.choice([
             FrancaisGeometrique,
             FrancaisArithmetique,
