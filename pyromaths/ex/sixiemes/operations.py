@@ -30,7 +30,7 @@ from pyromaths.outils.jinja2utils import facteur
 # Poser des opérations
 #===============================================================================
 class PoserDesOperations(Jinja2Exercise):
-    """Résolution d'équations du premier degré à coefficients entiers."""
+    """Poser des opérations (sauf divisions)"""
 
     tags = ['Sixième', 'Nombres et calculs', 'Calcul posé', 'Cycle 3']
 
