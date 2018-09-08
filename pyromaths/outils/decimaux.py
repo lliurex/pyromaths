@@ -35,7 +35,7 @@ def suppr0(nombre):
 def decimaux(nb, mathenv=0):
     """nb est un float ou une str"""
     pattern = re.compile(r"^(-?\d+)\.*(\d*)e?([\+\-]?\d*)$")
-    entiere, decimale, exposant = pattern.search(format(float(nb), ".15g")).groups() #arrondit les floats
+    entiere, decimale, exposant = pattern.search(format(float(nb), ".14g")).groups() #arrondit les floats
     if exposant:
         if int(exposant) > 0:
             if int(exposant) < len(decimale):
@@ -57,16 +57,12 @@ def decimaux(nb, mathenv=0):
                          ((len(entiere) - 1 - (entiere[0] == '-')) // 3) + "$")
     partie_entiere = pattern.search(entiere).groups()
     if decimale and int(decimale):
-        """Vérifie si la partie décimale existe et si elle est différente de
-        zéro"""
-        pattern = re.compile(r"^" + "(\d{3})" * ((len(decimale) - 1) // 3) + \
-                             "(\d{1,3})?$")
+        """Vérifie si la partie décimale existe et si elle est différente de zéro"""
+        pattern = re.compile(r"^" + "(\d{3})" * ((len(decimale) - 1) // 3) + "(\d{1,3})?$")
         partie_decimale = pattern.search(decimale).groups()
         if mathenv:
-            return "{,}".join(("\,".join(partie_entiere),
-                               "\,".join(partie_decimale)))
+            return "{,}".join(("\,".join(partie_entiere), "\,".join(partie_decimale)))
         else:
-            return ",".join(("\,".join(partie_entiere),
-                             "\,".join(partie_decimale)))
+            return ",".join(("\,".join(partie_entiere), "\,".join(partie_decimale)))
     else:
         return "\,".join(partie_entiere)

@@ -25,6 +25,7 @@ from pyromaths.ex import LegacyExercise
 
 from pyromaths.outils.Arithmetique import valeur_alea, pgcd
 from pyromaths.outils.Geometrie import choix_points
+from pyromaths.outils.decimaux import decimaux
 from . import fractions
 from decimal import Decimal
 
@@ -159,7 +160,7 @@ def long_val(noms,
     for i in range(8):
         if valeurs[i]:
             liste.append(creer_noms(noms, i))
-            liste.append(nombre(valeurs[i]))
+            liste.append(decimaux(valeurs[i]))
     for i in range(6):
         if not valeurs[i] and valeurs[8][0][0] % 3 != i % 3:
             liste.append(creer_noms(noms, i))
@@ -168,20 +169,6 @@ def long_val(noms,
 
 def lAB(a):  # renvoie AB
     return str(a[0]) + str(a[1])
-
-
-def nombre(a):
-    texte = str(a).replace('.', ',')
-    if a >= 1000 or a <= 0.0001:
-        return '\\nombre{%s}' % texte
-    else:
-        if texte.count(',') and len(texte) - texte.find(',0') == 2:
-            return texte.replace(',', '{,}').replace('{,}0', '')
-        elif texte.count(','):
-            return texte.replace(',', '{,}')
-        else:
-            return texte
-
 
 def creer_noms(noms, i):
     if i == 0:
@@ -250,15 +237,15 @@ def tex_resolution_thales1(n, v):
 
         v[r] = v[r + 6] + v[r + 3] * v[8][1]
         donnees = (creer_noms(n, r), creer_noms(n, r + 6), sgn,
-                   creer_noms(n, r + 3), nombre(v[r]))
+                   creer_noms(n, r + 3), decimaux(v[r]))
     else:
         v[r + 3] = (v[r] - v[r + 6]) * v[8][1]
         if sgn == '+':
             donnees = (creer_noms(n, r + 3), creer_noms(n, r), '-',
-                       creer_noms(n, r + 6), nombre(v[r + 3]))
+                       creer_noms(n, r + 6), decimaux(v[r + 3]))
         else:
             donnees = (creer_noms(n, r + 3), creer_noms(n, r + 6), '-',
-                       creer_noms(n, r), nombre(v[r + 3]))
+                       creer_noms(n, r), decimaux(v[r + 3]))
     if donnees:
         return u'\\par\\medskip\nDe plus $%s=%s%s%s=\\unit[%s]{cm}$, d\'où' % \
                donnees
@@ -270,11 +257,11 @@ def tex_resolution_thales2(n, v):
     donnees = []
     for i in range(3):
         if v[i]:
-            donnees.append(nombre(v[i]))
+            donnees.append(decimaux(v[i]))
         else:
             donnees.append(creer_noms(n, i))
         if v[i + 3]:
-            donnees.append(nombre(v[i + 3]))
+            donnees.append(decimaux(v[i + 3]))
         else:
             donnees.append(creer_noms(n, i + 3))
     return '$\\cfrac{%s}{%s}=\\cfrac{%s}{%s}=\\cfrac{%s}{%s}$\\par' % \
@@ -283,23 +270,23 @@ def tex_resolution_thales2(n, v):
 
 def nom_ou_valeur(n, v, i):
     if v[i]:
-        return nombre(v[i])
+        return decimaux(v[i])
     else:
         return creer_noms(n, i)
 
 
 def valeur_exacte(a, approx=3, unit=1):
-    nb = nombre(a)
+    nb = decimaux(a)
     if unit:
         if nb.count(',') and (len(nb) - nb.find(',')) - 1 > approx:
-            return '\\simeq\\unit[' + nombre(round(a, approx)) + ']{cm}'
+            return '\\simeq\\unit[' + decimaux(round(a, approx)) + ']{cm}'
         else:
-            return '=\\unit[' + nombre(a) + ']{cm}'
+            return '=\\unit[' + decimaux(a) + ']{cm}'
     else:
         if nb.count(',') and (len(nb) - nb.find(',')) - 1 > approx:
-            return '\\simeq' + nombre(round(a, approx))
+            return '\\simeq' + decimaux(round(a, approx))
         else:
-            return '=' + nombre(a)
+            return '=' + decimaux(a)
 
 
 def tex_resolution_thales3(n, v, arrondi):
@@ -312,10 +299,10 @@ def tex_resolution_thales3(n, v, arrondi):
                                                                                                                 v,
                                                                                                                 i + 3)])
             if v[i]:  # on cherche i+3
-                donnees.extend([creer_noms(n, i + 3), nombre(v[i]), nombre(v[r + 3]), nombre(v[r]),
+                donnees.extend([creer_noms(n, i + 3), decimaux(v[i]), decimaux(v[r + 3]), decimaux(v[r]),
                                 valeur_exacte(v[i] * v[r + 3] / v[r], approx=arrondi)])
             else:
-                donnees.extend([creer_noms(n, i), nombre(v[i + 3]), nombre(v[r]), nombre(v[r + 3]),
+                donnees.extend([creer_noms(n, i), decimaux(v[i + 3]), decimaux(v[r]), decimaux(v[r + 3]),
                                 valeur_exacte(v[r] * v[i + 3] / v[r + 3], approx=arrondi)])
     texte = \
         '$\\cfrac{%s}{%s}=\\cfrac{%s}{%s}\\quad$ donc $\\boxed{%s=\\cfrac{%s\\times %s}{%s}%s}$\\hfill' % \
@@ -461,9 +448,9 @@ def enonce_rec_thales(n, v):
     for i in range(5):
         if i != 2:
             if i == r:
-                l.extend([creer_noms(n, 6 + i % 3), nombre(v[6 + i % 3])])
+                l.extend([creer_noms(n, 6 + i % 3), decimaux(v[6 + i % 3])])
             else:
-                l.extend([creer_noms(n, i), nombre(v[i])])
+                l.extend([creer_noms(n, i), decimaux(v[i])])
     l1 = [i for i in range(4)]
     l2 = []
     for i in range(4):
@@ -493,17 +480,17 @@ def resolution_rec_thales0(n, v):
     if r < 2:
         if t > 0:
             d.extend([creer_noms(n, r + 6), '+', creer_noms(n, r + 3),
-                      nombre(v[r])])
+                      decimaux(v[r])])
         else:
             d.extend([creer_noms(n, r + 6), '-', creer_noms(n, r + 3),
-                      nombre(v[r])])
+                      decimaux(v[r])])
     else:
         if t > 0:
             d.extend([creer_noms(n, r - 3), '-', creer_noms(n, r + 3),
-                      nombre(v[r])])
+                      decimaux(v[r])])
         else:
             d.extend([creer_noms(n, r + 3), '-', creer_noms(n, r - 3),
-                      nombre(v[r])])
+                      decimaux(v[r])])
     return tuple(d)
 
 
@@ -517,19 +504,19 @@ De plus $%s=%s%s%s=\\unit[%s]{cm}$.\\par
 def resolution_rec_thales1(n, v):
     (d, t) = ([], '')
     for i in range(2):
-        d.extend([creer_noms(n, i), creer_noms(n, i + 3), nombre(v[i]),
-                  nombre(v[i + 3])])
+        d.extend([creer_noms(n, i), creer_noms(n, i + 3), decimaux(v[i]),
+                  decimaux(v[i + 3])])
         if valeur_exacte(v[i] / v[i + 3], approx=5).count('='):
             d.append(valeur_exacte(v[i] / v[i + 3], approx=5, unit=0))
         else:
             if v[i] != int(v[i]) or v[i + 3] != int(v[i + 3]):
                 p = pgcd(int(v[i] * 10), int(v[i + 3] * 10))
                 if p == 1:
-                    t = '=\\cfrac{%s}{%s}' % (nombre(v[i] * 10), nombre(v[i +
+                    t = '=\\cfrac{%s}{%s}' % (decimaux(v[i] * 10), decimaux(v[i +
                                                                           3] * 10))
                 else:
-                    t = '=\\cfrac{%s_{\\div%s}}{%s_{\\div%s}}' % (nombre(v[i] *
-                                                                         10), p, nombre(v[i + 3] * 10), p)
+                    t = '=\\cfrac{%s_{\\div%s}}{%s_{\\div%s}}' % (decimaux(v[i] *
+                                                                         10), p, decimaux(v[i + 3] * 10), p)
             if fractions.simplifie((int(v[i] * 10), int(v[i + 3] * 10))):
                 d.append(t + '=' + fractions.tex_frac(fractions.simplifie((int(v[i] *
                                                                                10), int(v[i + 3] * 10)))))
@@ -596,7 +583,7 @@ def enonce_trigo(exo, cor, v):
             if len(l[2 * i + 6 * j]) < 3:
                 if l[2 * i + 6 * j + 1]:
                     lt.append('$%s=\\unit[%s]{cm}$' % (l[2 * i + 6 * j],
-                                                       nombre(l[2 * i + 6 * j + 1])))
+                                                       decimaux(l[2 * i + 6 * j + 1])))
                 else:
                     tmp = 'la longueur $%s$' % l[2 * i + 6 * j]
             elif l[2 * i + 6 * j + 1]:
@@ -648,8 +635,8 @@ def resolution_trigo(cor, v2, l2, arrondi):
     f = (('\\sin', 1, 0), ('\\cos', 2, 0), ('\\tan', 1, 2))[v2[1][0]]
     cor.append(u'\\[%s%s=\\cfrac{%s}{%s}' % (f[0], l2[4], v2[0][f[1]], v2[0][f[2]]) + '\\] ')
     if not v2[1][3]:
-        cor.append(u'\\[ %s%s=\\cfrac{%s}{%s}' % (f[0], l2[4], nombre(v2[1][1]),
-                                                  nombre(v2[1][2])) + '\\] ')
+        cor.append(u'\\[ %s%s=\\cfrac{%s}{%s}' % (f[0], l2[4], decimaux(v2[1][1]),
+                                                  decimaux(v2[1][2])) + '\\] ')
         if f[0] == '\\sin':
             r = asin(v2[1][1] / v2[1][2]) * 180 / pi
         elif f[0] == '\\cos':
@@ -657,10 +644,10 @@ def resolution_trigo(cor, v2, l2, arrondi):
         else:
             r = atan(v2[1][1] / v2[1][2]) * 180 / pi
         cor.append(r'\[ \boxed{%s=%s^{-1}\left(\cfrac{%s}{%s}\right) %s\degres} \]' %
-                   (l2[4], f[0], nombre(v2[1][1]), v2[1][2], valeur_exacte(r, approx=arrondi, unit=0)))
+                   (l2[4], f[0], decimaux(v2[1][1]), v2[1][2], valeur_exacte(r, approx=arrondi, unit=0)))
     elif not v2[1][1]:
         cor.append(u'\\[ %s%s=\\cfrac{%s}{%s}' % (f[0], v2[1][3], v2[0][f[1]],
-                                                  nombre(v2[1][2])) + '\\] ')
+                                                  decimaux(v2[1][2])) + '\\] ')
         if f[0] == '\\sin':
             r = sin((v2[1][3] * pi) / 180)
         elif f[0] == '\\cos':
@@ -669,10 +656,10 @@ def resolution_trigo(cor, v2, l2, arrondi):
             r = tan((v2[1][3] * pi) / 180)
         r = r * v2[1][2]
         cor.append(r'\[ \boxed{%s=%s%s\times %s %s } \]' % (v2[0][f[1]],
-                                                            f[0], v2[1][3], nombre(v2[1][2]),
+                                                            f[0], v2[1][3], decimaux(v2[1][2]),
                                                             valeur_exacte(r, approx=arrondi)))
     else:
-        cor.append(u'\\[ %s%s=\\cfrac{%s}{%s}' % (f[0], v2[1][3], nombre(v2[1][1]),
+        cor.append(u'\\[ %s%s=\\cfrac{%s}{%s}' % (f[0], v2[1][3], decimaux(v2[1][1]),
                                                   v2[0][f[2]]) + '\\] ')
         if f[0] == '\\sin':
             r = sin(v2[1][3] * pi / 180)
@@ -682,7 +669,7 @@ def resolution_trigo(cor, v2, l2, arrondi):
             r = tan(v2[1][3] * pi / 180)
         r = v2[1][1] / r
         cor.append(r'\[ \boxed{%s=\cfrac{%s}{%s%s} %s} \]' % (v2[0][f[2]],
-                                                              nombre(v2[1][1]), f[0], v2[1][3],
+                                                              decimaux(v2[1][1]), f[0], v2[1][3],
                                                               valeur_exacte(r, approx=arrondi)))
 
 

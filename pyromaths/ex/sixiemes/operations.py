@@ -20,281 +20,159 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #
 
-import math
 import random
 from pyromaths.outils import Arithmetique, Affichage
 from pyromaths.ex import LegacyExercise
+from pyromaths.ex import Jinja2Exercise
+from pyromaths.outils.jinja2utils import facteur
 
 #===============================================================================
 # Poser des opérations
 #===============================================================================
+class PoserDesOperations(Jinja2Exercise):
+    """Résolution d'équations du premier degré à coefficients entiers."""
+
+    tags = ['Sixième', 'Nombres et calculs', 'Calcul posé', 'Cycle 3']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        SommeValues = self.valeurs_sommes()
+        DiffValues = self.valeurs_diff()
+        ProdValues = self.valeurs_prod()
+        ordre = ["somme", "diff", "produit"]
+        random.shuffle(ordre)
+        self.context = {
+            "ordre": ordre,
+            "Sna": SommeValues[0],
+            "Sta": SommeValues[1],
+            "Snb": SommeValues[2],
+            "Stb": SommeValues[3],
+            "Str": SommeValues[4],
+            "Stt": SommeValues[5],
+            "Dna": DiffValues[0],
+            "Dta": DiffValues[1],
+            "Dnb": DiffValues[2],
+            "Dtb": DiffValues[3],
+            "Dtrh": DiffValues[4],
+            "Dtrb": DiffValues[5],
+            "Dtt": DiffValues[6],
+            "Pna": ProdValues[0],
+            "Pnb": ProdValues[1],
+            "Ppa": ProdValues[2],
+            "Ppb": ProdValues[3],
+            "alignement": ProdValues[4],
+        }
 
 
-def valeurs():
-    nba = Arithmetique.valeur_alea(111, 99999)
-    while 1:
-        nbb = Arithmetique.valeur_alea(111, 99999)
-        if nbb - (nbb // 10) * 10:
-            break
-    puisb = Arithmetique.valeur_alea(-2, 0)
-    nbb = nbb * 10 ** puisb
-    deca = list(Affichage.decimaux(nba).replace(r'\,', '').replace(',', '.'))
-    decb = list(Affichage.decimaux(nbb).replace(r'\,', '').replace(',', '.'))
-    if random.randrange(2):
-        (nba, deca, nbb, decb) = (nbb, decb, nba, deca)
-    if deca.count('.'):
-        posa = deca.index('.')
-    else:
-        posa = len(deca)
-    if decb.count('.'):
-        posb = decb.index('.')
-    else:
-        posb = len(decb)
+    @property
+    def environment(self):
+        environment = super().environment
+        environment.filters.update({
+            'facteur': facteur,
+            })
+        return environment
 
-    lavtvirg = max(posa, posb)
-    laprvirg = max(len(deca) - posa, len(decb) - posb)
-    return (nba, nbb, deca, decb, lavtvirg, laprvirg)
+    def splitDecimal(self, nb):
+        """
+        Retourne une liste contenant la partie entière puis la partie décimale d'un nombre
+        :param nb: int or Decimal
+        :return: list
+        """
+        s =format(nb, ".14g") # Convertit un float en un décimal
+        try:
+            p = s.index('.')
+            l = [s[:p], s[p+1:]]
+        except ValueError:
+            "Il s'agit d'un entier"
+            l=[s, '']
+        return l
 
-
-def valeurs_prod():
-    while 1:
-        nba = Arithmetique.valeur_alea(101, 9999)
-        if nba - (nba // 10) * 10:
-            break
-    puisa = Arithmetique.valeur_alea(-3, -1)
-    while 1:
-        nbb = Arithmetique.valeur_alea(101, 999)
-        if nbb - (nbb // 10) * 10:
-            break
-    puisb = Arithmetique.valeur_alea(-3, -1)
-    return (nba, nbb, puisa, puisb)
-
-
-def lignes(ligne, deca, lavtvirg, laprvirg):
-    if deca.count('.'):
-        posa = deca.index('.')
-    else:
-        posa = len(deca)
-    if posa < lavtvirg:
-        for i in range(lavtvirg - posa):
-            ligne.append('')
-    for i in range(len(deca)):
-        if deca[i] == '.':
-            ligne.append(',')
+    def valeurs_sommes(self):
+        """
+        Sélectionne un nombre entier et un nombre décimal non entier pour poser une somme
+        :return:
+            Sna, Snb: int or float
+            Sta, Stb, Stt, Str: justified strings
+        """
+        Sna = random.randrange(111, 100000) # Nombre entier
+        Snb = (random.randrange(11, 10000)*10+random.randrange(1,10)) / 10**random.randrange(1,3) # Nombre décimal non entier
+        la = self.splitDecimal(Sna)
+        lb = self.splitDecimal(Snb)
+        lt = self.splitDecimal(Sna + Snb)
+        "Justifie les nombres sous forme de texte pour que les virgules soient alignées"
+        alignement = '{:>' + str(len(lt[0])) + '}.{:0>' +str(max(len(la[1]), len(lb[1]))) + '}'
+        Sta = alignement.format(la[0], la[1])
+        Stb = alignement.format(lb[0], lb[1])
+        Stt = alignement.format(lt[0], lt[1])
+        Str = self.retenues_somme(Sta, Stb)
+        "Mélange l'ordre des deux valeurs"
+        if random.randrange(2):
+            return Sna, Sta, Snb, Stb, Str, Stt
         else:
-            ligne.append(str(deca[i]))
-    for i in range(laprvirg - (len(deca) - posa)):
-        if ligne.count(','):
-            ligne.append('0')
+            return Snb, Stb, Sna, Sta, Str, Stt
+
+    def valeurs_diff(self):
+        """
+        Sélectionne un nombre entier et un nombre décimal non entier pour poser une différence
+        :return:
+            Sna, Snb: int or float
+            Sta, Stb, Stt, Strb, Strh: justified strings
+        """
+        Dna = random.randrange(111, 100000) # Nombre entier
+        Dnb = (random.randrange(11, 10000)*10+random.randrange(1,10)) / 10**random.randrange(1,3) # Nombre décimal non entier
+        if Dna<Dnb: Dna, Dnb = Dnb, Dna
+        la = self.splitDecimal(Dna)
+        lb = self.splitDecimal(Dnb)
+        lt = self.splitDecimal(Dna - Dnb)
+        "Justifie les nombres sous forme de texte pour que les virgules soient alignées"
+        alignement = '{:>' + str(len(la[0])) + '}.{:0>' +str(max(len(la[1]), len(lb[1]))) + '}'
+        Dta = alignement.format(la[0], la[1])
+        Dtb = alignement.format(lb[0], lb[1])
+        Dtt = alignement.format(lt[0], lt[1])
+        Dtrh, Dtrb = self.retenues_diff(Dta, Dtb)
+        return Dna, Dta, Dnb, Dtb, Dtrh, Dtrb, Dtt
+
+    def valeurs_prod(self):
+        Pna = random.randrange(10, 1000)*10+random.randrange(1,10)
+        Pnb = random.randrange(10, 100)*10+random.randrange(1,10)
+        Pnt = format(Pna * Pnb, ".14g")
+        alignement = '{:>' + str(len(Pnt)) + '}'
+        Ppa = random.randrange(-3,0) # Position de la virgule
+        Ppb = random.randrange(-3,0)
+        if random.randrange(2):
+            return Pna, Pnb, Ppa, Ppb, alignement
         else:
-            ligne.append(',')
-    return ligne
+            return Pnb, Pna, Ppb, Ppa, alignement
 
+    def spaceToZeros(self, t):
+        "Convertit un caracatère en entier, renvoie 0 si ce n'est pas un chiffre"
+        try:
+            return int(t)
+        except ValueError:
+            return 0
 
-def mon_int(t):  # retourne un entier texte sous la forme d'un nombre, zéro sinon
-    if t == '':
-        t = 0
-    elif ('1234567890').count(t):
-        t = int(t)
-    else:
-        t = 0
-    return t
+    def retenues_somme(self, ta, tb):
+        tr=' ' # liste des retenues
+        ra, rb=ta[::-1], tb[::-1] # retourne le nombre : '123.45' -> '54.321'
+        for i in range(len(ta)-1):
+            tr+=str((self.spaceToZeros(tr[i]) + self.spaceToZeros(ra[i]) + self.spaceToZeros(rb[i]))//10).replace('0', ' ')
+        return tr[::-1]
 
-
-def retenues_somme(ligne1, ligne2):
-    lg = len(ligne1)
-    ligne0 = ['' for i in range(lg)]
-    for i in range(lg - 1):
-
-        # on déplace la retenue pour qu'elle ne soit pas au-dessus de la virgule
-
-        if ligne1[(lg - i) - 1] == ',' and ligne0[(lg - i) - 1] == '1':
-            ligne0[(lg - i) - 2] = '1'
-        elif mon_int(ligne1[(lg - i) - 1]) + mon_int(ligne2[(lg - i) - 1]) + \
-            mon_int(ligne0[(lg - i) - 1]) > 9:
-            ligne0[(lg - i) - 2] = '1'
-    return ligne0
-
-
-def retenues_diff(ligne1, ligne2):
-    lg = len(ligne1)
-    ret = 0
-    for i in range(lg - 1):
-        if not (ligne1[(lg - i) - 1] == ',' and ret):
-            if mon_int(ligne1[(lg - i) - 1]) < mon_int(ligne2[(lg - i) -
-                    1]) + ret:
-                ligne1[(lg - i) - 1] = '$_1$%s' % ligne1[(lg - i) - 1]
-                tmpret = 1
+    def retenues_diff(self, ta, tb):
+        trh='' # liste des retenues hautes
+        trb=' ' # liste des retenues basses
+        ra, rb=ta[::-1], tb[::-1] # retourne le nombre : '123.45' -> '54.321'
+        for i in range(len(ta)-1):
+            if self.spaceToZeros(ra[i])<self.spaceToZeros(rb[i])+self.spaceToZeros(trb[i]):
+                trh+='1'
+                trb+='1'
             else:
-                tmpret = 0
-            if ret:
-                ligne2[(lg - i) - 1] = '%s$_1$' % ligne2[(lg - i) - 1]
-            ret = tmpret
-    return (ligne1, ligne2)
+                trh+=' '
+                trb+=' '
+        trh+=' '
+        return trh[::-1], trb[::-1]
 
-
-def tex_somme(exo, cor):
-    (ligne1, ligne2) = ([''], ['+'])
-    (nba, nbb, deca, decb, lavtvirg, laprvirg) = valeurs()
-    total = nba + nbb
-    dectotal = list(Affichage.decimaux(total).replace(r'\,', '').replace(',', '.'))
-    if dectotal.index('.') <= lavtvirg:
-        ligne3 = ['']
-    else:
-        ligne3 = []
-    ligne1 = lignes(ligne1, deca, lavtvirg, laprvirg)
-    ligne2 = lignes(ligne2, decb, lavtvirg, laprvirg)
-    ligne3 = lignes(ligne3, dectotal, lavtvirg, laprvirg)
-    ligne0 = retenues_somme(ligne1, ligne2)
-    if ligne0[0] == '1':
-        ligne0[0] = '\\tiny 1'
-    exo.append('\\item La somme des termes %s et %s.\\par' %
-            (Affichage.decimaux(nba), Affichage.decimaux(nbb)))
-    cor.append('\\item La somme des termes %s et %s.\\par' %
-            (Affichage.decimaux(nba), Affichage.decimaux(nbb)))
-    cor.append('\\begin{tabular}[t]{*{%s}{c}}' % (lavtvirg + laprvirg + 1))
-    cor.append('%s \\\\' % ' & \\tiny '.join(ligne0))
-    cor.append('%s \\\\' % ' & '.join(ligne1))
-    cor.append('%s \\\\\n\\hline' % ' & '.join(ligne2))
-    cor.append('%s \\\\' % ' & '.join(ligne3))
-    cor.append('\\end{tabular}\\par')
-    formule = '%s+%s = %s' % (Affichage.decimaux(nba, 1),
-                     Affichage.decimaux(nbb, 1), Affichage.decimaux(nba +
-                     nbb, 1))
-    cor.append((u'\\[ \\boxed{%s} \\] ').expandtabs(2 * 3) % (formule))
-
-def tex_difference(exo, cor):
-    (ligne1, ligne2) = ([''], ['-'])
-    (nba, nbb, deca, decb, lavtvirg, laprvirg) = valeurs()
-    if nba < nbb:
-        (nba, nbb, deca, decb) = (nbb, nba, decb, deca)
-    total = nba - nbb
-    dectotal = list(Affichage.decimaux(total).replace(r'\,', '').replace(',', '.'))
-    if dectotal.index('.') <= lavtvirg:
-        ligne3 = ['']
-    else:
-        ligne3 = []
-    ligne1 = lignes(ligne1, deca, lavtvirg, laprvirg)
-    ligne2 = lignes(ligne2, decb, lavtvirg, laprvirg)
-    ligne3 = lignes(ligne3, dectotal, lavtvirg, laprvirg)
-    (ligne1, ligne2) = retenues_diff(ligne1, ligne2)
-    exo.append(u"\\item La différence des termes %s et %s.\\par" %
-             (Affichage.decimaux(nba), Affichage.decimaux(nbb)))
-    cor.append(u"\\item La différence des termes %s et %s.\\par" %
-             (Affichage.decimaux(nba), Affichage.decimaux(nbb)))
-    cor.append('\\begin{tabular}[t]{*{%s}{c}}' % (lavtvirg +
-             laprvirg + 1))
-    cor.append('%s \\\\' % ' & '.join(ligne1))
-    cor.append('%s \\\\\n\\hline' % ' & '.join(ligne2))
-    cor.append('%s \\\\' % ' & '.join(ligne3))
-    cor.append('\\end{tabular}\\par')
-    formule = '%s-%s = %s' % (Affichage.decimaux(nba, 1),
-                     Affichage.decimaux(nbb, 1), Affichage.decimaux(nba -
-                     nbb, 1))
-    cor.append((u'\\[ \\boxed{%s} \\] ').expandtabs(2 * 3) % (formule))
-
-def pose_mult(nba, nbb):
-    (ligne, total) = ([], 0)
-    for i in range(int(math.log10(nbb)) + 1):
-        sstotal = ((nbb - (nbb // 10) * 10) * nba) * 10 ** i
-        total = total + sstotal
-        ligne.append(sstotal)
-        nbb = nbb // 10
-    return (ligne, total)
-
-
-def ligneprod(ligne, dec, lg):
-    ligne.extend(['' for dummy in range((lg - len(dec)) - len(ligne))])
-    ligne.extend(dec)
-    return ligne
-
-
-def tex_produit(exo, cor):
-    (nba, nbb, puisa, puisb) = valeurs_prod()
-    deca = list(Affichage.decimaux(nba).replace(r'\,', '').replace(',', '.'))
-    decb = list(Affichage.decimaux(nbb).replace(r'\,', '').replace(',', '.'))
-
-    (dec3, dummy) = pose_mult(nba, nbb)
-    (dec3bis, dummy) = pose_mult(nbb, nba)
-    total = ((nba * 10 ** puisa) * nbb) * 10 ** puisb
-    dec4 = list(Affichage.decimaux(total).replace(r'\,', '').replace(',', '.'))
-    if dec4.count('.'):
-        i = dec4.index('.')
-        if (len(dec4) - i) - 1 < -(puisa + puisb):
-            for j in range(-(puisa + puisb) - len(dec4) + i + 1):
-                dec4.append('0')  # ajoute les 0 inutiles au produit
-        dec4.pop(i)  # supprime le point décimal
-        dec4[i - 1] = '%s\\Huge ,' % dec4[i - 1]  # et ajoute une Huge virgule au chiffre des unités
-    lg = max(len(dec4), max(len(deca), len(decb)))  # nombre de colonnes dans le tableau
-    exo.append('\\item Le produit des facteurs %s et %s.\\par' % (Affichage.decimaux(nba *
-             10 ** puisa), Affichage.decimaux(nbb * 10 ** puisb)))
-    cor.append('\\item Le produit des facteurs %s et %s.\\par' % (Affichage.decimaux(nba *
-             10 ** puisa), Affichage.decimaux(nbb * 10 ** puisb)))
-    cor.append('\\begin{enumerate}')
-    cor.append(u'\\item Première méthode :\\par')
-    lg = max(len(dec4), max(len(deca), len(decb)+1))
-    cor.append('\\begin{tabular}[t]{*{%s}{c}}' % lg)
-    cor.append('%s \\\\' % ' & '.join(ligneprod([], deca, lg)))
-    cor.append('%s \\\\\n\\hline' % ' & '.join(ligneprod(['$\\times$'], decb, lg)))
-    for i in range(len(dec3)):
-        dec = [str(dec3[i])[j] for j in range(len(str(dec3[i])))]
-        cor.append('%s \\\\' % ' & '.join(ligneprod([], dec, lg)))
-    cor.append('\\hline \\\\')
-    cor.append('%s \\\\' % ' & '.join(ligneprod([], dec4, lg)))
-    cor.append('\\end{tabular}')
-    cor.append(u'\\item Seconde méthode :\\par')
-    lg = max(len(dec4), max(len(deca)+1, len(decb)))
-    cor.append('\\begin{tabular}[t]{*{%s}{c}}' % lg)
-    cor.append('%s \\\\' % ' & '.join(ligneprod([], decb, lg)))
-    cor.append('%s \\\\\n\\hline' % ' & '.join(ligneprod(['$\\times$'], deca, lg)))
-    for i in range(len(dec3bis)):
-        dec = [str(dec3bis[i])[j] for j in range(len(str(dec3bis[i])))]
-        cor.append('%s \\\\' % ' & '.join(ligneprod([], dec, lg)))
-    cor.append('\\hline \\\\')
-    cor.append('%s \\\\' % ' & '.join(ligneprod([], dec4, lg)))
-    cor.append('\\end{tabular}')
-    cor.append('\\end{enumerate}')
-
-    #===========================================================================
-    # # outils.Arithmetique.ecrit_tex(f1, '%s\\times%s = %s' % (Affichage.decimaux(nba *
-    #                  # 10 ** puisa, 1), Affichage.decimaux(nbb * 10 **
-    #                  # puisb, 1), Affichage.decimaux((nba * nbb) * 10 ** (puisa +
-    #                  # puisb), 1)), cadre=1, thenocalcul='', tabs=3)
-    #===========================================================================
-
-    #### Remplacement de la fonction Arithmetique.ecrit_tex :
-
-    formule = '%s\\times%s = %s' % (Affichage.decimaux(nba *
-                     10 ** puisa, 1), Affichage.decimaux(nbb * 10 **
-                     puisb, 1), Affichage.decimaux((nba * nbb) * 10 ** (puisa +
-                     puisb), 1))
-    cor.append((u'\\[ \\boxed{%s} \\] ').expandtabs(2 * 3) % (formule))
-
-
-def _Operations():
-    nb_exos = 3
-    tex_exos = (tex_somme, tex_difference, tex_produit)
-
-    ordre_exos = [i for i in range(nb_exos)]
-
-    exo = ["\\exercice", u'Poser et effectuer les opérations suivantes.', '\\begin{multicols}{2}\\noindent', '\\begin{enumerate}']
-    cor = ["\\exercice*", u'Poser et effectuer les opérations suivantes.', '\\begin{multicols}{2}\\noindent', '\\begin{enumerate}']
-
-    for i in range(nb_exos):
-        a = random.randrange(nb_exos - i)
-        j = ordre_exos.pop(a)
-        tex_exos[j](exo, cor)
-    exo.append('\\end{enumerate}')
-    exo.append('\\end{multicols}')
-    cor.append('\\end{enumerate}')
-    cor.append('\\end{multicols}')
-    return (exo, cor)
-
-class Operations(LegacyExercise):
-    """Poser des opérations (sauf divisions)"""
-
-    tags = ["Sixième"]
-    function = _Operations
 
 
 #===============================================================================

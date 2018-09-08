@@ -526,6 +526,7 @@ def tex_resolution_thales1(n, v):
             donnees = (creer_noms(n, r + 3), creer_noms(n, r + 6), '-',
                        creer_noms(n, r), decimaux(v[r + 3], 1))
     if donnees:
+        print(donnees)
         return '\\vspace{1ex}\\par De plus $%s=%s%s%s=\\unit[%s]{cm}$\n' % donnees
     else:
         return ''
