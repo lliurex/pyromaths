@@ -488,12 +488,18 @@ def quest_fonctions_rationnelles_sur_R():
     exo.append(_(u"\\item Déterminer l'ensemble de définition $\\mathcal{D}_{%s}$ de $%s$.") % (nomf, nomf))
     cor.append(_(u"\\item Déterminer l'ensemble de définition $\\mathcal{D}_{%s}$ de $%s$.\par") % (nomf, nomf))
     cor.append(_(u" La fonction rationnelle $%s$ est définie et dérivable en $%s$ si $%s\\neq0$.") % (nomf, var, Q(var)))
-    cor.append("\\begin{align*}\n\
-            %s&=0\\\\\n\
-            %s&=%s\\\\\n\
-            %s&=%s\\\\\n\
-            %s&=%s\n\
-            \\end{align*}" % (Q, (Q - Q[0]), TeX(-Q[0]), var, TeX(-Q[0] * Fraction(1) / Q[1]), var, TeX(VI)))
+    if Q[1] == 1:
+        cor.append("\\begin{align*}\n\
+                %s&=0\\\\\n\
+                %s&=%s\\\\\n\
+                \\end{align*}" % (Q, (Q - Q[0]), TeX(-Q[0])))
+    else:
+        cor.append("\\begin{align*}\n\
+                %s&=0\\\\\n\
+                %s&=%s\\\\\n\
+                %s&=%s\\\\\n\
+                %s&=%s\n\
+                \\end{align*}" % (Q, (Q - Q[0]), TeX(-Q[0]), var, TeX(Fraction(-Q[0],1)) + "\\times " + TeX(Fraction(1,Q[1])), var, TeX(VI)))
     cor.append(_(u"On en déduit que $\\mathcal{D}_{%s}=\\mathcal{D'}_{%s}=]-\\infty~;~%s[\cup]%s~;~+\\infty[$.") % \
           (nomf, nomf, TeX(VI), TeX(VI)))
     exo.append(_(u"\\item Déterminer $%s'(%s)$ pour tout $%s\in\\mathcal{D'}_{%s}$.") % \
