@@ -80,7 +80,7 @@ class Fraction:
 
     def latex(self):
         if self.denominateur == 1:
-            return str(self.numerateur)
+            return str(self.signe * self.numerateur)
         else:
             if self.signe == 1:
                 signe = ""
@@ -94,7 +94,7 @@ class Fraction:
 
     def simplifie(self):
         if self.numerateur % self.denominateur == 0:
-            return Entier(self.signe * self.numerateur / self.denominateur)
+            return Entier(self.signe * Decimal(self.numerateur) / Decimal(self.denominateur))
         diviseur = pgcd(self.numerateur, self.denominateur)
         return Fraction(
                 self.numerateur // diviseur,
@@ -423,7 +423,8 @@ class FrancaisGeometrique(Fonction):
                 raison = Fraction(raison.valeur, 1)
             numerateur = argument.numerateur * raison.numerateur
             denominateur = raison.denominateur * argument.denominateur
-            yield r"\frac{{ {} }}{{ {} }}".format(numerateur, denominateur)
+            if denominateur != 1:
+                yield r"\frac{{ {} }}{{ {} }}".format(numerateur, denominateur)
             if numerateur % denominateur == 0:
                 yield Entier(numerateur //  denominateur).latex()
                 return
@@ -509,7 +510,11 @@ class FrancaisInverse(Fonction):
 
     def calcul(self, argument):
         yield self.expression(argument.latex())
-        if isinstance(argument, Entier) and argument > 0:
+        if isinstance(argument, Entier) and argument == 1:
+            yield "1"
+        elif isinstance(argument, Entier) and argument == -1:
+            yield "-1"
+        elif isinstance(argument, Entier) and argument > 0:
             pass
         elif isinstance(argument, Entier) and argument < 0:
             yield r"-{}".format(self.expression((-argument).latex()))
