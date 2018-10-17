@@ -1,3 +1,9 @@
+pyromaths (18.7-lliurex1) bionic; urgency=medium
+
+  * Add metainfo
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Wed, 17 Oct 2018 10:07:50 +0200
+
 pyromaths (18.7-1) bionic; urgency=medium
 
   * Séparation de pyromaths en deux projets : pyromaths (client en ligne de commande) et client QT.
