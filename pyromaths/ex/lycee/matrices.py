@@ -100,17 +100,18 @@ class InterpolationMatrices(Jinja2Exercise):
             a = Decimal(random.choice([1, -1]) * random.randint(2, 19))
             b = Decimal(random.choice([1, -1]) * random.randint(2, 19))
             c = Decimal(random.choice([1, -1]) * random.randint(2, 19))
+            if random.randint(0, 1) == 1:
+                a = a / 10
+                b = b / 10
+                c = c / 10
 
             if len(set([a, b, c])) != 3:
                 continue
             if 10 in (abs(a), abs(b), abs(c)):
                 continue
+            if 1 in (abs(a), abs(b), abs(c)):
+                continue
             break
-
-        if random.randint(0, 1) == 1:
-            a = a //  10
-            b = b //  10
-            c = c //  10
 
         M = [
             [X[0]**2, X[0], 1],

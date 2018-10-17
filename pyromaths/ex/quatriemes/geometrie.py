@@ -24,6 +24,7 @@ from decimal import Decimal
 from math import acos, asin, atan, pi, sin, cos, tan
 
 from fractions import Fraction
+from pyromaths.outils.decimaux import decimaux
 from pyromaths.outils.Geometrie import couples_pythagore, choix_points
 from pyromaths.ex import LegacyExercise
 
@@ -60,9 +61,9 @@ def enonce_pythagore(noms, angles, longueurs, cotes, nom_tr, long0,
             cotes[2],
             noms[2],
             cotes[long0],
-            nombre(longueurs[long0]),
+            decimaux(longueurs[long0], 1),
             cotes[long1],
-            nombre(longueurs[long1]),
+            decimaux(longueurs[long1], 1),
             cotes[(3 - long0) - long1],
         )
     else:
@@ -70,9 +71,9 @@ def enonce_pythagore(noms, angles, longueurs, cotes, nom_tr, long0,
             nom_tr,
             noms[2],
             cotes[long0],
-            nombre(longueurs[long0]),
+            decimaux(longueurs[long0], 1),
             cotes[long1],
-            nombre(longueurs[long1]),
+            decimaux(longueurs[long1], 1),
             cotes[(3 - long0) - long1],
         )
 
@@ -114,35 +115,36 @@ Calculer la longueur $%s$.""" % \
                                                                       long0) - long1) % 2], cotes[(3 - long0) - long1]))
         if long0 == 2 or long1 == 2:
             cor.append("\\[%s^2=%s^2-%s^2\\]" % (cotes[(3 - long0) - long1],
-                                                 nombre(longueurs[2]), nombre(longueurs[((4 - long0) -
-                                                                                         long1) % 2])))
+                                                 decimaux(longueurs[2], 1),
+                                                 decimaux(longueurs[((4 - long0) - long1) % 2], 1)))
         else:
-            cor.append("\\[%s^2=%s^2+%s^2\\]" % (cotes[2], nombre(longueurs[0]),
-                                                 nombre(longueurs[1])))
+            cor.append("\\[%s^2=%s^2+%s^2\\]" % (cotes[2],
+                decimaux(longueurs[0], 1),
+                decimaux(longueurs[1], 1)))
         if long0 == 2 or long1 == 2:
             cor.append("\\[%s^2=%s-%s\\]" % (cotes[(3 - long0) - long1],
-                                             nombre(longueurs[2] ** 2), nombre(longueurs[((4 -
-                                                                                           long0) - long1) % 2] ** 2)))
+                decimaux(longueurs[2] ** 2, 1),
+                decimaux(longueurs[((4 - long0) - long1) % 2] ** 2, 1)))
         else:
-            cor.append("\\[%s^2=%s+%s\\]" % (cotes[2], nombre(longueurs[0] **
-                                                              2), nombre(longueurs[1] ** 2)))
+            cor.append("\\[%s^2=%s+%s\\]" % (cotes[2],
+                decimaux(longueurs[0] ** 2),
+                decimaux(longueurs[1] ** 2, 1)))
         if long0 == 2 or long1 == 2:
             cor.append("\\[%s^2=%s\\]" % (cotes[(3 - long0) - long1],
-                                          nombre(longueurs[2] ** 2 - longueurs[((4 - long0) -
-                                                                                long1) % 2] ** 2)))
+                decimaux(longueurs[2] ** 2 - longueurs[((4 - long0) - long1) % 2] ** 2, 1)))
         else:
-            cor.append("\\[%s^2=%s\\]" % (cotes[2], nombre(longueurs[0] **
-                                                           2 + longueurs[1] ** 2)))
+            cor.append("\\[%s^2=%s\\]" % (cotes[2],
+                decimaux(longueurs[0] ** 2 + longueurs[1] ** 2, 1)))
         if long0 == 2 or long1 == 2:
             cor.append("\\[ \\boxed{\\text{Donc }%s=\\sqrt{%s}=\\unit[%s]{cm}}\\]" %
-                       (cotes[(3 - long0) - long1], nombre(longueurs[2] ** 2 -
-                                                           longueurs[((4 - long0) - long1) % 2] ** 2),
-                        nombre(longueurs[(3 -
-                                          long0) - long1])))
+                       (cotes[(3 - long0) - long1],
+                           decimaux(longueurs[2] ** 2 - longueurs[((4 - long0) - long1) % 2] ** 2, 1),
+                           decimaux(longueurs[(3 - long0) - long1], 1)))
         else:
             cor.append("\\[\\boxed{\\text{Donc }%s=\\sqrt{%s}=\\unit[%s]{cm}}\\]" %
-                       (cotes[2], nombre(longueurs[0] ** 2 + longueurs[1] **
-                                         2), nombre(longueurs[2])))
+                       (cotes[2],
+                           decimaux(longueurs[0] ** 2 + longueurs[1] ** 2, 1),
+                           decimaux(longueurs[2], 1)))
         if j == 0:
             exo.append("\\columnbreak")
             cor.append("\\columnbreak")
@@ -219,34 +221,35 @@ Calculer la longueur $%s$.""" % \
                                                                   long0) - long1) % 2], cotes[(3 - long0) - long1]))
     if long0 == 2 or long1 == 2:
         cor.append("\\[%s^2=%s^2-%s^2\\]" % (cotes[(3 - long0) - long1],
-                                             nombre(longueurs[2]), nombre(longueurs[((4 - long0) -
-                                                                                     long1) % 2])))
+                                             decimaux(longueurs[2], 1), decimaux(longueurs[((4 - long0) -
+                                                                                     long1) % 2], 1)))
     else:
-        cor.append("\\[%s^2=%s^2+%s^2\\]" % (cotes[2], nombre(longueurs[0]),
-                                             nombre(longueurs[1])))
+        cor.append("\\[%s^2=%s^2+%s^2\\]" % (cotes[2], decimaux(longueurs[0], 1),
+                                             decimaux(longueurs[1], 1)))
     if long0 == 2 or long1 == 2:
         cor.append("\\[%s^2=%s-%s\\]" % (cotes[(3 - long0) - long1],
-                                         nombre(longueurs[2] ** 2), nombre(longueurs[((4 -
-                                                                                       long0) - long1) % 2] ** 2)))
+                                         decimaux(longueurs[2] ** 2, 1), decimaux(longueurs[((4 -
+                                                                                       long0) - long1) % 2] ** 2, 1)))
     else:
-        cor.append("\\[%s^2=%s+%s\\]" % (cotes[2], nombre(longueurs[0] **
-                                                          2), nombre(longueurs[1] ** 2)))
+        cor.append("\\[%s^2=%s+%s\\]" % (cotes[2], decimaux(longueurs[0] **
+                                                          2, 1), decimaux(longueurs[1] ** 2, 1)))
     if long0 == 2 or long1 == 2:
         cor.append("\\[%s^2=%s\\]" % (cotes[(3 - long0) - long1],
-                                      nombre(longueurs[2] ** 2 - longueurs[((4 - long0) -
-                                                                            long1) % 2] ** 2)))
+                                      decimaux(longueurs[2] ** 2 - longueurs[((4 - long0) -
+                                                                            long1) % 2] ** 2, 1)))
     else:
-        cor.append("\\[%s^2=%s\\]" % (cotes[2], nombre(longueurs[0] **
-                                                       2 + longueurs[1] ** 2)))
+        cor.append("\\[%s^2=%s\\]" % (cotes[2], decimaux(longueurs[0] **
+                                                       2 + longueurs[1] ** 2, 1)))
     if long0 == 2 or long1 == 2:
         cor.append("\\[\\boxed{\\text{Donc }%s=\\sqrt{%s}=\\unit[%s]{cm}}\\]" %
-                   (cotes[(3 - long0) - long1], nombre(longueurs[2] ** 2 -
-                                                       longueurs[((4 - long0) - long1) % 2] ** 2), nombre(longueurs[(3 -
-                                                                                                                     long0) - long1])))
+                   (cotes[(3 - long0) - long1],
+                       decimaux(longueurs[2] ** 2 - longueurs[((4 - long0) - long1) % 2] ** 2, 1),
+                       decimaux(longueurs[(3 - long0) - long1], 1)))
     else:
         cor.append("\\[\\boxed{\\text{Donc }%s=\\sqrt{%s}=\\unit[%s]{cm}}\\]" %
-                   (cotes[2], nombre(longueurs[0] ** 2 + longueurs[1] **
-                                     2), nombre(longueurs[2])))
+                   (cotes[2],
+                       decimaux(longueurs[0] ** 2 + longueurs[1] ** 2, 1),
+                       decimaux(longueurs[2], 1)))
     exo.append("\\end{minipage}\n")
     cor.append("\\end{minipage}\n")
     return (exo, cor)
@@ -276,8 +279,8 @@ def _exo_reciproque_pythagore():
     l = [i for i in range(3)]
     n = [l.pop(random.randrange(3 - i)) for i in range(3)]
     c = cotes_sommets(noms)
-    recip = (nom_tr, c[n[0]], nombre(longueurs[n[0]]), c[n[1]], nombre(longueurs[n[1]]),
-             c[n[2]], nombre(longueurs[n[2]]), nom_tr)
+    recip = (nom_tr, c[n[0]], decimaux(longueurs[n[0]], 1), c[n[1]], decimaux(longueurs[n[1]], 1),
+             c[n[2]], decimaux(longueurs[n[2]], 1), nom_tr)
     enonce = \
         """Soit $%s$ un triangle tel que : $\\quad %s=\\unit[%s]{cm}\\quad$, $\\quad %s=\\unit[%s]{cm}\\quad$ et $\\quad %s=\\unit[%s]{cm}$.\\par
 Quelle est la nature du triangle $%s$?
@@ -293,11 +296,11 @@ Quelle est la nature du triangle $%s$?
     cor.append("\\begin{array}{l}")
 
     cor.append(u"\\bullet %s^2=%s^2=%s\\qquad\\text{(}[%s]\\text{ est le plus grand côté.)}\\\\\n" %
-               (c[2], nombre(longueurs[2]), nombre(longueurs[2] ** 2), c[2]))
+               (c[2], decimaux(longueurs[2], 1), decimaux(longueurs[2] ** 2, 1), c[2]))
     cor.append("\\bullet  %s^2+%s^2=%s^2+%s^2=%s \n" % (c[0], c[1],
-                                                        nombre(longueurs[0]), nombre(longueurs[1]),
-                                                        nombre(longueurs[0] **
-                                                               2 + longueurs[1] ** 2)))
+                                                        decimaux(longueurs[0], 1), decimaux(longueurs[1], 1),
+                                                        decimaux(longueurs[0] **
+                                                               2 + longueurs[1] ** 2, 1)))
     cor.append("\\end{array}")
     cor.append("\\right\\rbrace$")
     cor.append(u"""Donc $%s^2=%s^2+%s^2$.\\par
@@ -433,7 +436,7 @@ def long_val(noms,
     for i in range(8):
         if valeurs[i]:
             liste.append(creer_noms(noms, i))
-            liste.append(nombre(valeurs[i]))
+            liste.append(decimaux(valeurs[i], 1))
     for i in range(6):
         if not valeurs[i] and valeurs[8][0][0] % 3 != i % 3:
             liste.append(creer_noms(noms, i))
@@ -442,19 +445,6 @@ def long_val(noms,
 
 def lAB(a):  # renvoie AB
     return str(a[0]) + str(a[1])
-
-
-def nombre(a):
-    texte = str(a).replace('.', ',')
-    if a >= 1000 or a <= 0.0001:
-        return '\\nombre{%s}' % texte
-    else:
-        if texte.count(',') and len(texte) - texte.find(',0') == 2:
-            return texte.replace(',', '{,}').replace('{,}0', '')
-        elif texte.count(','):
-            return texte.replace(',', '{,}')
-        else:
-            return texte
 
 
 def creer_noms(noms, i):
@@ -526,15 +516,15 @@ def tex_resolution_thales1(n, v):
 
         v[r] = v[r + 6] + v[r + 3] * v[8][1]
         donnees = (creer_noms(n, r), creer_noms(n, r + 6), sgn,
-                   creer_noms(n, r + 3), nombre(v[r]))
+                   creer_noms(n, r + 3), decimaux(v[r], 1))
     else:
         v[r + 3] = (v[r] - v[r + 6]) * v[8][1]
         if sgn == '+':
             donnees = (creer_noms(n, r + 3), creer_noms(n, r), '-',
-                       creer_noms(n, r + 6), nombre(v[r + 3]))
+                       creer_noms(n, r + 6), decimaux(v[r + 3], 1))
         else:
             donnees = (creer_noms(n, r + 3), creer_noms(n, r + 6), '-',
-                       creer_noms(n, r), nombre(v[r + 3]))
+                       creer_noms(n, r), decimaux(v[r + 3], 1))
     if donnees:
         return '\\vspace{1ex}\\par De plus $%s=%s%s%s=\\unit[%s]{cm}$\n' % donnees
     else:
@@ -545,11 +535,11 @@ def tex_resolution_thales2(n, v):
     donnees = []
     for i in range(3):
         if v[i]:
-            donnees.append(nombre(v[i]))
+            donnees.append(decimaux(v[i], 1))
         else:
             donnees.append(creer_noms(n, i))
         if v[i + 3]:
-            donnees.append(nombre(v[i + 3]))
+            donnees.append(decimaux(v[i + 3], 1))
         else:
             donnees.append(creer_noms(n, i + 3))
     return '\\[\\frac{%s}{%s}=\\frac{%s}{%s}=\\frac{%s}{%s}\\]' % tuple(donnees)
@@ -557,23 +547,23 @@ def tex_resolution_thales2(n, v):
 
 def nom_ou_valeur(n, v, i):
     if v[i]:
-        return nombre(v[i])
+        return decimaux(v[i], 1)
     else:
         return creer_noms(n, i)
 
 
 def valeur_exacte(a, approx=3, unit=1):
-    nb = nombre(a)
+    nb = decimaux(a, 1)
     if unit:
         if nb.count(',') and (len(nb) - nb.find(',')) - 1 > approx:
-            return '\\simeq\\unit[' + nombre(round(a, approx)) + ']{cm}'
+            return '\\simeq\\unit[' + decimaux(round(a, approx), 1) + ']{cm}'
         else:
-            return '=\\unit[' + nombre(a) + ']{cm}'
+            return '=\\unit[' + decimaux(a, 1) + ']{cm}'
     else:
         if nb.count(',') and (len(nb) - nb.find(',')) - 1 > approx:
-            return '\\simeq' + nombre(round(a, approx))
+            return '\\simeq' + decimaux(round(a, approx), 1)
         else:
-            return '=' + nombre(a)
+            return '=' + decimaux(a, 1)
 
 
 def tex_resolution_thales3(n, v, arrondi):
@@ -584,10 +574,10 @@ def tex_resolution_thales3(n, v, arrondi):
             donnees.extend([nom_ou_valeur(n, v, r), nom_ou_valeur(n, v, r + 3), nom_ou_valeur(n, v, i),
                             nom_ou_valeur(n, v, i + 3)])
             if v[i]:  # on cherche i+3
-                donnees.extend([creer_noms(n, i + 3), nombre(v[i]), nombre(v[r + 3]), nombre(v[r]),
+                donnees.extend([creer_noms(n, i + 3), decimaux(v[i], 1), decimaux(v[r + 3], 1), decimaux(v[r], 1),
                                 valeur_exacte(v[i] * v[r + 3] / v[r], approx=arrondi)])
             else:
-                donnees.extend([creer_noms(n, i), nombre(v[i + 3]), nombre(v[r]), nombre(v[r + 3]),
+                donnees.extend([creer_noms(n, i), decimaux(v[i + 3], 1), decimaux(v[r], 1), decimaux(v[r + 3], 1),
                                 valeur_exacte(v[r] * v[i + 3] / v[r + 3], approx=arrondi)])
     texte = \
         '$\\cfrac{%s}{%s}=\\cfrac{%s}{%s}\\quad$ donc $\\quad \\boxed{%s=\\cfrac{%s\\times %s}{%s}%s}$\\par\n ' % tuple(
@@ -730,7 +720,7 @@ def enonce_trigo(v):
             if len(l[2 * i + 6 * j]) < 3:
                 if l[2 * i + 6 * j + 1]:
                     lt.append('$%s=\\unit[%s]{cm}$' % (l[2 * i + 6 * j],
-                                                       nombre(l[2 * i + 6 * j + 1])))
+                                                       decimaux(l[2 * i + 6 * j + 1], 1)))
                 else:
                     tmp = 'la longueur $%s$' % l[2 * i + 6 * j]
             elif l[2 * i + 6 * j + 1]:
@@ -789,7 +779,7 @@ def resolution_trigo(v2, l2, arrondi):
                                                  v2[0][f[2]]))
     if not v2[1][3]:
         cor.append('\\[ %s%s=\\cfrac{%s}{%s} \\]' % (f[0], l2[4],
-                                                     nombre(v2[1][1]), nombre(v2[1][2])))
+                                                     decimaux(v2[1][1], 1), decimaux(v2[1][2], 1)))
         if f[0] == '\\sin':
             r = asin(v2[1][1] / v2[1][2]) * 180 / pi
         elif f[0] == '\\cos':
@@ -797,11 +787,11 @@ def resolution_trigo(v2, l2, arrondi):
         else:
             r = atan(v2[1][1] / v2[1][2]) * 180 / pi
         cor.append(r'\[ \boxed{%s=%s^{-1}\left(\cfrac{%s}{%s}\right) %s\degres} \]' %
-                   (l2[4], f[0], nombre(v2[1][1]), nombre(v2[1][2]),
+                   (l2[4], f[0], decimaux(v2[1][1], 1), decimaux(v2[1][2], 1),
                     valeur_exacte(r, approx=arrondi, unit=0)))
     elif not v2[1][1]:
         cor.append('\\[ %s%s=\\cfrac{%s}{%s} \\]' % (f[0], v2[1][3],
-                                                     v2[0][f[1]], nombre(v2[1][2])))
+                                                     v2[0][f[1]], decimaux(v2[1][2], 1)))
         if f[0] == '\\sin':
             r = sin(v2[1][3] * pi / 180)
         elif f[0] == '\\cos':
@@ -810,11 +800,11 @@ def resolution_trigo(v2, l2, arrondi):
             r = tan(v2[1][3] * pi / 180)
         r = r * v2[1][2]
         cor.append(r'\[ \boxed{%s=%s%s\times %s %s} \]' %
-                   (v2[0][f[1]], f[0], v2[1][3], nombre(v2[1][2]),
+                   (v2[0][f[1]], f[0], v2[1][3], decimaux(v2[1][2], 1),
                     valeur_exacte(r, approx=arrondi)))
     else:
         cor.append('\\[ %s%s=\\cfrac{%s}{%s} \\]' % (f[0], v2[1][3],
-                                                     nombre(v2[1][1]), v2[0][f[2]]))
+                                                     decimaux(v2[1][1], 1), v2[0][f[2]]))
         if f[0] == '\\sin':
             r = sin(v2[1][3] * pi / 180)
         elif f[0] == '\\cos':
@@ -823,7 +813,7 @@ def resolution_trigo(v2, l2, arrondi):
             r = tan(v2[1][3] * pi / 180)
         r = v2[1][1] / r
         cor.append(r'\[ \boxed{%s=\cfrac{%s}{%s%s} %s} \]' %
-                   (v2[0][f[2]], nombre(v2[1][1]), f[0], v2[1][3],
+                   (v2[0][f[2]], decimaux(v2[1][1], 1), f[0], v2[1][3],
                     valeur_exacte(r, approx=arrondi)))
     return cor
 
