@@ -53,7 +53,7 @@ def supprime_extension(filename, ext):
 
 ################################################################################
 
-class Fiche(contextlib.AbstractContextManager):
+class Fiche:
     basename = "exercise"
 
     def __init__(self, context, *, template="pyromaths.tex", dirty=False):
@@ -92,6 +92,7 @@ class Fiche(contextlib.AbstractContextManager):
     def write_tex(self):
         environment = jinja2tex.LatexEnvironment(
             loader=jinja2tex.FileSystemLoader([
+                os.path.join(directories.CONFIGDIR, 'templates'),
                 os.path.join(directories.DATADIR, 'templates'),
                 ])
         )

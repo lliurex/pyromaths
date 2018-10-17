@@ -5,9 +5,9 @@
 ### CONFIG
 #
 # Pyromaths version
-VERSION ?= 18.7
+VERSION ?= 18.9.2
 # Archive format(s) produced by 'make src' (bztar,gztar,zip...)
-FORMATS ?= bztar,zip
+FORMATS ?= bztar,zip,gztar
 # Verbosity and logging
 #OUT     ?= > /dev/null       # uncomment: quieter output
 OUT     ?= >> /tmp/log            # uncomment: log output to file
@@ -24,7 +24,7 @@ BUILDIR  = $(BUILD)/$@
 # Mac app folder
 APP     := $(DIST)/Pyromaths.app/Contents
 # Project files
-FILES   := AUTHORS COPYING NEWS pyromaths README setup.py MANIFEST.in src data
+FILES   := AUTHORS COPYING NEWS pyromaths README setup.py MANIFEST.in
 
 ### SHORTCUTS & COMPATIBILITY
 #
@@ -47,7 +47,7 @@ setup := $(PYTHON) setup.py
 
 ### MACROS
 #
-# Remove manifest file, egg-info dir and target build dir, clean-up sources.
+# Remove egg-info dir and target build dir, clean-up sources.
 clean = rm -rf *.egg-info && rm -rf $(BUILDIR) &&\
         find . -name '*~' | xargs rm -f && find . -iname '*.pyc' | xargs rm -f
 
@@ -99,6 +99,12 @@ src: version
 	$(clean)
 	$(setup) sdist --formats=$(FORMATS) -d $(DIST) $(OUT)
 
+pypi: wheel src
+	# Publish to Pypi
+	@echo "################################################################################"
+	@echo "# To upload to Pypi, run:"
+	@echo twine upload -s dist/pyromaths-$(VERSION)-py3-none-any.whl dist/pyromaths-$(VERSION).tar.gz
+
 wheel: version
 	# Make python wheel
 	$(clean)
@@ -115,28 +121,45 @@ min: version
 	$(clean)
 	$(setup) sdist --formats=bztar -d $(BUILD) $(OUT)
 
+.ONESHELL:
 deb: min
 	# Make DEB archive
+	set -ev
 	$(clean)
-	cd $(BUILD) && tar -xjf pyromaths-$(VERSION).tar.bz2              &&\
-	    mv pyromaths-$(VERSION) $(BUILDIR)                            &&\
-	    mv pyromaths-$(VERSION).tar.bz2 pyromaths_$(VERSION).orig.tar.bz2
+	(
+		cd $(BUILD)
+		tar -xjf pyromaths-$(VERSION).tar.bz2
+		mv pyromaths-$(VERSION) $(BUILDIR)
+		mv pyromaths-$(VERSION).tar.bz2 pyromaths_$(VERSION).orig.tar.bz2
+	)
 	cp -r debian $(BUILDIR)
-	cd $(BUILDIR) && debuild -i -D -tc -kB39EE5B6 $(OUT) || exit 0
+	(
+		cd $(BUILDIR)
+		debuild -i -D -tc -kB39EE5B6 -b $(OUT)
+	)
 	mkdir -p $(DIST)
 	mv $(BUILD)/pyromaths_$(VERSION)-*_all.deb $(DIST)
 
 repo: min
 	# update apt repository
 	$(clean)
-	cd $(BUILD) && tar -xjf pyromaths-$(VERSION).tar.bz2              &&\
-	    mv pyromaths-$(VERSION) $(BUILDIR)                            &&\
+	set -e
+	(
+		cd $(BUILD) 
+		tar -xjf pyromaths-$(VERSION).tar.bz2
+	    mv pyromaths-$(VERSION) $(BUILDIR)
 	    mv pyromaths-$(VERSION).tar.bz2 pyromaths_$(VERSION).orig.tar.bz2
+	)
 	cp -r debian $(BUILDIR)
-	cd $(BUILDIR) && debuild -i -tc -kB39EE5B6 -S $(OUT)
-	cd $(BUILD)
-	#dput -l $(BUILD)/pyromaths_$(VERSION)-1_amd64.changes
-	dput -l -f ppa:jerome-ortais/ppa $(BUILD)/pyromaths_$(VERSION)-1_source.changes
+	(
+		cd $(BUILDIR) 
+		debuild -S -sa -kB39EE5B6 -S $(OUT)
+	)
+	(
+		cd $(BUILD)
+		#dput -l $(BUILD)/pyromaths_$(VERSION)-1_amd64.changes
+		dput -l -f ppa:jerome-ortais/ppa $(BUILD)/pyromaths_$(VERSION)-1_source.changes
+	)
 
 data/%.qm: data/%.ts
 	# Translate new/updated language files
@@ -161,14 +184,3 @@ app: version data/qtmac_fr.qm
 	rm -rf $(APP)/Frameworks/pyromaths
 	# ..Remove all architectures but x86_64..."
 	ditto --rsrc --arch x86_64 --hfsCompression $(DIST)/Pyromaths.app $(DIST)/Pyromaths-x86_64.app
-
-exe:
-	# Make standalone Windows executable
-	# ..Remove previous builds
-	cp $(PYRO)/data/windows/installer.cfg $(PYRO)
-	cp $(PYRO)/data/windows/nsi_template.nsi $(PYRO)
-	pynsist installer.cfg
-	mkdir -p $(DIST)
-	mv $(BUILD)/nsis/Pyromaths_$(VERSION).exe $(DIST)
-	rm $(PYRO)/installer.cfg 
-	rm $(PYRO)/nsi_template.nsi

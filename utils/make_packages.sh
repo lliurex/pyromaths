@@ -11,9 +11,9 @@ if [ ! -f /usr/bin/rpm ];
 then
     sudo apt-get install rpm
 fi
-if [ ! -f /usr/lib/python2.7/dist-packages/sphinxarg/ext.py ];
+if [ ! -f /usr/lib/python3/dist-packages/sphinxarg/ext.py ];
 then
-    sudo apt install python-sphinx-argparse
+    sudo apt install python3-sphinx-argparse
 fi
 
 # Update pyromaths version
@@ -65,15 +65,16 @@ esac
 echo "*** Update pyromaths web-site links..."
 cat > ${PYROPATH}/pyrosite.txt << EOF
 :title: Version ${VERSION}
+:slug: version-$(echo ${VERSION} | sed 's/\./-/g')
 :date: $(date +"%Y-%m-%d %H:%M")
 :category: telecharger
 :description: Liens vers la version ${VERSION}
 
-* |debian| `Pyromaths pour Linux - deb </telecharger/pyromaths_${VERSION}-1_all.deb>`_
-* |redhat| `Pyromaths pour Linux - rpm </telecharger/pyromaths-${VERSION}-1.noarch.rpm>`_
-* |macos| `Pyromaths pour Mac OS X </telecharger/pyromaths-${VERSION}-macos.dmg>`_
-* |windows| `Pyromaths pour Windows </telecharger/pyromaths_${VERSION}.exe>`_
-* |sources| `Sources de Pyromaths </telecharger/pyromaths-${VERSION}-sources.tar.bz2>`_
+* |debian| \`Pyromaths pour Linux - deb <https://www.pyromaths.org/downloads/pyromaths_${VERSION}-1_all.deb>\`_
+* |redhat| \`Pyromaths pour Linux - rpm <https://www.pyromaths.org/downloads/pyromaths-${VERSION}-1.noarch.rpm>\`_
+* |macos| \`Pyromaths pour Mac OS X <https://www.pyromaths.org/downloads/pyromaths-${VERSION}-macos.dmg>\`_
+* |windows| \`Pyromaths pour Windows <https://www.pyromaths.org/downloads/Pyromaths-QT_${VERSION}.exe>\`_
+* |sources| \`Sources de Pyromaths <https://pypi.org/project/pyromaths/>\`_
 
 .. |debian| image:: images/debian.png
     :alt: Debian Linux

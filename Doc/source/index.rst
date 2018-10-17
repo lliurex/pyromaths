@@ -15,8 +15,9 @@ Table des matières
     :maxdepth: 1
     :numbered:
 
-    intro.rst
+    intro
     ecrire
+    modele
     pyromaths.api
     pyromaths.cli
 
