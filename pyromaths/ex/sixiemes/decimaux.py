@@ -400,7 +400,7 @@ def EcritEnChiffre(exo, cor,lang=""):
                  " : \\dotfill")
         cor.append("\\item " + eval('EcritNombreDecimal'+lang+'(lnb[i])') +
                    " : ")
-    cor.append(Affichage.decimaux(lnb[i], 0) + '')
+        cor.append(Affichage.decimaux(lnb[i], 0) + '')
 
 def EcritEnLettre(exo, cor,lang=""):
     lnb = nombreATrouver()
@@ -409,7 +409,7 @@ def EcritEnLettre(exo, cor,lang=""):
                  " : \\dotfill")
         cor.append("\\item " + Affichage.decimaux(lnb[i], 0) + 
                 " : ")
-    cor.append(eval('EcritNombreDecimal'+lang+'(lnb[i])') + '')
+        cor.append(eval('EcritNombreDecimal'+lang+'(lnb[i])') + '')
 
 
 def _EcrireNombreLettre():
