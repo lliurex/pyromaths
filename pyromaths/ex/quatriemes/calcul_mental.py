@@ -67,9 +67,9 @@ def div(pyromax):
 
 
 def _calcul_mental():
-    exo = ["\\exercice", "Effectuer sans calculatrice :",
+    exo = ["\\exercice", _(u"Effectuer sans calculatrice :"),
            "\\begin{multicols}{3}\\noindent", "  \\begin{enumerate}"]
-    cor = ["\\exercice*", "Effectuer sans calculatrice :",
+    cor = ["\\exercice*", _(u"Effectuer sans calculatrice :"),
            "\\begin{multicols}{3}\\noindent", "  \\begin{enumerate}"]
     modules = (plus, moins, plus, div)
     calculs = [i for i in range(20)]

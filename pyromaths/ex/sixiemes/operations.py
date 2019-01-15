@@ -148,9 +148,9 @@ def tex_somme(exo, cor):
     ligne0 = retenues_somme(ligne1, ligne2)
     if ligne0[0] == '1':
         ligne0[0] = '\\tiny 1'
-    exo.append('\\item La somme des termes %s et %s.\\par' %
+    exo.append(_('\\item La somme des termes %s et %s.\\par') %
             (Affichage.decimaux(nba), Affichage.decimaux(nbb)))
-    cor.append('\\item La somme des termes %s et %s.\\par' %
+    cor.append(_('\\item La somme des termes %s et %s.\\par') %
             (Affichage.decimaux(nba), Affichage.decimaux(nbb)))
     cor.append('\\begin{tabular}[t]{*{%s}{c}}' % (lavtvirg + laprvirg + 1))
     cor.append('%s \\\\' % ' & \\tiny '.join(ligne0))
@@ -178,9 +178,9 @@ def tex_difference(exo, cor):
     ligne2 = lignes(ligne2, decb, lavtvirg, laprvirg)
     ligne3 = lignes(ligne3, dectotal, lavtvirg, laprvirg)
     (ligne1, ligne2) = retenues_diff(ligne1, ligne2)
-    exo.append(u"\\item La différence des termes %s et %s.\\par" %
+    exo.append(_(u"\\item La différence des termes %s et %s.\\par") %
              (Affichage.decimaux(nba), Affichage.decimaux(nbb)))
-    cor.append(u"\\item La différence des termes %s et %s.\\par" %
+    cor.append(_(u"\\item La différence des termes %s et %s.\\par") %
              (Affichage.decimaux(nba), Affichage.decimaux(nbb)))
     cor.append('\\begin{tabular}[t]{*{%s}{c}}' % (lavtvirg +
              laprvirg + 1))
@@ -226,12 +226,12 @@ def tex_produit(exo, cor):
         dec4.pop(i)  # supprime le point décimal
         dec4[i - 1] = '%s\\Huge ,' % dec4[i - 1]  # et ajoute une Huge virgule au chiffre des unités
     lg = max(len(dec4), max(len(deca), len(decb)))  # nombre de colonnes dans le tableau
-    exo.append('\\item Le produit des facteurs %s et %s.\\par' % (Affichage.decimaux(nba *
+    exo.append(_('\\item Le produit des facteurs %s et %s.\\par') % (Affichage.decimaux(nba *
              10 ** puisa), Affichage.decimaux(nbb * 10 ** puisb)))
-    cor.append('\\item Le produit des facteurs %s et %s.\\par' % (Affichage.decimaux(nba *
+    cor.append(_('\\item Le produit des facteurs %s et %s.\\par') % (Affichage.decimaux(nba *
              10 ** puisa), Affichage.decimaux(nbb * 10 ** puisb)))
     cor.append('\\begin{enumerate}')
-    cor.append(u'\\item Première méthode :\\par')
+    cor.append(_(u'\\item Première méthode :\\par'))
     lg = max(len(dec4), max(len(deca), len(decb)+1))
     cor.append('\\begin{tabular}[t]{*{%s}{c}}' % lg)
     cor.append('%s \\\\' % ' & '.join(ligneprod([], deca, lg)))
@@ -242,7 +242,7 @@ def tex_produit(exo, cor):
     cor.append('\\hline \\\\')
     cor.append('%s \\\\' % ' & '.join(ligneprod([], dec4, lg)))
     cor.append('\\end{tabular}')
-    cor.append(u'\\item Seconde méthode :\\par')
+    cor.append(_(u'\\item Seconde méthode :\\par'))
     lg = max(len(dec4), max(len(deca)+1, len(decb)))
     cor.append('\\begin{tabular}[t]{*{%s}{c}}' % lg)
     cor.append('%s \\\\' % ' & '.join(ligneprod([], decb, lg)))
@@ -277,8 +277,8 @@ def _Operations():
 
     ordre_exos = [i for i in range(nb_exos)]
 
-    exo = ["\\exercice", u'Poser et effectuer les opérations suivantes.', '\\begin{multicols}{2}\\noindent', '\\begin{enumerate}']
-    cor = ["\\exercice*", u'Poser et effectuer les opérations suivantes.', '\\begin{multicols}{2}\\noindent', '\\begin{enumerate}']
+    exo = ["\\exercice", _(u'Poser et effectuer les opérations suivantes.'), '\\begin{multicols}{2}\\noindent', '\\begin{enumerate}']
+    cor = ["\\exercice*", _(u'Poser et effectuer les opérations suivantes.'), '\\begin{multicols}{2}\\noindent', '\\begin{enumerate}']
 
     for i in range(nb_exos):
         a = random.randrange(nb_exos - i)
@@ -359,8 +359,8 @@ def div(valeurmax):
 
 
 def _CalculMental():
-    exo = ["\\exercice", 'Effectuer sans calculatrice :', '\\begin{multicols}{4}\\noindent', '\\begin{enumerate}']
-    cor = ["\\exercice*", 'Effectuer sans calculatrice :', '\\begin{multicols}{4}\\noindent', '\\begin{enumerate}']
+    exo = ["\\exercice", _('Effectuer sans calculatrice :'), '\\begin{multicols}{4}\\noindent', '\\begin{enumerate}']
+    cor = ["\\exercice*", _('Effectuer sans calculatrice :'), '\\begin{multicols}{4}\\noindent', '\\begin{enumerate}']
 
     tex_calcul_mental(exo, cor)
 
@@ -448,8 +448,8 @@ def valeurs10(nb):  # renvoie nb valeur de chaque type : *10, /10, *0.1
 
 
 def _ProduitPuissanceDix():
-    exo = ["\\exercice", u'Compléter sans calculatrice :', '\\begin{multicols}{2}\\noindent', '\\begin{enumerate}']
-    cor = ["\\exercice*", u'Compléter sans calculatrice :', '\\begin{multicols}{2}\\noindent', '\\begin{enumerate}']
+    exo = ["\\exercice", _(u'Compléter sans calculatrice :'), '\\begin{multicols}{2}\\noindent', '\\begin{enumerate}']
+    cor = ["\\exercice*", _(u'Compléter sans calculatrice :'), '\\begin{multicols}{2}\\noindent', '\\begin{enumerate}']
 
     tex_dix(exo, cor)
 

@@ -225,10 +225,10 @@ def calcul(a, op, b, entier=1):  # retourne 'hp' (hors programme) ou le résulta
 def _priorites():
     nb = 9  # nombre de calculs
     exo = ["\\exercice",
-           u"Calculer les expressions suivantes en détaillant les calculs.\n",
+           _(u"Calculer les expressions suivantes en détaillant les calculs.\n"),
            "\\begin{multicols}{3}", "\\noindent"]
     cor = ["\\exercice*",
-           u"Calculer les expressions suivantes en détaillant les calculs.",
+           _(u"Calculer les expressions suivantes en détaillant les calculs."),
            "\\begin{multicols}{3}", "\\noindent"]
     i = 0
     while i < nb:

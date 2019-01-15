@@ -25,11 +25,11 @@ import textwrap
 from pyromaths import ex
 from pyromaths.outils.Affichage import decimaux
 
-precision = [u'au millième', u'au centième', u'au dixième', u'à l\'unité',
-             u'à la dizaine', u'à la centaine', 'au millier',
-             u'à la dizaine de milliers']
+precision = [_(u'au millième'), _(u'au centième'), _(u'au dixième'), _(u'à l\'unité'),
+             _(u'à la dizaine'), _(u'à la centaine'), _('au millier'),
+             _(u'à la dizaine de milliers')]
 
-supinf = ['', u' par défaut', u' par excès']
+supinf = ['', _(u' par défaut'), _(u' par excès')]
 
 class ArrondirNombreDecimal(ex.TexExercise):
     """Arrondir des nombres décimaux"""
@@ -58,7 +58,7 @@ class ArrondirNombreDecimal(ex.TexExercise):
     def tex_statement(self):
         exo = ["\\exercice", '\\begin{enumerate}']
         for k in range(4):
-            exo.append("\\item Arrondir " + decimaux(self.nombres[k]) + " " + 
+            exo.append(_("\\item Arrondir ") + decimaux(self.nombres[k]) + " " + 
                     precision[self.choix_precision[k]] + supinf[self.choix_supinf[k]] + 
                     '.')
         exo.append("\\end{enumerate}")
@@ -80,13 +80,13 @@ class ArrondirNombreDecimal(ex.TexExercise):
                 solution = defaut
             elif (self.choix_supinf[k] == 2):
                 solution = exc
-            cor.append('\\item L\'encadrement de ' + decimaux(self.nombres[k]) + ' ' + 
-                    precision[self.choix_precision[k]] + ' est :\\par')
+            cor.append(_('\\item L\'encadrement de ') + decimaux(self.nombres[k]) + ' ' + 
+                    precision[self.choix_precision[k]] + _(' est :\\par'))
             cor.append(decimaux(defaut) + ' < ' + decimaux(self.nombres[k]) + ' < ' + 
                     decimaux(exc) + '\\par')
-            cor.append(u'On en déduit que son arrondi ' + 
+            cor.append(_(u'On en déduit que son arrondi ') + 
                     precision[self.choix_precision[k]] + ' ' + supinf[self.choix_supinf[k]] + 
-                    ' est : ' + decimaux(solution) + '.')
+                    _(' est : ') + decimaux(solution) + '.')
         cor.append("\\end{enumerate}")
         return "\n".join(cor)
 

@@ -149,9 +149,9 @@ tex_eqs = [tex_equation0, tex_equation1, tex_equation2, tex_equation3,
           tex_equation4, tex_equation5, tex_equation6]
 
 def equations(exo, cor, valeurs):  # resolution d'une equation
-    exo.append(u"Résoudre l'équation : ")
+    exo.append(_(u"Résoudre l'équation : "))
     exo.append(u'\\[ ' + tex_equation0(valeurs) + '\\] ')
-    cor.append(u"Résoudre l'équation : ")
+    cor.append(_(u"Résoudre l'équation : "))
     for i in range(7):
         cor.append(u"\\[%s\\]" % tex_eqs[i](valeurs))
         if i == 2 and valeurs[3][1] < 0:
@@ -163,7 +163,7 @@ def equations(exo, cor, valeurs):  # resolution d'une equation
         sol = fractions.tex_frac(simpl)
     else:
         sol = fractions.tex_frac(frac)
-    cor.append(u'\\fbox{La solution de cette équation est $%s$\\,.}' %
+    cor.append(_(u'\\fbox{La solution de cette équation est $%s$\\,.}') %
              sol)
 
 def _tex_equations():

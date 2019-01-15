@@ -416,9 +416,9 @@ def _tex_fractions():
                     valeurs_prod_parenth,
                     valeurs_quotient_frac)
     ordre_exos = [i for i in range(nb_exos)]
-    exo = ['''\n\\exercice''', u"Calculer les expressions suivantes et donner le résultat sous la forme d'une fraction irréductible."]
+    exo = ['''\n\\exercice''', _(u"Calculer les expressions suivantes et donner le résultat sous la forme d'une fraction irréductible.")]
     exo.append('\\begin{multicols}{3}\\noindent')
-    cor = ['''\\exercice*''', u"Calculer les expressions suivantes et donner le résultat sous la forme d'une fraction irréductible."]
+    cor = ['''\\exercice*''', _(u"Calculer les expressions suivantes et donner le résultat sous la forme d'une fraction irréductible.")]
     cor.append('\\begin{multicols}{3}\\noindent')
     for i in range(nb_exos):
         a = randrange(nb_exos - i)

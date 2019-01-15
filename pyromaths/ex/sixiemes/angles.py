@@ -219,14 +219,14 @@ def reponses(exo, cor, lpoints, lnoms):
         cor.append("$\\widehat{%s%s%s}=%s\degres$\\par" % (lnoms[i][1],
                  lnoms[i][0], lnoms[i][2], lpoints[i][4]))
         if lpoints[i][4] < 90:
-            cor.append("angle aigu\\par")
+            cor.append(_("angle aigu\\par"))
         elif lpoints[i][4] > 90:
-            cor.append("angle obtus\\par")
+            cor.append(_("angle obtus\\par"))
         else:
-            cor.append("angle droit\\par")
+            cor.append(_("angle droit\\par"))
     cor.append("\\end{multicols}")
     exo.append("\\begin{tabularx}{\\textwidth}{|*{4}{X|}}")
-    exo.append("\\hline angle 1 : & angle 2 : & angle 3 : & angle 4 : \\\\")
+    exo.append(_("\\hline angle 1 : & angle 2 : & angle 3 : & angle 4 : \\\\"))
     exo.append("\\hline &&& \\\\ &&& \\\\ &&& \\\\ \\hline")
     exo.append("\\end{tabularx}")
 
@@ -246,8 +246,8 @@ def _MesureAngles():
     tmpl = Geometrie.choix_points(3 * nb_angles)
     for i in range(nb_angles):
         lnoms.append(tuple(tmpl[3 * i:3 * i + 3]))
-    exo = ["\\exercice", "Nommer, mesurer et donner la nature de chacun des angles suivants :\\par "]
-    cor = ["\\exercice*", "Nommer, mesurer et donner la nature de chacun des angles suivants :\\par "]
+    exo = ["\\exercice", _("Nommer, mesurer et donner la nature de chacun des angles suivants :\\par ")]
+    cor = ["\\exercice*", _("Nommer, mesurer et donner la nature de chacun des angles suivants :\\par ")]
     figure(exo, cor, lpoints, lnoms, xmax, ymax)
     reponses(exo, cor, lpoints, lnoms)
     return (exo, cor)
@@ -351,18 +351,18 @@ class ConstruireZigZag(ex.TexExercise):
         return exo
 
     def tex_commun(self):
-        exo = [u'Construire sur la figure ci-dessous les points $C$, $D$, $E$, $F$ et $G$ pour obtenir un zigzag tel que :\\par']
+        exo = [_(u'Construire sur la figure ci-dessous les points $C$, $D$, $E$, $F$ et $G$ pour obtenir un zigzag tel que :\\par')]
         exo_t = '$'
         for i in range(len(self.angles_relatifs) - 1):
             exo_t += r"\widehat{%s%s%s}=%s\degres \qquad " % (chr(i + 65), chr(i + 66), chr(i + 67), self.angles_relatifs[i + 1])
         exo_t += r'$\par'
         exo.append(exo_t)
-        exo.append(u"Quand le travail est fait avec une bonne précision, les ")
+        exo.append(_(u"Quand le travail est fait avec une bonne précision, les "))
         x1, y1 = inter_droites(self.points[0], self.points[-1], self.points[1], self.points[-2])
         if 0 < x1 < 18 and 0 < y1 < self.lg + 2:
-            exo.append(u"droites $(AG)$ et $(BF)$ se coupent au c\\oe ur de la cible.\\par")
+            exo.append(_(u"droites $(AG)$ et $(BF)$ se coupent au c\\oe ur de la cible.\\par"))
         else:
-            exo.append(u"droites $(AF)$ et $(BG)$ se coupent au c\\oe ur de la cible.")
+            exo.append(_(u"droites $(AF)$ et $(BG)$ se coupent au c\\oe ur de la cible."))
         exo.append(r'\begin{center}')
         exo.append("\\fbox{\n\\begin{pspicture}(-.4,-.4)(16.4, %s)\n" % (self.lg + 1.5))
         return exo
@@ -370,7 +370,7 @@ class ConstruireZigZag(ex.TexExercise):
 
     def tex_statement(self):
         exo = [r'\exercice']
-        exo.append(u'Voici deux exemples de zigzags :\par')
+        exo.append(_(u'Voici deux exemples de zigzags :\par'))
         exo.append(r'\psset{unit=3.5mm,PointSymbol=none}')
         exo.append(r'\begin{pspicture}(-.4,-1)(16.4, 7.5)')
         exo.append(r'%\psgrid')

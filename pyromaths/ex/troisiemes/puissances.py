@@ -122,9 +122,9 @@ def _tex_puissances():
     sd = str.maketrans('.', ',')  # convertit les . en , (separateur decimal)
     valeurs = valeurs_puissances()
     i = randrange(2)
-    exo = ['\\exercice''', u"Calculer les expressions suivantes et donner l'écriture scientifique du résultat."]
+    exo = ['\\exercice''', _(u"Calculer les expressions suivantes et donner l'écriture scientifique du résultat.")]
     exo.append('\\begin{multicols}{2}\\noindent')
-    cor = ['\\exercice*''', u"Calculer les expressions suivantes et donner l'écriture scientifique du résultat."]
+    cor = ['\\exercice*''', _(u"Calculer les expressions suivantes et donner l'écriture scientifique du résultat.")]
     cor.append('\\begin{multicols}{2}\\noindent')
     exo.append(u'\\[ \\thenocalcul = ' + tex_puissances_0(valeurs[i]).translate(sd) + '\\] ')
     cor.append(u'\\[ \\thenocalcul = ' + tex_puissances_0(valeurs[i]).translate(sd) + '\\] ')

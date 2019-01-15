@@ -52,9 +52,9 @@ def valeurs_reduire():
 
 def _reduire():
     """Travail sur les bases du calcul littéral en quatrième"""
-    exo = ["\\exercice", u"Réduire, si possible, les expressions suivantes :",
+    exo = ["\\exercice", _(u"Réduire, si possible, les expressions suivantes :"),
            "\\begin{multicols}{3}\\noindent", "  \\begin{enumerate}"]
-    cor = ["\\exercice*", u"Réduire, si possible, les expressions suivantes :",
+    cor = ["\\exercice*", _(u"Réduire, si possible, les expressions suivantes :"),
            "\\begin{multicols}{3}\\noindent", "  \\begin{enumerate}"]
     for dummy in range(9):
         a = valeurs_reduire()
@@ -117,9 +117,9 @@ def _distributivite():
         lcalc[i].extend(priorites(lcalc[i][0]))
         lcalc[i][0] = splitting(lcalc[i][0])
         expr.append(texify(lcalc[i]))
-    exo = ["\\exercice", u"Développer et réduire chacune des expressions littérales suivantes :"]
+    exo = ["\\exercice", _(u"Développer et réduire chacune des expressions littérales suivantes :")]
     exo.append("\\begin{multicols}{2}")
-    cor = ["\\exercice*", u"Développer et réduire chacune des expressions littérales suivantes :"]
+    cor = ["\\exercice*", _(u"Développer et réduire chacune des expressions littérales suivantes :")]
     cor.append("\\begin{multicols}{2}")
 
     for i in range(len(lcalc)):
@@ -167,9 +167,9 @@ def _double_distributivite():
         lcalc[i].extend(priorites(lcalc[i][0]))
         lcalc[i][0] = splitting(lcalc[i][0])
         expr.append(texify(lcalc[i]))
-    exo = ["\\exercice", u"Développer et réduire chacune des expressions littérales suivantes :"]
+    exo = ["\\exercice", _(u"Développer et réduire chacune des expressions littérales suivantes :")]
     exo.append("\\begin{multicols}{2}")
-    cor = ["\\exercice*", u"Développer et réduire chacune des expressions littérales suivantes :"]
+    cor = ["\\exercice*", _(u"Développer et réduire chacune des expressions littérales suivantes :")]
     cor.append("\\begin{multicols}{2}")
     for i in range(len(lcalc)):
         if i == 2: cor.append("\\end{multicols}")
@@ -209,9 +209,9 @@ def _soustraction():
         lcalc[i].extend(priorites(lcalc[i][0]))
         lcalc[i][0] = splitting(lcalc[i][0])
         expr.append(texify(lcalc[i]))
-    exo = ["\\exercice", u"Réduire chacune des expressions littérales suivantes :"]
+    exo = ["\\exercice", _(u"Réduire chacune des expressions littérales suivantes :")]
     exo.append("\\begin{multicols}{2}")
-    cor = ["\\exercice*", u"Réduire chacune des expressions littérales suivantes :"]
+    cor = ["\\exercice*", _(u"Réduire chacune des expressions littérales suivantes :")]
     cor.append("\\begin{multicols}{2}")
     for i in range(len(lcalc)):
         cor.append('\\\\\n'.join(['$%s=%s$' % (chr(i + 65), expr[i][j]) for j in range(len(expr[i]) - 1)]))
@@ -240,8 +240,8 @@ def valeurs_reduire_somme(nbval=4):
 def _exo_comptable():
     """Exercice tiré de l'excellent ouvrage Des maths ensemble et pour chacun quatrième
     """
-    exo = ["\\exercice", u"Le principe est le suivant : l'extrémité de chaque flèche indique la somme de la ligne ou de la colonne correspondante. Compléter, sachant que $x$ représente un nombre quelconque et que le contenu des deux cases grises doit être le même.\\par"]
-    cor = ["\\exercice*", u"Le principe est le suivant : l'extrémité de chaque flèche indique la somme de la ligne ou de la colonne correspondante. Compléter, sachant que $x$ représente un nombre quelconque et que le contenu des deux cases grises doit être le même.\\par"]
+    exo = ["\\exercice", _(u"Le principe est le suivant : l'extrémité de chaque flèche indique la somme de la ligne ou de la colonne correspondante. Compléter, sachant que $x$ représente un nombre quelconque et que le contenu des deux cases grises doit être le même.\\par")]
+    cor = ["\\exercice*", _(u"Le principe est le suivant : l'extrémité de chaque flèche indique la somme de la ligne ou de la colonne correspondante. Compléter, sachant que $x$ représente un nombre quelconque et que le contenu des deux cases grises doit être le même.\\par")]
     lexo = [valeurs_reduire_somme(2) for dummy in range(8)]
     lcalc = [["%s+%s" % (lexo[4], lexo[0])], ["%s+%s" % (lexo[5], lexo[1])], ["%s+%s" % (lexo[6], lexo[2])], ["%s+%s" % (lexo[7], lexo[3])], \
              ["%s+%s+%s+%s" % tuple(lexo[0:4])], [ "%s+%s+%s+%s" % tuple(lexo[4:])]]

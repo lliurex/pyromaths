@@ -224,7 +224,7 @@ def systemes(exo, cor, v):
   \\begin{multicols}{2}\\noindent
 ''')
     cor.append(u'\\[ ' + tex_systeme(c1) +
-                     '\\quad\\text{\\footnotesize On ajoute les deux lignes}' + '\\] ')
+                     _('\\quad\\text{\\footnotesize On ajoute les deux lignes}') + '\\] ')
     c2 = combinaison2(c1)
     cor.append(u'\\[ ' + tex_comb2(c1, c2) + '\\] ')
     cor.append(u'\\[ ' + tex_comb3(c2) + '\\] ')
@@ -234,14 +234,14 @@ def systemes(exo, cor, v):
     cor.append(u'\\[ ' + tex_eq2(v, c2) + '\\] ')
     cor.append(u'\\[ \\boxed{' + tex_eq3(v, c2) + '} \\] ')
     cor.append('\\end{multicols}')
-    cor.append(u"\\underline{La solution de ce système d'équations est $(x;~y)=(%s;~%s)$.}\\par" %
+    cor.append(_(u"\\underline{La solution de ce système d'équations est $(x;~y)=(%s;~%s)$.}\\par") %
              v[2])
     cor.append(u'{Vérification : $' + tex_verification(v) + '$}')
 
 def _tex_systemes():
     valeurs = choix_valeurs(10)
-    exo = ['\\exercice', u"Résoudre le système d'équations suivant :"]
-    cor = ['\\exercice*', u"Résoudre le système d'équations suivant :"]
+    exo = ['\\exercice', _(u"Résoudre le système d'équations suivant :")]
+    cor = ['\\exercice*', _(u"Résoudre le système d'équations suivant :")]
     systemes(exo, cor, valeurs)
     return (exo, cor)
 

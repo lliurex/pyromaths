@@ -238,7 +238,7 @@ def _vecteurs_add():
 
     cor.append("\\par")
     cor.append(_(u"Un petit rappel : l'abscisse d'un vecteur est la différence d'abscisse entre le fin et le début du vecteur. \
-                 Concernant le vecteur $\\overrightarrow{u}$, son abscisse est $" + str(u.x) + u"$. \
+                 Concernant le vecteur $\\overrightarrow{u}$, son abscisse est $") + str(u.x) + _(u"$. \
                  On lit également son ordonnée : $") + str(u.x) + _(u"$. \
                  Donc les coordonnées de $\\overrightarrow{u}$ sont $(") + str(u.x) + ", " + str(u.y) + _(u" )$. \
                  Des pointillés ont été ajoutés sur la figure pour faciliter la lecture des coordonnées."))
