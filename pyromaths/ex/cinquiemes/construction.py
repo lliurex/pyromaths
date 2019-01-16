@@ -71,7 +71,7 @@ def _exo_triangle(test=False):
     return exo, cor
 
 class exo_triangle(LegacyExercise):
-    """Construction de triangles"""
+    description=_("""Construction de triangles""")
 
     tags = ["Cinquième"]
     function = _exo_triangle
@@ -376,7 +376,7 @@ def _exo_quadrilatere(test=False):
     return exo, cor
 
 class exo_quadrilatere(LegacyExercise):
-    """Construction de parallélogrammes"""
+    description=_("""Construction de parallélogrammes""")
 
     tags = ["Cinquième"]
     function = _exo_quadrilatere

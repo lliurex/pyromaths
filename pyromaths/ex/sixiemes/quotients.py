@@ -64,7 +64,7 @@ def _Divisible():
     return (exo, cor)
 
 class Divisible(LegacyExercise):
-    """Multiples de 2, 3, 5, 9, 10"""
+    description=_("""Multiples de 2, 3, 5, 9, 10""")
 
     tags = ["Sixième"]
     function = _Divisible

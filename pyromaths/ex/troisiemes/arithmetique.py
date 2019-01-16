@@ -307,7 +307,7 @@ def _Arithmetique():
     return (exo, cor)
 
 class Arithmetique(LegacyExercise):
-    """Arithmétique"""
+    description=_("""Arithmétique""")
 
     tags = ["Troisième"]
     function = _Arithmetique

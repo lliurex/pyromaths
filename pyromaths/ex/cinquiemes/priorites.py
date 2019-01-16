@@ -262,7 +262,7 @@ def _priorites():
     return (exo, cor)
 
 class priorites(LegacyExercise):
-    """Priorités opératoires"""
+    description=_("""Priorités opératoires""")
 
     tags = ["Cinquième"]
     function = _priorites

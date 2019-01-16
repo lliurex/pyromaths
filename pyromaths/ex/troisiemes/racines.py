@@ -249,7 +249,7 @@ def _tex_racines():
     return (exo, cor)
 
 class tex_racines(LegacyExercise):
-    """Racines carrées"""
+    description=_("""Racines carrées""")
 
     tags = ["Troisième"]
     function = _tex_racines

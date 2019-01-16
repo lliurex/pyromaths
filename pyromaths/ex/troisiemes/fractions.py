@@ -432,7 +432,7 @@ def _tex_fractions():
     return (exo, cor)
 
 class tex_fractions(LegacyExercise):
-    """Fractions"""
+    description=_("""Fractions""")
 
     tags = ["Troisième"]
     function = _tex_fractions

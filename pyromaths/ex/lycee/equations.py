@@ -46,7 +46,7 @@ def racines(p, lracines):
     return (-float(q[1][0]) + sqrt(d)) / 2 / float(q[0][0]), (-float(q[1][0]) - sqrt(d)) / 2 / float(q[0][0])
 
 class _EquationGraphique(ex.TexExercise):
-    """Résolution graphique d'équations"""
+    description=_("""Résolution graphique d'équations""")
 
     tags = ["Seconde"]
 

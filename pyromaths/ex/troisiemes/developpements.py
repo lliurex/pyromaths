@@ -81,7 +81,7 @@ def id_rem4(a, b, details=2):
 
 
 class id_rem(LegacyExercise):
-    """Identités remarquables"""
+    description=_("""Identités remarquables""")
 
     tags = ["Troisième"]
     function = _id_rem

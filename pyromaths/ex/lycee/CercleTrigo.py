@@ -259,7 +259,7 @@ def _cercle_trigonometrique():
     return exo, cor
 
 class cercle_trigonometrique(LegacyExercise):
-    """Cercle trigonométrique"""
+    description=_("""Cercle trigonométrique""")
 
     tags = ["Seconde"]
     function = _cercle_trigonometrique

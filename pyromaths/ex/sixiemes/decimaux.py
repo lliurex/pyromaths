@@ -448,7 +448,7 @@ def _EcrireNombreLettre():
     return (exo, cor)
 
 class EcrireNombreLettre(LegacyExercise):
-    """Écrire un nombre décimal"""
+    description=_("""Écrire un nombre décimal""")
 
     tags = ["Sixième"]
     function = _EcrireNombreLettre
@@ -633,7 +633,7 @@ def _tex_units():
     return (exo, cor)
 
 class tex_units(LegacyExercise):
-    """Conversions unités"""
+    description=_("""Conversions unités""")
 
     tags = ["Sixième"]
     function = _tex_units
@@ -728,7 +728,7 @@ def _exo_conversion_2d():
     return exo_conversion(2)
 
 class exo_conversion_2d(LegacyExercise):
-    """Conversions unités d'aires"""
+    description=_("""Conversions unités d'aires""")
 
     tags = ["Sixième"]
     function = _exo_conversion_2d
@@ -737,7 +737,7 @@ def _exo_conversion_3d():
     return exo_conversion(3)
 
 class exo_conversion_3d(LegacyExercise):
-    """Conversions unités de volumes"""
+    description=_("""Conversions unités de volumes""")
 
     tags = ["Sixième"]
     function = _exo_conversion_3d
@@ -882,7 +882,7 @@ def _PlaceVirgule():
     return (exo, cor)
 
 class PlaceVirgule(LegacyExercise):
-    """Placer une virgule"""
+    description=_("""Placer une virgule""")
 
     tags = ["Sixième"]
     function = _PlaceVirgule
@@ -948,7 +948,7 @@ def _EcritureFractionnaire():
     return (exo, cor)
 
 class EcritureFractionnaire(LegacyExercise):
-    """Écriture fractionnaire ou décimale"""
+    description=_("""Écriture fractionnaire ou décimale""")
 
     tags = ["Sixième"]
     function = _EcritureFractionnaire
@@ -1017,7 +1017,7 @@ def _Decomposition():
     return (exo, cor)
 
 class Decomposition(LegacyExercise):
-    """Décomposition de décimaux"""
+    description=_("""Décomposition de décimaux""")
 
     tags = ["Sixième"]
     function = _Decomposition
@@ -1080,7 +1080,7 @@ def _ClasserNombres():
     return (exo, cor)
 
 class ClasserNombres(LegacyExercise):
-    """Classer des nombres décimaux"""
+    description=_("""Classer des nombres décimaux""")
 
     tags = ["Sixième"]
     function = _ClasserNombres

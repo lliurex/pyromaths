@@ -188,7 +188,7 @@ def _FractionPartage():
     return (exo, cor)
 
 class FractionPartage(LegacyExercise):
-    """Fractions partage"""
+    description=_("""Fractions partage""")
 
     tags = ["Sixième"]
     function = _FractionPartage
@@ -408,7 +408,7 @@ def _QuestionsAbscisses():
     return (exo, cor)
 
 class QuestionsAbscisses(LegacyExercise):
-    """Fractions et abscisses"""
+    description=_("""Fractions et abscisses""")
 
     tags = ["Sixième"]
     function = _QuestionsAbscisses

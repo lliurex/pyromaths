@@ -245,7 +245,7 @@ def _espace():
     return (exo, cor)
 
 class espace(LegacyExercise):
-    """Représentation dans l\'espace"""
+    description=_("""Représentation dans l\'espace""")
 
     tags = ["Sixième"]
     function = _espace

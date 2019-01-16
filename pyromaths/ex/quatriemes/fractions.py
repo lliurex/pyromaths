@@ -108,7 +108,7 @@ def _sommes_fractions_positives():
     return (exo, cor)
 
 class sommes_fractions_positives(LegacyExercise):
-    """Sommes de positifs en écriture fractionnaire"""
+    description=_("""Sommes de positifs en écriture fractionnaire""")
 
     tags = ["Quatrième"]
     function = _sommes_fractions_positives

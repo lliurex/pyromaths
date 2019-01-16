@@ -291,7 +291,7 @@ def _Operations():
     return (exo, cor)
 
 class Operations(LegacyExercise):
-    """Poser des opérations (sauf divisions)"""
+    description=_("""Poser des opérations (sauf divisions)""")
 
     tags = ["Sixième"]
     function = _Operations
@@ -371,7 +371,7 @@ def _CalculMental():
     return (exo, cor)
 
 class CalculMental(LegacyExercise):
-    """Calcul mental"""
+    description=_("""Calcul mental""")
 
     tags = ["Sixième"]
     function = _CalculMental
@@ -460,7 +460,7 @@ def _ProduitPuissanceDix():
     return (exo, cor)
 
 class ProduitPuissanceDix(LegacyExercise):
-    """Produits, quotients par 10, 100, 1000"""
+    description=_("""Produits, quotients par 10, 100, 1000""")
 
     tags = ["Sixième"]
     function = _ProduitPuissanceDix

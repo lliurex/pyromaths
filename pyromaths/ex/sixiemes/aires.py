@@ -252,7 +252,7 @@ def _aires():
 
 
 class aires(LegacyExercise):
-    """Aires et quadrillage"""
+    description=_("""Aires et quadrillage""")
 
     tags = ["Sixième"]
     function = _aires

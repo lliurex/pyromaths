@@ -253,13 +253,13 @@ def _MesureAngles():
     return (exo, cor)
 
 class MesureAngles(ex.LegacyExercise):
-    """Mesurer des angles"""
+    description=_("""Mesurer des angles""")
 
     tags = ["Sixième"]
     function = _MesureAngles
 
 class ConstruireZigZag(ex.TexExercise):
-    """Construire des angles"""
+    description=_("""Construire des angles""")
 
     tags = ["Sixième"]
 

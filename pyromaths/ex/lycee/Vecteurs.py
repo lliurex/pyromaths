@@ -301,7 +301,7 @@ def _vecteurs_add():
     return exo, cor
 
 class vecteurs_add(LegacyExercise):
-    """Vecteurs"""
+    description=_("""Vecteurs""")
 
     tags = ["Seconde"]
     function = _vecteurs_add

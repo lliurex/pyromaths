@@ -128,7 +128,7 @@ def _tex_pgcd():
     return (exo, cor)
 
 class tex_pgcd(LegacyExercise):
-    """PGCD"""
+    description=_("""PGCD""")
 
     tags = ["Troisième"]
     function = _tex_pgcd

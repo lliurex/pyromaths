@@ -148,7 +148,7 @@ def _tex_puissances():
 
 
 class tex_puissances(LegacyExercise):
-    """Puissances"""
+    description=_("""Puissances""")
 
     tags = ["Troisième"]
     function = _tex_puissances

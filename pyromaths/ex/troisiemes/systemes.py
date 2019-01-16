@@ -246,7 +246,7 @@ def _tex_systemes():
     return (exo, cor)
 
 class tex_systemes(LegacyExercise):
-    """Système d\'équations"""
+    description=_("""Système d\'équations""")
 
     tags = ["Troisième"]
     function = _tex_systemes

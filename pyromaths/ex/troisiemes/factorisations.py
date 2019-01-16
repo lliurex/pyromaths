@@ -148,7 +148,7 @@ def facteur_commun3(lcoeff, details=1, diff=False):
     return poly
 
 class factorisation(LegacyExercise):
-    """Factorisations"""
+    description=_("""Factorisations""")
 
     tags = ["Troisième"]
     function = _factorisation

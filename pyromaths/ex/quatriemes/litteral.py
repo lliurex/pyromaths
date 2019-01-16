@@ -74,7 +74,7 @@ def _reduire():
     return (exo, cor)
 
 class reduire(LegacyExercise):
-    """Bases du calcul littéral"""
+    description=_("""Bases du calcul littéral""")
 
     tags = ["Quatrième"]
     function = _reduire
@@ -132,7 +132,7 @@ def _distributivite():
     return exo, cor
 
 class distributivite(LegacyExercise):
-    """Distributivité"""
+    description=_("""Distributivité""")
 
     tags = ["Quatrième"]
     function = _distributivite
@@ -181,7 +181,7 @@ def _double_distributivite():
     return exo, cor
 
 class double_distributivite(LegacyExercise):
-    """Double distributivité"""
+    description=_("""Double distributivité""")
 
     tags = ["Quatrième"]
     function = _double_distributivite
@@ -223,7 +223,7 @@ def _soustraction():
     return exo, cor
 
 class soustraction(LegacyExercise):
-    """Soustraire une expression entre parenthèses"""
+    description=_("""Soustraire une expression entre parenthèses""")
 
     tags = ["Quatrième"]
     function = _soustraction
@@ -319,7 +319,7 @@ def _exo_comptable():
     return exo, cor
 
 class exo_comptable(LegacyExercise):
-    """Réduire des expressions littérales"""
+    description=_("""Réduire des expressions littérales""")
 
     tags = ["Quatrième"]
     function = _exo_comptable

@@ -117,7 +117,7 @@ def _tex_proba():
     return (exo, cor)
 
 class tex_proba(LegacyExercise):
-    """Probabilités"""
+    description=_("""Probabilités""")
 
     tags = ["Troisième"]
     function = _tex_proba

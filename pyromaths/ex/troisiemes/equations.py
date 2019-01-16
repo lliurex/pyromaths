@@ -174,7 +174,7 @@ def _tex_equations():
     return (exo, cor)
 
 class tex_equations(LegacyExercise):
-    """Équation"""
+    description=_("""Équation""")
 
     tags = ["Troisième"]
     function = _tex_equations

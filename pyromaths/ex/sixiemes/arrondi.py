@@ -32,7 +32,8 @@ precision = [_(u'au millième'), _(u'au centième'), _(u'au dixième'), _(u'à l
 supinf = ['', _(u' par défaut'), _(u' par excès')]
 
 class ArrondirNombreDecimal(ex.TexExercise):
-    """Arrondir des nombres décimaux"""
+#    """Arrondir des nombres décimaux"""
+    description=_("""Arrondir des nombres décimaux""")
 
     tags = ["Sixième"]
 

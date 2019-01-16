@@ -106,7 +106,7 @@ def integration_zeros(lX, lY, variations):
 
 
 class Vf1SensEtTableau(ex.TexExercise):
-    """Sens et Tableau de variations"""
+    description=_("""Sens et Tableau de variations""")
 
     tags = ["Seconde"]
 
@@ -264,7 +264,7 @@ def extrema(lX, lY, intervalle):
     return extremums
 
 class Vf2ExtremaGraphiques(ex.TexExercise):
-    """Extrema et représentation graphique"""
+    description=_("""Extrema et représentation graphique""")
 
     tags = ["Seconde"]
 
@@ -398,7 +398,7 @@ class Vf2ExtremaGraphiques(ex.TexExercise):
         return "\n".join(exo)
 
 class Vf3VariationVersCourbe(ex.TexExercise):
-    """Tableaux de variations et courbe"""
+    description=_("""Tableaux de variations et courbe""")
 
     tags = ["Seconde"]
 
@@ -642,7 +642,7 @@ def intersection_intervalles(I0, I1):
     else: return None
 
 class Vf4ComparerImages(ex.TexExercise):
-    """Comparer des images à partir du sens de variation"""
+    description=_("""Comparer des images à partir du sens de variation""")
 
     tags = ["Seconde"]
 
@@ -804,7 +804,7 @@ def extrema_locaux(variations, lX, lY):
     return None
 
 class Vf5Extrema_Tableau(ex.TexExercise):
-    """Extrema locaux à partir du tableau de variation"""
+    description=_("""Extrema locaux à partir du tableau de variation""")
 
     tags = ["Seconde"]
 

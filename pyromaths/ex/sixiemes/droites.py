@@ -217,7 +217,7 @@ def _Droites():
     return (exo, cor)
 
 class Droites(LegacyExercise):
-    """Droites, demi-droites, segments"""
+    description=_("""Droites, demi-droites, segments""")
 
     tags = ["Sixième"]
     function = _Droites
@@ -332,7 +332,7 @@ def _Perpendiculaires():
     return (exo, cor)
 
 class Perpendiculaires(LegacyExercise):
-    """Droites perpendiculaires et parallèles"""
+    description=_("""Droites perpendiculaires et parallèles""")
 
     tags = ["Sixième"]
     function = _Perpendiculaires
@@ -656,7 +656,7 @@ def _Proprietes():
     return (exo, cor)
 
 class Proprietes(LegacyExercise):
-    """Propriétés sur les droites"""
+    description=_("""Propriétés sur les droites""")
 
     tags = ["Sixième"]
     function = _Proprietes

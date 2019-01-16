@@ -428,7 +428,7 @@ def _affine():
     return exo, cor
 
 class affine(LegacyExercise):
-    """Fonctions affines"""
+    description=_("""Fonctions affines""")
 
     tags = ["Troisième"]
     function = _affine

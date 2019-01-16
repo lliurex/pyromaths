@@ -365,7 +365,7 @@ def _tex_thales():
 
 
 class tex_thales(LegacyExercise):
-    """Théorème de Thalès"""
+    description=_("""Théorème de Thalès""")
 
     tags = ["Troisième"]
     function = _tex_thales
@@ -562,7 +562,7 @@ def _tex_reciproque_thales():
     return exo, cor
 
 class tex_reciproque_thales(LegacyExercise):
-    """Réciproque du théorème de Thalès"""
+    description=_("""Réciproque du théorème de Thalès""")
 
     tags = ["Troisième"]
     function = _tex_reciproque_thales
@@ -722,7 +722,7 @@ def _tex_trigo():
     return exo, cor
 
 class tex_trigo(LegacyExercise):
-    """Trigonométrie"""
+    description=_("""Trigonométrie""")
 
     tags = ["Troisième"]
     function = _tex_trigo

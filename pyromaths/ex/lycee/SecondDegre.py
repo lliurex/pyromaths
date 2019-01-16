@@ -46,7 +46,7 @@ def signe(nombre):
 dummy=SquareRoot([1,1]) # Pour que l'IDE sache que l'import de SquareRoot est obligatoire
 
 class BilanTrinomeSansDiscriminant(Jinja2Exercise):
-    """Bilan sur les trinômes"""
+    description=_("""Bilan sur les trinômes""")
 
     tags = ["Seconde"]
 
@@ -133,7 +133,7 @@ def creerPolydegre2(nb_racines=2, rac_radical=True, rac_quotient=False):
         return Polynome(pol)
 
 class Sd1FormeCanonique(ex.TexExercise):
-    """Forme canonique"""
+    description=_("""Forme canonique""")
 
     tags = ["1èreS"]
 
@@ -274,7 +274,7 @@ class Sd1FormeCanonique(ex.TexExercise):
 
 class Sd2aRacines(ex.TexExercise):
     #TODO: ./utils/pyromaths generate Sd2aRacines:1, 2 et 3 ne fonctionnent pas
-    """Racines d'un polynôme de degré 2"""
+    description=_("""Racines d'un polynôme de degré 2""")
 
     tags = ["1èreS"]
 
@@ -406,7 +406,7 @@ class Sd2aRacines(ex.TexExercise):
         return "\n".join(exo)
 
 class _Sd2bEquations(ex.TexExercise):
-    """Équations et polynômes de degré 2"""
+    description=_("""Équations et polynômes de degré 2""")
 
     tags = ["1èreS"]
 
@@ -452,7 +452,7 @@ class _Sd2bEquations(ex.TexExercise):
         return "\n".join(exo)
 
 class _Sd3aSigne(ex.TexExercise):
-    """Signe d'un polynôme de degré 2"""
+    description=_("""Signe d'un polynôme de degré 2""")
 
     tags = ["1èreS"]
 
@@ -497,7 +497,7 @@ class _Sd3aSigne(ex.TexExercise):
         return "\n".join(exo)
 
 class _Sd3bInequations(ex.TexExercise):
-    """Inéquations et polynômes de degré 2"""
+    description=_("""Inéquations et polynômes de degré 2""")
 
     tags = ["1èreS"]
 
@@ -521,7 +521,7 @@ class _Sd3bInequations(ex.TexExercise):
         return "\n".join(exo)
 
 class _Sd4Factorisation(ex.TexExercise):
-    """Racines et factorisation d'un polynôme de degré 2"""
+    description=_("""Racines et factorisation d'un polynôme de degré 2""")
 
     tags = ["1èreS"]
 
@@ -568,7 +568,7 @@ class _Sd4Factorisation(ex.TexExercise):
         return "\n".join(exo)
 
 class _Sd5Caracteristiques(ex.TexExercise):
-    """Caractéristiques d'une parabole"""
+    description=_("""Caractéristiques d'une parabole""")
 
     tags = ["1èreS"]
 
@@ -609,7 +609,7 @@ class _Sd5Caracteristiques(ex.TexExercise):
         return "\n".join(exo)
 
 class _Sd6Parametre(ex.TexExercise):
-    """Polynôme paramétré de degré 2"""
+    description=_("""Polynôme paramétré de degré 2""")
 
     tags = ["1èreS"]
 

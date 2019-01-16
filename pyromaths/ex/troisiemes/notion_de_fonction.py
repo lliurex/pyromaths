@@ -176,7 +176,7 @@ def _notion_fonction():
     return exo, cor
 
 class notion_fonction(LegacyExercise):
-    """Bilan sur la notion de fonction"""
+    description=_("""Bilan sur la notion de fonction""")
 
     tags = ["Troisième"]
     function = _notion_fonction
