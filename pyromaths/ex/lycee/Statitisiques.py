@@ -26,7 +26,7 @@ Created on 21 janv. 2015
 '''
 from pyromaths import ex
 from random import randrange
-def listeToclasses(liste):
+def listeTolasses(liste):
     result = [r'$[%s' % (liste[0])]
     for l in liste[1:]:
         result.append(r'$[%s' % (l + eval(result[-1][2:])))
@@ -35,7 +35,7 @@ def listeToclasses(liste):
     return result
 
 class _Histogramme(ex.TexExercise):
-    """Construire un histogramme"""
+    description=_("""Construire un histogramme""")
 
     tags = ["Seconde"]
 

@@ -106,7 +106,7 @@ def integration_zeros(lX, lY, variations):
 
 
 class Vf1SensEtTableau(ex.TexExercise):
-    """Sens et Tableau de variations"""
+    description=_("""Sens et Tableau de variations""")
 
     tags = ["Seconde"]
 
@@ -192,9 +192,9 @@ class Vf1SensEtTableau(ex.TexExercise):
             elif v[0] == -1: dvar[_(u'décroissante')].append('$\interval{%s}{%s}$' % (v[1], v[2]))
             elif v[0] == 0: dvar[_(u'constante')].append('$\interval{%s}{%s}$' % (v[1], v[2]))
             else: raise ValueError(_('variation non attendue'))
-        if dvar[_(u'décroissante')]: ans += u' décroissante sur %s,' % ' et '.join(dvar[_(u'décroissante')])
-        if dvar[_(u'croissante')]: ans += u' croissante sur %s' % ' et '.join(dvar[_(u'croissante')])
-        if dvar[_(u'constante')]: ans += u' constante sur %s' % ' et '.join(dvar[_(u'constante')])
+        if dvar[_(u'décroissante')]: ans += _(u' décroissante sur %s,') % ' et '.join(dvar[_(u'décroissante')])
+        if dvar[_(u'croissante')]: ans += _(u' croissante sur %s') % _(' et ').join(dvar[_(u'croissante')])
+        if dvar[_(u'constante')]: ans += _(u' constante sur %s') % _(' et ').join(dvar[_(u'constante')])
         ans += '.'
         exo.append(ans)
         exo.append(r'\item')
@@ -264,7 +264,7 @@ def extrema(lX, lY, intervalle):
     return extremums
 
 class Vf2ExtremaGraphiques(ex.TexExercise):
-    """Extrema et représentation graphique"""
+    description=_("""Extrema et représentation graphique""")
 
     tags = ["Seconde"]
 
@@ -398,7 +398,7 @@ class Vf2ExtremaGraphiques(ex.TexExercise):
         return "\n".join(exo)
 
 class Vf3VariationVersCourbe(ex.TexExercise):
-    """Tableaux de variations et courbe"""
+    description=_("""Tableaux de variations et courbe""")
 
     tags = ["Seconde"]
 
@@ -642,7 +642,7 @@ def intersection_intervalles(I0, I1):
     else: return None
 
 class Vf4ComparerImages(ex.TexExercise):
-    """Comparer des images à partir du sens de variation"""
+    description=_("""Comparer des images à partir du sens de variation""")
 
     tags = ["Seconde"]
 
@@ -804,7 +804,7 @@ def extrema_locaux(variations, lX, lY):
     return None
 
 class Vf5Extrema_Tableau(ex.TexExercise):
-    """Extrema locaux à partir du tableau de variation"""
+    description=_("""Extrema locaux à partir du tableau de variation""")
 
     tags = ["Seconde"]
 
@@ -834,9 +834,9 @@ class Vf5Extrema_Tableau(ex.TexExercise):
         exo.append(_(u'\\item À partir du tableau de variation de la fonction $f$, compléter les égalités ou inégalités suivantes :\\vspace{-2ex}'))
         exo.append(r'\begin{multicols}{2}')
         exo.append(r'\begin{enumerate}')
-        exo.append(r'\item Pour $x \in \interval{%s}{%s},\quad f\,(x) %s \ldots{}$' % (self.lX[0], self.lX[-1], self.inegalites[0]))
-        exo.append(r'\item Pour $x \in \interval{%s}{%s},\quad f\,(x) %s \ldots{}$' % (self.lX[0], self.lX[-1], self.inegalites[1]))
-        exo.append(r'\item Pour $x \in \interval{%s}{%s},\quad f\,(x) %s \ldots{}$' % (decimaux(self.comparaison[0][0][0], 1), decimaux(self.comparaison[0][1][0], 1), self.inegalites[2]))
+        exo.append(r'\item '+_('Pour')+' $x \in \interval{%s}{%s},\quad f\,(x) %s \ldots{}$' % (self.lX[0], self.lX[-1], self.inegalites[0]))
+        exo.append(r'\item '+_('Pour')+' $x \in \interval{%s}{%s},\quad f\,(x) %s \ldots{}$' % (self.lX[0], self.lX[-1], self.inegalites[1]))
+        exo.append(r'\item '+_('Pour')+' $x \in \interval{%s}{%s},\quad f\,(x) %s \ldots{}$' % (decimaux(self.comparaison[0][0][0], 1), decimaux(self.comparaison[0][1][0], 1), self.inegalites[2]))
         exo.append(r'\end{enumerate}')
         exo.append(r'\end{multicols}')
         exo.append(u'\\item')
@@ -901,9 +901,9 @@ class Vf5Extrema_Tableau(ex.TexExercise):
         exo.append(r'\begin{multicols}{2}')
         exo.append(r'\begin{enumerate}')
         extr = extrema(self.lX, self.lY, [self.lX[0], self.lX[-1]])
-        exo.append(_(r'\item Pour $x \in \interval{%s}{%s},\quad f\,(x) %s %s$') % (self.lX[0], self.lX[-1], self.inegalites[0], extr['\\leqslant{}' == self.inegalites[0]][1]))
-        exo.append(_(r'\item Pour $x \in \interval{%s}{%s},\quad f\,(x) %s %s$') % (self.lX[0], self.lX[-1], self.inegalites[1], extr['\\leqslant{}' == self.inegalites[1]][1]))
-        exo.append(_(r'\item Pour $x \in \interval{%s}{%s},\quad f\,(x) %s %s$') % (decimaux(self.comparaison[0][0][0], 1), decimaux(self.comparaison[0][1][0], 1), self.inegalites[2], self.comparaison[0][2]['\\leqslant{}' == self.inegalites[2]]))
+        exo.append(_(r'\item '+_('Pour')+' $x \in \interval{%s}{%s},\quad f\,(x) %s %s$') % (self.lX[0], self.lX[-1], self.inegalites[0], extr['\\leqslant{}' == self.inegalites[0]][1]))
+        exo.append(_(r'\item '+_('Pour')+' $x \in \interval{%s}{%s},\quad f\,(x) %s %s$') % (self.lX[0], self.lX[-1], self.inegalites[1], extr['\\leqslant{}' == self.inegalites[1]][1]))
+        exo.append(_(r'\item '+_('Pour')+' $x \in \interval{%s}{%s},\quad f\,(x) %s %s$') % (decimaux(self.comparaison[0][0][0], 1), decimaux(self.comparaison[0][1][0], 1), self.inegalites[2], self.comparaison[0][2]['\\leqslant{}' == self.inegalites[2]]))
         exo.append(r'\end{enumerate}')
         exo.append(r'\end{multicols}')
         exo.append(r'\item')

@@ -683,7 +683,7 @@ def _statistiques():
     return (exo, cor)
 
 class statistiques(LegacyExercise):
-    """Statistiques"""
+    description=_("""Statistiques""")
 
     tags = ["Cinquième"]
     function = _statistiques

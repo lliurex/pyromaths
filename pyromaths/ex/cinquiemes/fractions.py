@@ -67,7 +67,7 @@ def _fractions_egales():
     return (exo, cor)
 
 class fractions_egales(LegacyExercise):
-    """Fractions égales"""
+    description=_("""Fractions égales""")
 
     tags = ["Cinquième"]
     function = _fractions_egales
@@ -138,7 +138,7 @@ def _sommes_fractions():
     return (exo, cor)
 
 class sommes_fractions(LegacyExercise):
-    """Sommes de fractions"""
+    description=_("""Sommes de fractions""")
 
     tags = ["Cinquième"]
     function = _sommes_fractions
@@ -187,7 +187,7 @@ def _produits_fractions():
     return (exo, cor)
 
 class produits_fractions(LegacyExercise):
-    """Produits de fractions"""
+    description=_("""Produits de fractions""")
 
     tags = ["Cinquième"]
     function = _produits_fractions

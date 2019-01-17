@@ -92,7 +92,7 @@ def _exo_racines_degre2():
     return exo, cor
 
 class exo_racines_degre2(LegacyExercise):
-    """Équations 2° degré"""
+    description=_("""Équations 2° degré""")
 
     tags = ["1èreS"]
     function = _exo_racines_degre2
@@ -174,7 +174,7 @@ def _exo_factorisation_degre2():
     return exo, cor
 
 class exo_factorisation_degre2(LegacyExercise):
-    """Factorisations 2° degré"""
+    description=_("""Factorisations 2° degré""")
 
     tags = ["1èreS"]
     function = _exo_factorisation_degre2
@@ -212,7 +212,7 @@ def _exo_factorisation_degre3():
     return exo, cor
 
 class exo_factorisation_degre3(LegacyExercise):
-    """Factorisations degré 3"""
+    description=_("""Factorisations degré 3""")
 
     tags = ["1èreS"]
     function = _exo_factorisation_degre3
@@ -270,7 +270,7 @@ def _exo_tableau_de_signe():
     return exo, cor
 
 class exo_tableau_de_signe(LegacyExercise):
-    """Étude de signe"""
+    description=_("""Étude de signe""")
 
     tags = ["1èreS"]
     function = _exo_tableau_de_signe
@@ -293,7 +293,7 @@ def _exo_variation():
     return exo, cor
 
 class exo_variation(LegacyExercise):
-    """Sens de variations"""
+    description=_("""Sens de variations""")
 
     tags = ["1èreS", "Term STMG"]
     function = _exo_variation
@@ -315,7 +315,7 @@ def _exo_variation_lim():
     return exo, cor
 
 class exo_variation_lim(LegacyExercise):
-    """Étude de fonctions"""
+    description=_("""Étude de fonctions""")
 
     tags = ["Term S"]
     function = _exo_variation_lim

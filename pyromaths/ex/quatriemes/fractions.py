@@ -87,10 +87,10 @@ def valeurs_somme_positive():
 
 def _sommes_fractions_positives():
     exo = ["\\exercice",
-           u"Calculer en détaillant les étapes. Donner le résultat sous la forme d'une fraction la plus simple possible (ou d'un entier lorsque c'est possible).",
+           _(u"Calculer en détaillant les étapes. Donner le résultat sous la forme d'une fraction la plus simple possible (ou d'un entier lorsque c'est possible)."),
            "\\begin{multicols}{4}", "  \\begin{enumerate}"]
     cor = ["\\exercice*",
-           u"Calculer en détaillant les étapes. Donner le résultat sous la forme d'une fraction la plus simple possible (ou d'un entier lorsque c'est possible).",
+           _(u"Calculer en détaillant les étapes. Donner le résultat sous la forme d'une fraction la plus simple possible (ou d'un entier lorsque c'est possible)."),
            "\\begin{multicols}{4}", "  \\begin{enumerate}"]
     lexo = valeurs_somme_positive()
     for question in lexo:
@@ -108,7 +108,7 @@ def _sommes_fractions_positives():
     return (exo, cor)
 
 class sommes_fractions_positives(LegacyExercise):
-    """Sommes de positifs en écriture fractionnaire"""
+    description=_("""Sommes de positifs en écriture fractionnaire""")
 
     tags = ["Quatrième"]
     function = _sommes_fractions_positives

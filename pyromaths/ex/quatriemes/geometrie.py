@@ -96,18 +96,18 @@ def _exo_pythagore():
         nom_tr = nom_triangle(noms)
         long0, long1 = types_exercice[j]
         cotes = cotes_sommets(noms)
-        enonce = \
+        enonce = _(\
             """    \\item Soit $%s$ un triangle rectangle en $%s$ tel que :\\par
 $%s=\\unit[%s]{cm}$ et $%s=\\unit[%s]{cm}$.\\par
-Calculer la longueur $%s$.""" % \
+Calculer la longueur $%s$.""") % \
             enonce_pythagore(noms, angles, longueurs, cotes, nom_tr, long0, long1)
         exo.append(enonce)
         cor.append(enonce)
         cor.append("\\par\\dotfill{}\\par\n")
-        cor.append(u"Le triangle $%s$ est rectangle en $%s$.\\par" % \
+        cor.append(_(u"Le triangle $%s$ est rectangle en $%s$.\\par") % \
                    (nom_tr, noms[2]))
-        cor.append(u"Son hypoténuse est $[%s]$.\\par" % (cotes[2]))
-        cor.append(u"D'après le \\textbf{théorème de Pythagore} :")
+        cor.append(_(u"Son hypoténuse est $[%s]$.\\par") % (cotes[2]))
+        cor.append(_(u"D'après le \\textbf{théorème de Pythagore} :"))
         cor.append("\\[%s^2=%s^2+%s^2\\]" % (cotes[2], cotes[0], cotes[1]))
         if long0 == 2 or long1 == 2:
             cor.append("\\[%s^2=%s^2-%s^2\\kern1cm\\text{(On cherche }%s)\\]" %
@@ -153,7 +153,7 @@ Calculer la longueur $%s$.""" % \
     return (exo, cor)
 
 class exo_pythagore(LegacyExercise):
-    """Théorème de Pythagore"""
+    description=_("""Théorème de Pythagore""")
 
     tags = ["Quatrième"]
     function = _exo_pythagore
@@ -189,7 +189,7 @@ def _exo_triangle_cercle():
     long0 = random.randrange(3)
     long1 = (random.randrange(2) + 1 + long0) % 3
     cotes = cotes_sommets(noms)
-    enonce = \
+    enonce = _(\
         u"""\\begin{minipage}{4cm}
 \\begin{pspicture}(-2,-2)(2,2)
 \\SpecialCoor\\psset{PointSymbol=none}
@@ -203,17 +203,17 @@ def _exo_triangle_cercle():
 \\begin{minipage}{13cm}
 $\\big(\\mathcal{C}\\big)$ est un cercle de diamètre $[%s]$ et $%s$ est un point de $\\big(\\mathcal{C}\\big)$.\\par
 On donne $%s=\\unit[%s]{cm}$ et $%s=\\unit[%s]{cm}$.\\par
-Calculer la longueur $%s$.""" % \
+Calculer la longueur $%s$.""") % \
         enonce_pythagore(noms, angles, longueurs, cotes, nom_tr, long0, long1, diam=1)
     exo.append(enonce)
     cor.append(enonce)
     cor.append("\\par\\dotfill{}\\\\\n")
-    cor.append(u"$[%s]$ est le diamètre du cercle circonscrit au triangle $%s$.\\par" %
+    cor.append(_(u"$[%s]$ est le diamètre du cercle circonscrit au triangle $%s$.\\par") %
                (cotes[2], nom_tr))
-    cor.append("\\fbox{Donc le triangle %s est rectangle en %s.}\\\\\n" %
+    cor.append(_("\\fbox{Donc le triangle %s est rectangle en %s.}\\\\\n") %
                (nom_tr, noms[2]))
-    cor.append(u"D'après le \\textbf{théorème de Pythagore} :")
-    cor.append(u"\\[%s^2=%s^2+%s^2\\kern1cm\\text{(car }[%s]\\text{ est \\emph{l'hypoténuse})}\\]" %
+    cor.append(_(u"D'après le \\textbf{théorème de Pythagore} :"))
+    cor.append(_(u"\\[%s^2=%s^2+%s^2\\kern1cm\\text{(car }[%s]\\text{ est \\emph{l'hypoténuse})}\\]") %
                (cotes[2], cotes[0], cotes[1], cotes[2]))
     if long0 == 2 or long1 == 2:
         cor.append("\\[%s^2=%s^2-%s^2\\kern1cm\\text{(On cherche }%s)\\]" %
@@ -255,7 +255,7 @@ Calculer la longueur $%s$.""" % \
     return (exo, cor)
 
 class exo_triangle_cercle(LegacyExercise):
-    """Cercle et théorème de Pythagore"""
+    description=_("""Cercle et théorème de Pythagore""")
 
     tags = ["Quatrième"]
     function = _exo_triangle_cercle
@@ -281,21 +281,21 @@ def _exo_reciproque_pythagore():
     c = cotes_sommets(noms)
     recip = (nom_tr, c[n[0]], decimaux(longueurs[n[0]], 1), c[n[1]], decimaux(longueurs[n[1]], 1),
              c[n[2]], decimaux(longueurs[n[2]], 1), nom_tr)
-    enonce = \
+    enonce = _(\
         """Soit $%s$ un triangle tel que : $\\quad %s=\\unit[%s]{cm}\\quad$, $\\quad %s=\\unit[%s]{cm}\\quad$ et $\\quad %s=\\unit[%s]{cm}$.\\par
 Quelle est la nature du triangle $%s$?
-""" % \
+""") % \
         recip
     exo.append(enonce)
     cor.append(enonce)
     cor.append("\\par\\dotfill{}\\\\\n")
-    cor.append(u"Le triangle %s n'est ni isocèle, ni équilatéral.\\par\n" %
+    cor.append(_(u"Le triangle %s n'est ni isocèle, ni équilatéral.\\par\n") %
                nom_tr)
     cor.append("$\\left.")
     cor.append("\\renewcommand{\\arraystretch}{2}")
     cor.append("\\begin{array}{l}")
 
-    cor.append(u"\\bullet %s^2=%s^2=%s\\qquad\\text{(}[%s]\\text{ est le plus grand côté.)}\\\\\n" %
+    cor.append(_(u"\\bullet %s^2=%s^2=%s\\qquad\\text{(}[%s]\\text{ est le plus grand côté.)}\\\\\n") %
                (c[2], decimaux(longueurs[2], 1), decimaux(longueurs[2] ** 2, 1), c[2]))
     cor.append("\\bullet  %s^2+%s^2=%s^2+%s^2=%s \n" % (c[0], c[1],
                                                         decimaux(longueurs[0], 1), decimaux(longueurs[1], 1),
@@ -303,14 +303,14 @@ Quelle est la nature du triangle $%s$?
                                                                2 + longueurs[1] ** 2, 1)))
     cor.append("\\end{array}")
     cor.append("\\right\\rbrace$")
-    cor.append(u"""Donc $%s^2=%s^2+%s^2$.\\par
+    cor.append(_(u"""Donc $%s^2=%s^2+%s^2$.\\par
 D'après la \\textbf{réciproque du théorème de Pythagore},
-\\fbox{le triangle $%s$ est rectangle en $%s$.}""" %
+\\fbox{le triangle $%s$ est rectangle en $%s$.}""") %
                (c[2], c[0], c[1], nom_tr, noms[2]))
     return (exo, cor)
 
 class exo_reciproque_pythagore(LegacyExercise):
-    """Réciproque du théorème de Pythagore"""
+    description=_("""Réciproque du théorème de Pythagore""")
 
     tags = ["Quatrième"]
     function = _exo_reciproque_pythagore
@@ -424,7 +424,7 @@ def _exo_thales():
     return (exo, cor)
 
 class exo_thales(LegacyExercise):
-    """Théorème de Thalès"""
+    description=_("""Théorème de Thalès""")
 
     tags = ["Quatrième"]
     function = _exo_thales
@@ -467,24 +467,24 @@ def creer_noms(noms, i):
 
 
 def tex_enonce_thales(noms, valeurs, arrondi):
-    texte = \
-        u'{Sur la figure ci-contre, les droites $(%s)$ et $(%s)$ sont parallèles.\\par\n' % \
+    texte = _(\
+        u'{Sur la figure ci-contre, les droites $(%s)$ et $(%s)$ sont parallèles.\\par\n') % \
         (lAB(noms[1:3]), lAB(noms[3:5]))
     liste = long_val(noms, valeurs)
-    texte = texte + \
-            'On donne $%s=\\unit[%s]{cm}$,$\\quad %s=\\unit[%s]{cm}$, $\\quad %s=\\unit[%s]{cm}\\quad$ et $\\quad %s~=~\\unit[%s]{cm}$.\\par\n' % \
+    texte = texte + _(\
+            'On donne $%s=\\unit[%s]{cm}$,$\\quad %s=\\unit[%s]{cm}$, $\\quad %s=\\unit[%s]{cm}\\quad$ et $\\quad %s~=~\\unit[%s]{cm}$.\\par\n') % \
             tuple(liste[0:8])
-    texte = texte + 'Calculer $%s$ et $%s$, ' % tuple(liste[8:10])
-    texte = texte + 'arrondies au %s}\n' % arrondi
+    texte = texte + _('Calculer $%s$ et $%s$, ') % tuple(liste[8:10])
+    texte = texte + _('arrondies au %s}\n') % arrondi
     return texte
 
 
 def tex_resolution_thales0(n, v):
-    return u"""Dans le triangle $%s$,~ $%s$ est sur le côté $[%s]$,~
+    return _(u"""Dans le triangle $%s$,~ $%s$ est sur le côté $[%s]$,~
 $%s$ est sur le côté $[%s]$ et les droites $(%s)$ et $(%s)$ sont
 parallèles.\\par
 D'après le \\textbf{théorème de Thalès} :
-$\\qquad\\mathbf{\\cfrac{%s}{%s}=\\cfrac{%s}{%s}=\\cfrac{%s}{%s}}$""" % \
+$\\qquad\\mathbf{\\cfrac{%s}{%s}=\\cfrac{%s}{%s}=\\cfrac{%s}{%s}}$""") % \
            (
                n[0] + n[1] + n[2],
                n[3],
@@ -526,7 +526,7 @@ def tex_resolution_thales1(n, v):
             donnees = (creer_noms(n, r + 3), creer_noms(n, r + 6), '-',
                        creer_noms(n, r), decimaux(v[r + 3], 1))
     if donnees:
-        return '\\vspace{1ex}\\par De plus $%s=%s%s%s=\\unit[%s]{cm}$\n' % donnees
+        return _('\\vspace{1ex}\\par De plus $%s=%s%s%s=\\unit[%s]{cm}$\n') % donnees
     else:
         return ''
 
@@ -579,11 +579,11 @@ def tex_resolution_thales3(n, v, arrondi):
             else:
                 donnees.extend([creer_noms(n, i), decimaux(v[i + 3], 1), decimaux(v[r], 1), decimaux(v[r + 3], 1),
                                 valeur_exacte(v[r] * v[i + 3] / v[r + 3], approx=arrondi)])
-    texte = \
-        '$\\cfrac{%s}{%s}=\\cfrac{%s}{%s}\\quad$ donc $\\quad \\boxed{%s=\\cfrac{%s\\times %s}{%s}%s}$\\par\n ' % tuple(
+    texte = _(\
+        '$\\cfrac{%s}{%s}=\\cfrac{%s}{%s}\\quad$ donc $\\quad \\boxed{%s=\\cfrac{%s\\times %s}{%s}%s}$\\par\n ') % tuple(
             donnees[0:9])
-    texte = texte + \
-            '$\\cfrac{%s}{%s}=\\cfrac{%s}{%s}\\quad$ donc $\\quad\\boxed{%s=\\cfrac{%s\\times %s}{%s}%s}$\\par\n' % tuple(
+    texte = texte + _(\
+            '$\\cfrac{%s}{%s}=\\cfrac{%s}{%s}\\quad$ donc $\\quad\\boxed{%s=\\cfrac{%s\\times %s}{%s}%s}$\\par\n') % tuple(
         donnees[9:18])
     return texte
 
@@ -698,7 +698,7 @@ def _exo_trigo():
     return (exo, cor)
 
 class exo_trigo(LegacyExercise):
-    """Cosinus d\'un angle aigu"""
+    description=_("""Cosinus d\'un angle aigu""")
 
     tags = ["Quatrième"]
     function = _exo_trigo
@@ -722,12 +722,12 @@ def enonce_trigo(v):
                     lt.append('$%s=\\unit[%s]{cm}$' % (l[2 * i + 6 * j],
                                                        decimaux(l[2 * i + 6 * j + 1], 1)))
                 else:
-                    tmp = 'la longueur $%s$' % l[2 * i + 6 * j]
+                    tmp = _('la longueur $%s$') % l[2 * i + 6 * j]
             elif l[2 * i + 6 * j + 1]:
                 lt.append('$%s=%s\\degres$' % (l[2 * i + 6 * j], l[2 * i +
                                                                    6 * j + 1]))
             else:
-                lt.append('la mesure de l\'angle $%s$' % l[2 * i + 6 * j])
+                lt.append(_('la mesure de l\'angle $%s$') % l[2 * i + 6 * j])
         if tmp:
             lt.append(tmp)
     exo.append('\\begin{multicols}{2}')
@@ -735,15 +735,15 @@ def enonce_trigo(v):
     cor.append('\\begin{multicols}{2}')
     cor.append('\\begin{enumerate}')
     arrondi = random.randrange(1, 4)
-    text_arrondi = ['dix', 'cent', 'mill'][arrondi - 1] + u'ième'
+    text_arrondi = [_('dix'), _('cent'), _('mill')][arrondi - 1] + _(u'ième')
     tr = nom_triangle(v[0][0])
-    exo.append('\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par' %
+    exo.append(_('\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par') %
                (tr, v[0][0][0]))
-    exo.append('%s et %s.\\par\nCalculer %s, arrondie au %s.\\par' % tuple(lt[0:3] + [text_arrondi]))
-    cor.append('\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par' %
+    exo.append(_('%s et %s.\\par\nCalculer %s, arrondie au %s.\\par') % tuple(lt[0:3] + [text_arrondi]))
+    cor.append(_('\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par') %
                (tr, v[0][0][0]))
-    cor.append('%s et %s.\\par\nCalculer %s, arrondie au %s.\\par' % tuple(lt[0:3] + [text_arrondi]))
-    cor.append('Dans le triangle $%s$ rectangle en $%s$,' % (tr, v[0][0][0]))  # résolution
+    cor.append(_('%s et %s.\\par\nCalculer %s, arrondie au %s.\\par') % tuple(lt[0:3] + [text_arrondi]))
+    cor.append(_('Dans le triangle $%s$ rectangle en $%s$,') % (tr, v[0][0][0]))  # résolution
     v2 = (v[0][1], v[0][2])
     l2 = l[0:6]
     cor.extend(resolution_trigo(v2, l2, arrondi))
@@ -751,17 +751,17 @@ def enonce_trigo(v):
     exo.append('\\columnbreak')
     cor.append('\\columnbreak')
     arrondi = random.randrange(1, 4)
-    text_arrondi = ['dix', 'cent', 'mill'][arrondi - 1] + u'ième'
-    exo.append('\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par' %
+    text_arrondi = [_('dix'), _('cent'), _('mill')][arrondi - 1] + _(u'ième')
+    exo.append(_('\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par') %
                (tr, v[1][0][0]))
-    exo.append('''%s et %s.\\par
-Calculer %s, arrondie au %s.\\par''' %
+    exo.append(_('''%s et %s.\\par
+Calculer %s, arrondie au %s.\\par''') %
                tuple(lt[3:6] + [text_arrondi]))
-    cor.append('\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par' %
+    cor.append(_('\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par') %
                (tr, v[1][0][0]))
-    cor.append('%s et %s.\\par\nCalculer %s, arrondie au %s.\\par' % tuple(lt[3:6] + [text_arrondi]))
+    cor.append(_('%s et %s.\\par\nCalculer %s, arrondie au %s.\\par') % tuple(lt[3:6] + [text_arrondi]))
     #    cor.append("""\\dotfill{}\\par\\vspace{2ex}")
-    cor.append('Dans le triangle $%s$ rectangle en $%s$,' % (tr, v[1][0][0]))  # résolution
+    cor.append(_('Dans le triangle $%s$ rectangle en $%s$,') % (tr, v[1][0][0]))  # résolution
     v2 = (v[1][1], v[1][2])
     l2 = l[6:12]
     cor.extend(resolution_trigo(v2, l2, arrondi))

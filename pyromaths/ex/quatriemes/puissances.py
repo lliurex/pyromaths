@@ -59,11 +59,11 @@ def tex_proprietes_val(exp_max, nb_max, typeexo):
 
 def _tex_proprietes():
     exo = ["\\exercice",
-           u"Compléter par un nombre de la forme $a^n$ avec $a$ et $n$ entiers :",
+           _(u"Compléter par un nombre de la forme $a^n$ avec $a$ et $n$ entiers :"),
            "\\begin{multicols}{4}", "  \\noindent%",
            "  \\begin{enumerate}"]
     cor = ["\\exercice*",
-           u"Compléter par un nombre de la forme $a^n$ avec $a$ et $n$ entiers :",
+           _(u"Compléter par un nombre de la forme $a^n$ avec $a$ et $n$ entiers :"),
            "\\begin{multicols}{4}", "  \\noindent%",
            "  \\begin{enumerate}"]
     lexos = [0, 1, 2, 3, 0, 1, 2, 3]
@@ -106,7 +106,7 @@ def _tex_proprietes():
     return (exo, cor)
 
 class tex_proprietes(LegacyExercise):
-    """Propriétés sur les puissances"""
+    description=_("""Propriétés sur les puissances""")
 
     tags = ["Quatrième"]
     function = _tex_proprietes
@@ -147,13 +147,13 @@ def tex_proprietes_neg_val(exp_max, nb_max, typeexo):
 
 def _tex_proprietes_neg():
     exo = ["\\exercice",
-           u"Écrire sous la forme d'une puissance de 10 puis donner l'écriture",
-           u" décimale de ces nombres :", "\\begin{multicols}{2}",
-           "  \\noindent%", "  \\begin{enumerate}"]
+	  _(u"Écrire sous la forme d'une puissance de 10 puis donner l'écriture"),
+	  _(u" décimale de ces nombres :"), "\\begin{multicols}{2}",
+	  "  \\noindent%", "  \\begin{enumerate}"]
     cor = ["\\exercice*",
-           u"Écrire sous la forme d'une puissance de 10 puis donner l'écriture",
-           u" décimale de ces nombres :", "\\begin{multicols}{2}",
-           "  \\noindent%", "  \\begin{enumerate}"]
+	      _(u"Écrire sous la forme d'une puissance de 10 puis donner l'écriture"),
+	     _(u" décimale de ces nombres :"), "\\begin{multicols}{2}",
+	    "  \\noindent%", "  \\begin{enumerate}"]
     lexos = [0, 1, 2, 3, 0, 1, 2, 3]
 
     # 0: a^n*a^p ; 1: (a^n)^p ; 2:a^n/a^p
@@ -201,7 +201,7 @@ def _tex_proprietes_neg():
     return (exo, cor)
 
 class tex_proprietes_neg(LegacyExercise):
-    """Propriétés sur les puissances de 10"""
+    description=_("""Propriétés sur les puissances de 10""")
 
     tags = ["Quatrième"]
     function = _tex_proprietes_neg
@@ -227,11 +227,11 @@ def val_sc():
 
 def _ecr_sc():
     from math import log10, floor
-    exo = ["\\exercice", u"Compléter par le nombre qui convient :",
+    exo = ["\\exercice", _(u"Compléter par le nombre qui convient :"),
            "\\begin{multicols}{3}", "  \\noindent%",
            "  \\begin{enumerate}"]
     cor = ["\\exercice*",
-           u"Compléter par le nombre qui convient :",
+           _(u"Compléter par le nombre qui convient :"),
            "\\begin{multicols}{3}", "  \\noindent%",
            "  \\begin{enumerate}"]
     for dummy in range(6):
@@ -258,7 +258,7 @@ def _ecr_sc():
     return (exo, cor)
 
 class ecr_sc(LegacyExercise):
-    """Écritures scientifiques"""
+    description=_("""Écritures scientifiques""")
 
     tags = ["Quatrième"]
     function = _ecr_sc
@@ -271,10 +271,10 @@ def _exo_puissances():
     from math import floor, log10
     sd = str.maketrans('.', ',')  # convertit les . en , (separateur decimal)
     exo = ["\\exercice",
-           u"Calculer les expressions suivantes et donner l'écriture scientifique du résultat.",
+           _(u"Calculer les expressions suivantes et donner l'écriture scientifique du résultat."),
            "\\begin{multicols}{2}", "  \\noindent%"]
     cor = ["\\exercice*",
-           u"Calculer les expressions suivantes et donner l'écriture scientifique du résultat.",
+           _(u"Calculer les expressions suivantes et donner l'écriture scientifique du résultat."),
            "\\begin{multicols}{2}", "  \\noindent%"]
     valeurs = valeurs_puissances()
     i = randrange(2)
@@ -299,7 +299,7 @@ def _exo_puissances():
     return (exo, cor)
 
 class exo_puissances(LegacyExercise):
-    """Puissances de 10"""
+    description=_("""Puissances de 10""")
 
     tags = ["Quatrième"]
     function = _exo_puissances

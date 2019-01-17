@@ -44,11 +44,11 @@ def _id_rem():
     shuffle(lpoly2)
     lpoly.extend(lpoly2)
     expr = [Priorites3.texify([Priorites3.splitting(lpoly[i])]) for i in range(6)]
-    exo = ["\\exercice", u"Développer chacune des expressions littérales suivantes :"]
+    exo = ["\\exercice", _(u"Développer chacune des expressions littérales suivantes :")]
     exo.append("\\begin{multicols}{2}")
     exo.append('\\\\\n'.join(['$%s=%s$' % (chr(i + 65), expr[i][0]) for i in range(6)]))
     exo.append("\\end{multicols}")
-    cor = ["\\exercice*", u"Développer chacune des expressions littérales suivantes :"]
+    cor = ["\\exercice*", _(u"Développer chacune des expressions littérales suivantes :")]
     cor.append("\\begin{multicols}{2}")
     for i in range(6):
         dev = Priorites3.texify(Priorites3.priorites(lpoly[i]))
@@ -63,25 +63,25 @@ def _id_rem():
 def id_rem1(a, b, details=2):
     """Construit un Polynome de la forme (ax+b)^2
     Renvoie une chaine"""
-    return 'Polynome([[%r, 1], [%r, 0]], details=%s)**2' % (a, b, details)
+    return _(u'Polynome([[%r, 1], [%r, 0]], details=%s)**2') % (a, b, details)
 def id_rem2(a, b, details=2):
     """Construit un Polynome de la forme (ax-b)^2
     Renvoie une chaine"""
-    return 'Polynome([[%r, 1], [%r, 0]], details=%s)**2' % (a, -b, details)
+    return _(u'Polynome([[%r, 1], [%r, 0]], details=%s)**2') % (a, -b, details)
 def id_rem3(a, b, details=2):
     """Construit un Polynome de la forme (ax+b)(ax-b) ou (ax-b)(ax+b)
     Renvoie une chaine"""
     sgn = randrange(2)
-    return 'Polynome([[%r, 1], [%r, 0]], details=%s) * Polynome([[%r, 1], [%r, 0]], details=%s)' % (a, (-1) ** sgn * b, details, a, (-1) ** (sgn + 1) * b, details)
+    return _(u'Polynome([[%r, 1], [%r, 0]], details=%s) * Polynome([[%r, 1], [%r, 0]], details=%s)') % (a, (-1) ** sgn * b, details, a, (-1) ** (sgn + 1) * b, details)
 def id_rem4(a, b, details=2):
     """Construit un Polynome de la forme (ax+b)(bx-a) ou (ax-b)(bx+a)
     Renvoie une chaine"""
     sgn = randrange(2)
-    return 'Polynome([[%r, 1], [%r, 0]], details=%s) * Polynome([[%r, 1], [%r, 0]], details=%s)' % (a, (-1) ** sgn * b, details, b, (-1) ** (sgn + 1) * a, details)
+    return _(u'Polynome([[%r, 1], [%r, 0]], details=%s) * Polynome([[%r, 1], [%r, 0]], details=%s))') % (a, (-1) ** sgn * b, details, b, (-1) ** (sgn + 1) * a, details)
 
 
 class id_rem(LegacyExercise):
-    """Identités remarquables"""
+    description=_("""Identités remarquables""")
 
     tags = ["Troisième"]
     function = _id_rem

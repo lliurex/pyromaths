@@ -142,7 +142,7 @@ def _espace():
     rp2 = u"%s, %s, %s et %s sont les arêtes perpendiculaires à %s." % reponse2(pt1, ptc1, F1, F2)
     rp3 = u"%s, %s et %s sont les arêtes parallèles à %s." % reponse3(pt2, ptc2, F1, F2)
     exo = ["\\exercice",
-         u"Les figures 1 et 2 représentent le même cube %s%s%s%s%s%s%s%s.\\\ " % tuple(noms_pts),
+         _(u"Les figures 1 et 2 représentent le même cube %s%s%s%s%s%s%s%s.\\\ ") % tuple(noms_pts),
          "\\psset{xunit=1.0cm,yunit=1.0cm,dotstyle=*,dotsize=3pt 0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}",
          "\\begin{pspicture*}(-2,-0.38)(15,4.5)",
          "\\psframe[fillstyle=solid,fillcolor=darkgray,framearc=0.2](-1,3.5)(-0.5,4)",
@@ -184,12 +184,12 @@ def _espace():
          "\\rput[bl](8.71,-0.1){%s}" % rp1[3],
          "\\end{pspicture*}",
          "\\begin{enumerate}",
-         u"\\item Compléter les sommets manquants de la figure 2.",
-         u"\\item Donner toutes les arêtes perpendiculaires à [%s%s]." % (pt1, ptc1),
-         u"\\item Donner toutes les arêtes parallèles à [%s%s]." % (pt2, ptc2),
+         _(u"\\item Compléter les sommets manquants de la figure 2."),
+         _(u"\\item Donner toutes les arêtes perpendiculaires à [%s%s].") % (pt1, ptc1),
+         _(u"\\item Donner toutes les arêtes parallèles à [%s%s].") % (pt2, ptc2),
          "\\end{enumerate}"]
     cor = ["\\exercice*",
-         u"Les figures 1 et 2 représentent le même cube %s%s%s%s%s%s%s%s.\\\ " % tuple(noms_pts),
+         _(u"Les figures 1 et 2 représentent le même cube %s%s%s%s%s%s%s%s.\\\ ") % tuple(noms_pts),
          "\\psset{xunit=1.0cm,yunit=1.0cm,dotstyle=*,dotsize=3pt 0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}",
          "\\begin{pspicture*}(-2,-0.38)(15,4.5)",
          "\\psframe[fillstyle=solid,fillcolor=darkgray,framearc=0.2](-1,3.5)(-0.5,4)",
@@ -236,16 +236,16 @@ def _espace():
          "\\rput[bl](8.5,2.83){%s}" % rp1[5],
          "\\end{pspicture*}",
          "\\begin{enumerate}",
-         u"\\item Compléter les sommets manquants de la figure 2.",
-         u"\\item Donner toutes les arêtes perpendiculaires à [%s%s].\\par " % (pt1, ptc1),
+         _(u"\\item Compléter les sommets manquants de la figure 2."),
+         _(u"\\item Donner toutes les arêtes perpendiculaires à [%s%s].\\par ") % (pt1, ptc1),
          rp2,
-         u"\\item Donner toutes les arêtes parallèles à [%s%s]. \\par " % (pt2, ptc2),
+         _(u"\\item Donner toutes les arêtes parallèles à [%s%s]. \\par ") % (pt2, ptc2),
          rp3,
          "\\end{enumerate}"]
     return (exo, cor)
 
 class espace(LegacyExercise):
-    """Représentation dans l\'espace"""
+    description=_("""Représentation dans l\'espace""")
 
     tags = ["Sixième"]
     function = _espace

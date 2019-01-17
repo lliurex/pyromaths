@@ -214,7 +214,7 @@ def _reperage():
     return(exo, cor)
 
 class reperage(LegacyExercise):
-    """Repérage"""
+    description=_("""Repérage""")
 
     tags = ["Cinquième"]
     function = _reperage

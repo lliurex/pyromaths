@@ -106,7 +106,7 @@ def _relatifs():
     return (exo, cor)
 
 class relatifs(LegacyExercise):
-    """Addition de relatifs"""
+    description=_("""Addition de relatifs""")
 
     tags = ["Cinquième"]
     function = _relatifs

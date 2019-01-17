@@ -42,9 +42,9 @@ def _factorisation():
     lexo.append(exo[0](l[13:17], diff=diff.pop()))
     lexo.append(exo[1](l[17:21], diff=diff.pop()))
 
-    exo = ["\\exercice", u"Factoriser chacune des expressions littérales suivantes :"]
+    exo = ["\\exercice", _(u"Factoriser chacune des expressions littérales suivantes :")]
     exo.append("\\begin{multicols}{2}")
-    cor = ["\\exercice*", u"Factoriser chacune des expressions littérales suivantes :"]
+    cor = ["\\exercice*", _(u"Factoriser chacune des expressions littérales suivantes :")]
     cor.append("\\begin{multicols}{2}")
     for i in range(len(lexo)):
         p = [lexo[i]]
@@ -148,7 +148,7 @@ def facteur_commun3(lcoeff, details=1, diff=False):
     return poly
 
 class factorisation(LegacyExercise):
-    """Factorisations"""
+    description=_("""Factorisations""")
 
     tags = ["Troisième"]
     function = _factorisation

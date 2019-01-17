@@ -64,29 +64,29 @@ def _notion_fonction():
     ant = [randrange(1, 6) * (-1) ** fct[0].degre(), randrange(1, 6) * (-1) ** fct[1].degre(), randrange(1, 6) * (-1) ** fct[1].degre(), randrange(1, 6) * (-1) ** fct[0].degre()]
     shuffle(fct)
     val_exo2 = choix_points(nb=7)
-    exo = [r"\exercice", r"\begin{multicols}{2}", r"\begin{enumerate}", u"\\item On donne"]
+    exo = [r"\exercice", r"\begin{multicols}{2}", r"\begin{enumerate}", _(u"\\item On donne")]
     exo.append(r"$\begin{array}[t]{l}")
     exo.append(u"f:~x \\longmapsto %s \\\\ g:~x \\longmapsto %s" % (fct[0], fct[1]))
     exo.extend([r"\end{array}$", r"\begin{enumerate}", ])
-    exo.append(u"\\item Quelle est l'image de $%s$ par la fonction $f$ ?" % ant[0])
+    exo.append(_(u"\\item Quelle est l'image de $%s$ par la fonction $f$ ?") % ant[0])
     cor = [r"\exercice", r"\begin{multicols}{2}", r"\begin{enumerate}", u"\\item On donne"]
     cor.append(r"$\begin{array}[t]{l}")
     cor.append(u"f:~x \\longmapsto %s \\\\ g:~x \\longmapsto %s" % (fct[0], fct[1]))
     cor.extend([r"\end{array}$", r"\begin{enumerate}", ])
-    cor.append(u"\\item Quelle est l'image de $%s$ par la fonction $f$ ?" % ant[0])
+    cor.append(_(u"\\item Quelle est l'image de $%s$ par la fonction $f$ ?") % ant[0])
     cor.extend(corrige('f', fct[0], ant[0]))
-    exo.append(u"\\item Quelle est l'image de $%s$ par la fonction $g$ ?" % ant[1])
-    cor.append(u"\\item Quelle est l'image de $%s$ par la fonction $g$ ?" % ant[1])
+    exo.append(_(u"\\item Quelle est l'image de $%s$ par la fonction $g$ ?") % ant[1])
+    cor.append(_(u"\\item Quelle est l'image de $%s$ par la fonction $g$ ?") % ant[1])
     cor.extend(corrige('g', fct[1], ant[1]))
-    exo.append(u"\\item Calculer $f\\,(%s)$." % ant[2])
-    cor.append(u"\\item Calculer $f\\,(%s)$." % ant[2])
+    exo.append(_(u"\\item Calculer $f\\,(%s)$.") % ant[2])
+    cor.append(_(u"\\item Calculer $f\\,(%s)$.") % ant[2])
     cor.extend(corrige('f', fct[0], ant[2]))
-    exo.append(u"\\item Calculer $g\\,(%s)$." % ant[3])
-    cor.append(u"\\item Calculer $g\\,(%s)$." % ant[3])
+    exo.append(_(u"\\item Calculer $g\\,(%s)$.") % ant[3])
+    cor.append(_(u"\\item Calculer $g\\,(%s)$.") % ant[3])
     cor.extend(corrige('g', fct[1], ant[3]))
     exo.append(r"\end{enumerate}")
     cor.append(r"\end{enumerate}")
-    exo.append(u"\\item Voici un tableau de valeurs correspondant à une fonction $h$.\\par")
+    exo.append(_(u"\\item Voici un tableau de valeurs correspondant à une fonction $h$.\\par"))
     exo.append(r"\renewcommand{\arraystretch}{1.5}")
     exo.append(r"\begin{tabularx}{\linewidth}[t]{|c|*7{>{\centering}X|}}")
     exo.append(r"\hline")
@@ -94,7 +94,7 @@ def _notion_fonction():
     exo.append(r"$h\,(x)$ & %s \tabularnewline \hline" % " & ".join(["$%s$" % c[1] for c in val_exo2]))
     exo.append(r"\end{tabularx} \medskip")
     exo.append(r"\begin{enumerate}")
-    cor.append(u"\\item Voici un tableau de valeurs correspondant à une fonction $h$.\\par")
+    cor.append(_(u"\\item Voici un tableau de valeurs correspondant à une fonction $h$.\\par"))
     cor.append(r"\renewcommand{\arraystretch}{1.5}")
     cor.append(r"\begin{tabularx}{\linewidth}[t]{|c|*7{>{\centering}X|}}")
     cor.append(r"\hline")
@@ -106,18 +106,18 @@ def _notion_fonction():
     for dummy in range(3):
         del lpos21[randrange(len(lpos21))]
     shuffle(lpos21)
-    lquest = [u"Quelle est l'image de $%s$ par la fonction $h$ ?" % val_exo2[lpos21[0]][0],
-              u"Quel est l'antécédent de $%s$ par la fonction $h$ ?" % val_exo2[lpos21[1]][1],
-              u"Compléter : $h\\,(%s)=\\ldots\\ldots$" % val_exo2[lpos21[2]][0],
-              u"Compléter : $h\\,(\\ldots\\ldots)=%s$" % val_exo2[lpos21[3]][1]]
+    lquest = [_(u"Quelle est l'image de $%s$ par la fonction $h$ ?") % val_exo2[lpos21[0]][0],
+              _(u"Quel est l'antécédent de $%s$ par la fonction $h$ ?") % val_exo2[lpos21[1]][1],
+              _(u"Compléter : $h\\,(%s)=\\ldots\\ldots$") % val_exo2[lpos21[2]][0],
+              _(u"Compléter : $h\\,(\\ldots\\ldots)=%s$") % val_exo2[lpos21[3]][1]]
     lpos22 = [0, 1, 2, 3]
     shuffle(lpos22)
     for i in range(4):
         exo.append(u"\\item %s" % lquest[lpos22[i]])
         if lpos22[i] == 0:
-            cor.append(u"\\item L'image de $%s$ par la fonction $h$ est $\\mathbf{%s}$." % (val_exo2[lpos21[0]][0], val_exo2[lpos21[0]][1]))
+            cor.append(_(u"\\item L'image de $%s$ par la fonction $h$ est $\\mathbf{%s}$.") % (val_exo2[lpos21[0]][0], val_exo2[lpos21[0]][1]))
         elif lpos22[i] == 1:
-            cor.append(u"\\item Un antécédent de $%s$ par la fonction $h$ est $\\mathbf{%s}$." % (val_exo2[lpos21[1]][1], val_exo2[lpos21[1]][0]))
+            cor.append(_(u"\\item Un antécédent de $%s$ par la fonction $h$ est $\\mathbf{%s}$.") % (val_exo2[lpos21[1]][1], val_exo2[lpos21[1]][0]))
         if lpos22[i] == 2:
             cor.append(u"\\item $h\\,(%s)=\\mathbf{%s}$." % (val_exo2[lpos21[2]][0], val_exo2[lpos21[2]][1]))
         elif lpos22[i] == 1:
@@ -127,14 +127,14 @@ def _notion_fonction():
     cor.append(r"\end{enumerate}")
     val_exo3 = choix_points()
     p = Priorites3.plotify(Priorites3.priorites(Lagrange(val_exo3))[-1])
-    exo.extend([u"\\item Le graphique ci-dessous représente une fonction $k$ : \\par", r"\begin{center}",
+    exo.extend([_(u"\\item Le graphique ci-dessous représente une fonction $k$ : \\par", r"\begin{center}"),
                 r"\psset{unit=8mm, algebraic, dotsize=4pt 4}", r"\begin{pspicture*}(-4.2,-4.2)(4.2,4.2)"])
     exo.append(r"\psgrid[subgriddiv=2, gridwidth=.6pt,subgridcolor=lightgray, gridlabels=0pt]")
     exo.append(r"\psaxes[linewidth=1.2pt,]{->}(0,0)(-4.2,-4.2)(4.2,4.2)")
     exo.append(r"\psplot[plotpoints=200, linewidth=1.5pt, linecolor=DarkRed]{-4.2}{4.2}{%s}" % p)
     exo.append(r"\psdots %s" % " ".join([str(val) for val in val_exo3]))
     exo.extend([r"\end{pspicture*}", r"\end{center}", r"\begin{enumerate}"])
-    cor.extend([u"\\item Le graphique ci-après représente une fonction $k$ : \\par", r"\begin{center}",
+    cor.extend([_(u"\\item Le graphique ci-après représente une fonction $k$ : \\par", r"\begin{center}"),
                 r"\psset{unit=8mm, algebraic, dotsize=4pt 4}", r"\begin{pspicture*}(-4.2,-4.2)(4.2,4.2)"])
     cor.append(r"\psgrid[subgriddiv=2, gridwidth=.6pt,subgridcolor=lightgray, gridlabels=0pt]")
     cor.append(r"\psaxes[linewidth=1.2pt,]{->}(0,0)(-4.2,-4.2)(4.2,4.2)")
@@ -147,18 +147,18 @@ def _notion_fonction():
         cor.append(r"\psline[linestyle=dashed, linecolor=DarkRed](0, %s)(%s, %s)(%s, 0)" % (val_exo3[lpos31[i]][1], val_exo3[lpos31[i]][0], val_exo3[lpos31[i]][1], val_exo3[lpos31[i]][0]))
     cor.extend([r"\end{pspicture*}", r"\end{center}", r"\begin{enumerate}"])
     shuffle(lpos31)
-    lquest = [u"Quelle est l'image de $%s$ par la fonction $k$ ?" % val_exo3[lpos31[0]][0],
-              u"Donner un antécédent de %s par la fonction $k$." % val_exo3[lpos31[1]][1],
-              u"Compléter : $k\\,(%s)=\\ldots\\ldots$" % val_exo3[lpos31[2]][0],
-              u"Compléter : $k\\,(\\ldots\\ldots)=%s$" % val_exo3[lpos31[3]][1]]
+    lquest = [_(u"Quelle est l'image de $%s$ par la fonction $k$ ?") % val_exo3[lpos31[0]][0],
+              _(u"Donner un antécédent de %s par la fonction $k$.") % val_exo3[lpos31[1]][1],
+              _(u"Compléter : $k\\,(%s)=\\ldots\\ldots$") % val_exo3[lpos31[2]][0],
+              _(u"Compléter : $k\\,(\\ldots\\ldots)=%s$") % val_exo3[lpos31[3]][1]]
     lpos32 = [0, 1, 2, 3]
     shuffle(lpos32)
     for i in range(4):
         exo.append(u"\\item %s" % lquest[lpos32[i]])
         if lpos32[i] == 0:
-            cor.append(u"\\item L'image de $%s$ par la fonction $k$ est $\\mathbf{%s}$." % (val_exo3[lpos31[0]][0], val_exo3[lpos31[0]][1]))
+            cor.append(_(u"\\item L'image de $%s$ par la fonction $k$ est $\\mathbf{%s}$.") % (val_exo3[lpos31[0]][0], val_exo3[lpos31[0]][1]))
         elif lpos32[i] == 1:
-            cor.append(u"\\item Un antécédent de $%s$ par la fonction $k$ est $\\mathbf{%s}$." % (val_exo3[lpos31[1]][1], val_exo3[lpos31[1]][0]))
+            cor.append(_(u"\\item Un antécédent de $%s$ par la fonction $k$ est $\\mathbf{%s}$.") % (val_exo3[lpos31[1]][1], val_exo3[lpos31[1]][0]))
         if lpos32[i] == 2:
             cor.append(u"\\item $k\\,(%s)=\\mathbf{%s}$." % (val_exo3[lpos31[2]][0], val_exo3[lpos31[2]][1]))
         elif lpos32[i] == 3:
@@ -176,7 +176,7 @@ def _notion_fonction():
     return exo, cor
 
 class notion_fonction(LegacyExercise):
-    """Bilan sur la notion de fonction"""
+    description=_("""Bilan sur la notion de fonction""")
 
     tags = ["Troisième"]
     function = _notion_fonction

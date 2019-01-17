@@ -128,7 +128,7 @@ def _symetrie():
     return (exo, cor)
 
 class symetrie(LegacyExercise):
-    """Symétrie centrale"""
+    description=_("""Symétrie centrale""")
 
     tags = ["Cinquième"]
     function = _symetrie

@@ -56,7 +56,7 @@ CANDIDATS = [
 
 
 class EtatStableSysteme2(Jinja2Exercise):
-    """Recherche d'état stable (avec un système)"""
+    description=_("""Recherche d'état stable (avec un système)""")
 
     tags = ["Term ES", "matrice", "système", "graphe probabiliste", "spécialité"]
 
@@ -79,7 +79,7 @@ class EtatStableSysteme2(Jinja2Exercise):
         return environment
 
 class InterpolationMatrices(Jinja2Exercise):
-    """Interpolation polynomiale en utilisant des matrices"""
+    description=_("""Interpolation polynomiale en utilisant des matrices""")
     # Plus ou moins inspiré du sujet de bac ES Amérique du Nord, juin 2015.
 
     tags = ["Term ES", "matrice", "système", "interpolation", "spécialité"]

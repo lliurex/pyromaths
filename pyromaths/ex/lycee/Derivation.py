@@ -81,7 +81,7 @@ def InitPoints(minimum=-6.1, maximum=6.1, nbval=3):
 
 
 class Fd1Tangentes(ex.TexExercise):
-    """Nombre dérivé graphiquement"""
+    description=_("""Nombre dérivé graphiquement""")
 
     tags = ["1èreS"]
 

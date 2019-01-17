@@ -163,9 +163,9 @@ def _FractionPartage():
         (n, d) = numerateur_denominateur(l, h, cas)
         (lc, hc) = fractions_partage_corrige(l, h, n, d)
 
-        exo.append("\\item Colorer $\\frac{%s}{%s}$ de ce rectangle.\\par" % 
+        exo.append(_("\\item Colorer $\\frac{%s}{%s}$ de ce rectangle.\\par") % 
                  (n, d))
-        cor.append("\\item Colorer $\\frac{%s}{%s}$ de ce rectangle.\\par" % 
+        cor.append(_("\\item Colorer $\\frac{%s}{%s}$ de ce rectangle.\\par") % 
                  (n, d))
         exo.append("\\psset{unit=4mm}")
         cor.append("\\psset{unit=4mm}")
@@ -188,7 +188,7 @@ def _FractionPartage():
     return (exo, cor)
 
 class FractionPartage(LegacyExercise):
-    """Fractions partage"""
+    description=_("""Fractions partage""")
 
     tags = ["Sixième"]
     function = _FractionPartage
@@ -264,40 +264,40 @@ def noms_pts(nb):  # renvoie nb noms de points
 
 
 def unites_fractions(exo, cor, origine, div, subd):
-    postf = u'ièmes'
+    postf = _(u'ièmes')
     lch = [
-        'cinqu',
-        'six',
-        'sept',
-        'huit',
-        'neuv',
-        'dix',
-        'onz',
-        'douz',
-        'treiz',
-        'quatorz',
-        'quinz',
-        'seiz',
-        'dix-sept',
-        'dix-huit',
-        'dix-neuv',
-        'vingt',
+        _(u'cinqu'),
+        _(u'six'),
+        _(u'sept'),
+        _(u'huit'),
+        _(u'neuv'),
+        _(u'dix'),
+        _(u'onz'),
+        _(u'douz'),
+        _(u'treiz'),
+        _(u'quatorz'),
+        _(u'quinz'),
+        _(u'seiz'),
+        _(u'dix-sept'),
+        _(u'dix-huit'),
+        _(u'dix-neuv'),
+        _(u'vingt',)
         ]
     lfr = dict([(i + 5, lch[i] + postf) for i in range(len(lch))])
-    lfr[2] = 'demis'
-    lfr[3] = 'tiers'
-    lfr[4] = 'quarts'
-    exo.append(u'\\item 1 unité = \\ldots %s' % lfr[div])
-    exo.append(u'\\item 1 unité = \\ldots~%s' % lfr[subd])
-    exo.append(u'\\item %s unités = \\ldots~%s' % (origine,
+    lfr[2] = _(u'demis')
+    lfr[3] = _(u'tiers')
+    lfr[4] = _(u'quarts')
+    exo.append(_(u'\\item 1 unité = \\ldots %s') % lfr[div])
+    exo.append(_(u'\\item 1 unité = \\ldots~%s') % lfr[subd])
+    exo.append(_(u'\\item %s unités = \\ldots~%s') % (origine,
              lfr[div]))
-    exo.append(u'\\item %s unités = \\ldots~%s' % (origine,
+    exo.append(_(u'\\item %s unités = \\ldots~%s') % (origine,
              lfr[subd]))
-    cor.append(u'\\item 1 unité = %s %s' % (div, lfr[div]))
-    cor.append(u'\\item 1 unité = %s %s' % (subd, lfr[subd]))
-    cor.append(u'\\item %s unités = %s %s' % (origine,
+    cor.append(_(u'\\item 1 unité = %s %s') % (div, lfr[div]))
+    cor.append(_(u'\\item 1 unité = %s %s') % (subd, lfr[subd]))
+    cor.append(_(u'\\item %s unités = %s %s') % (origine,
              origine * div, lfr[div]))
-    cor.append(u'\\item %s unités = %s %s' % (origine,
+    cor.append(_(u'\\item %s unités = %s %s') % (origine,
              origine * subd, lfr[subd]))
 
 
@@ -360,24 +360,24 @@ def _QuestionsAbscisses():
     cor = ["\\exercice*"]
     (origine, div, subd, lpts, npts, lnum) = valeurs_abscisses()
     exo.append("\\begin{enumerate}")
-    exo.append(u"\\item Compléter :")
+    exo.append(_(u"\\item Compléter :"))
     exo.append("\\begin{multicols}{2}")
     exo.append("\\begin{enumerate}")
     cor.append("\\begin{enumerate}")
-    cor.append(u"\\item Compléter :")
+    cor.append(_(u"\\item Compléter :"))
     cor.append("\\begin{multicols}{2}")
     cor.append("\\begin{enumerate}")
     unites_fractions(exo, cor, origine, div, subd)
     exo.append("\\end{enumerate}")
     exo.append("\\end{multicols}")
-    exo.append(u"\\item Sur la demi-droite ci-dessous, placer les points d'abscisse donnée :")
+    exo.append(_(u"\\item Sur la demi-droite ci-dessous, placer les points d'abscisse donnée :"))
     exo.append("\\begin{multicols}{5}")
     exo.append("\\begin{enumerate}")
     exo.append("\\renewcommand{\\theenumii}{\\Alph{enumii}}")
     exo.append("\\renewcommand{\\labelenumii}{$\\theenumii$}")
     cor.append("\\end{enumerate}")
     cor.append("\\end{multicols}")
-    cor.append(u"\\item Sur la demi-droite ci-dessous, placer les points d'abscisse donnée :")
+    cor.append(_(u"\\item Sur la demi-droite ci-dessous, placer les points d'abscisse donnée :"))
     cor.append("\\begin{multicols}{5}")
     cor.append("\\begin{enumerate}")
     cor.append("\\renewcommand{\\theenumii}{\\Alph{enumii}}")
@@ -385,12 +385,12 @@ def _QuestionsAbscisses():
     ecrit_abscisses(exo, cor, origine, div, subd, lpts, lnum)
     exo.append("\\end{enumerate}")
     exo.append("\\end{multicols}")
-    exo.append(u"\\item Compléter les abscisses des points suivants :")
+    exo.append(_(u"\\item Compléter les abscisses des points suivants :"))
     exo.append("\\begin{multicols}{4}")
     exo.append("\\begin{enumerate}")
     cor.append("\\end{enumerate}")
     cor.append("\\end{multicols}")
-    cor.append(u"\\item Compléter les abscisses des points suivants :")
+    cor.append(_(u"\\item Compléter les abscisses des points suivants :"))
     cor.append("\\begin{multicols}{4}")
     cor.append("\\begin{enumerate}")
     trouve_abscisses(exo, cor, div, subd, lnum)
@@ -408,7 +408,7 @@ def _QuestionsAbscisses():
     return (exo, cor)
 
 class QuestionsAbscisses(LegacyExercise):
-    """Fractions et abscisses"""
+    description=_("""Fractions et abscisses""")
 
     tags = ["Sixième"]
     function = _QuestionsAbscisses

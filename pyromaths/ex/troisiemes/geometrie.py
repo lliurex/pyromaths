@@ -203,21 +203,21 @@ def creer_noms(noms, i):
 
 
 def tex_enonce_thales(noms, valeurs, text_arrondi):
-    texte = \
-        u'Sur la figure ci-contre, les droites $(%s)\\text{ et }(%s)$ sont parallèles.\\par\n' % \
+    texte = _(\
+        u'Sur la figure ci-contre, les droites $(%s)\\text{ et }(%s)$ sont parallèles.\\par\n') % \
         (lAB(noms[1:3]), lAB(noms[3:5]))
     liste = long_val(noms, valeurs)
-    texte += \
-        'On donne $%s=\\unit[%s]{cm}$ \\quad $%s=\\unit[%s]{cm}$ \\quad $%s=\\unit[%s]{cm}$ \\quad $%s~=~\\unit[%s]{cm}$.\\par\n' % \
+    texte += _(\
+        'On donne $%s=\\unit[%s]{cm}$ \\quad $%s=\\unit[%s]{cm}$ \\quad $%s=\\unit[%s]{cm}$ \\quad $%s~=~\\unit[%s]{cm}$.\\par\n') % \
         tuple(liste[0:8])
-    texte += 'Calculer $%s$ et $%s$, ' % tuple(liste[8:10])
-    texte += u'arrondies au %s.' % text_arrondi
+    texte += _(u'Calculer $%s$ et $%s$, ') % tuple(liste[8:10])
+    texte += _(u'arrondies au %s.') % text_arrondi
     return texte
 
 
 def tex_resolution_thales0(n):
-    return u"""Les points $%s$, $%s$, $%s$ et $%s$, $%s$, $%s$ sont alignés et les droites $(%s)$ et $(%s)$ sont parallèles.\\par
-D'après le \\textbf{théorème de Thalès} : $\\quad\\mathbf{\\cfrac{%s}{%s}=\\cfrac{%s}{%s}=\\cfrac{%s}{%s}}$""" % \
+    return _(u"""Les points $%s$, $%s$, $%s$ et $%s$, $%s$, $%s$ sont alignés et les droites $(%s)$ et $(%s)$ sont parallèles.\\par
+D'après le \\textbf{théorème de Thalès} : $\\quad\\mathbf{\\cfrac{%s}{%s}=\\cfrac{%s}{%s}=\\cfrac{%s}{%s}}$""") % \
            (
                n[0],
                n[3],
@@ -260,10 +260,10 @@ def tex_resolution_thales1(n, v):
             donnees = (creer_noms(n, r + 3), creer_noms(n, r + 6), '-',
                        creer_noms(n, r), nombre(v[r + 3]))
     if donnees:
-        return u'\\par\\medskip\nDe plus $%s=%s%s%s=\\unit[%s]{cm}$, d\'où' % \
+        return _(u'\\par\\medskip\nDe plus $%s=%s%s%s=\\unit[%s]{cm}$, d\'où') % \
                donnees
     else:
-        return u'\\quad d\'où'
+        return _(u'\\quad d\'où')
 
 
 def tex_resolution_thales2(n, v):
@@ -317,11 +317,11 @@ def tex_resolution_thales3(n, v, arrondi):
             else:
                 donnees.extend([creer_noms(n, i), nombre(v[i + 3]), nombre(v[r]), nombre(v[r + 3]),
                                 valeur_exacte(v[r] * v[i + 3] / v[r + 3], approx=arrondi)])
-    texte = \
-        '$\\cfrac{%s}{%s}=\\cfrac{%s}{%s}\\quad$ donc $\\boxed{%s=\\cfrac{%s\\times %s}{%s}%s}$\\hfill' % \
+    texte = _(\
+        '$\\cfrac{%s}{%s}=\\cfrac{%s}{%s}\\quad$ donc $\\boxed{%s=\\cfrac{%s\\times %s}{%s}%s}$\\hfill') % \
         tuple(donnees[0:9])
-    texte = texte + \
-            '$\\cfrac{%s}{%s}=\\cfrac{%s}{%s}\\quad$ donc $\\boxed{%s=\\cfrac{%s\\times %s}{%s}%s}$\\par\n' % \
+    texte = texte + _(\
+            '$\\cfrac{%s}{%s}=\\cfrac{%s}{%s}\\quad$ donc $\\boxed{%s=\\cfrac{%s\\times %s}{%s}%s}$\\par\n') % \
             tuple(donnees[9:18])
     return texte
 
@@ -365,7 +365,7 @@ def _tex_thales():
 
 
 class tex_thales(LegacyExercise):
-    """Théorème de Thalès"""
+    description=_("""Théorème de Thalès""")
 
     tags = ["Troisième"]
     function = _tex_thales
@@ -475,10 +475,10 @@ def enonce_rec_thales(n, v):
 
 def tex_enonce_rec_thales(n, v):
     d = enonce_rec_thales(n, v)
-    texte = \
+    texte = _(\
         u'''Sur la figure ci-contre, on donne $%s=\\unit[%s]{cm}$, $%s=\\unit[%s]{cm}$, $%s=\\unit[%s]{cm}$ et $%s=\\unit[%s]{cm}$.\\par
 Démontrer que les droites $(%s)$ et $(%s)$ sont parallèles.
-''' % \
+''') % \
         d
     return texte
 
@@ -508,9 +508,9 @@ def resolution_rec_thales0(n, v):
 
 
 def tex_resolution_rec_thales0(n, v):
-    return u"""Les points $%s$, $%s$, $%s$ et $%s$, $%s$, $%s$ sont alignés dans le même ordre.\\par
+    return _(u"""Les points $%s$, $%s$, $%s$ et $%s$, $%s$, $%s$ sont alignés dans le même ordre.\\par
 De plus $%s=%s%s%s=\\unit[%s]{cm}$.\\par
-""" % \
+""") % \
            resolution_rec_thales0(n, v)
 
 
@@ -543,7 +543,7 @@ def resolution_rec_thales1(n, v):
 
 def tex_resolution_rec_thales1(n, v):
     d = resolution_rec_thales1(n, v)
-    return u"""$\\left.
+    return _(u"""$\\left.
 \\renewcommand{\\arraystretch}{2}
 \\begin{array}{l}
 \\bullet\\cfrac{%s}{%s}=\\cfrac{%s}{%s}%s\\\\\n    \\bullet\\cfrac{%s}{%s}=\\cfrac{%s}{%s}%s
@@ -551,7 +551,7 @@ def tex_resolution_rec_thales1(n, v):
 \\right\\rbrace$
 Donc $\\cfrac{%s}{%s}=\\cfrac{%s}{%s}$\\,.\\par
 D'après la \\textbf{réciproque du théorème de Thalès}, \\fbox{les droites $(%s)$ et $(%s)$ sont parallèles.}
-""" % \
+""") % \
            d
 
 
@@ -562,7 +562,7 @@ def _tex_reciproque_thales():
     return exo, cor
 
 class tex_reciproque_thales(LegacyExercise):
-    """Réciproque du théorème de Thalès"""
+    description=_("""Réciproque du théorème de Thalès""")
 
     tags = ["Troisième"]
     function = _tex_reciproque_thales
@@ -582,7 +582,7 @@ def trigo_init(exo, cor):
 def enonce_trigo(exo, cor, v):
     (l, lt) = ([], [])
     arrondi = random.randrange(1, 4)
-    text_arrondi = ['dix', 'cent', 'mill'][arrondi - 1] + u'ième'
+    text_arrondi = [_('dix'), _('cent'), _('mill')][arrondi - 1] + _(u'ième')
     for j in range(2):
         f = (('\\sin', 1, 0), ('\\cos', 2, 0), ('\\tan', 1, 2))[v[j][2][0]]
         for i in range(2):
@@ -598,12 +598,12 @@ def enonce_trigo(exo, cor, v):
                     lt.append('$%s=\\unit[%s]{cm}$' % (l[2 * i + 6 * j],
                                                        nombre(l[2 * i + 6 * j + 1])))
                 else:
-                    tmp = 'la longueur $%s$' % l[2 * i + 6 * j]
+                    tmp = _('la longueur $%s$') % l[2 * i + 6 * j]
             elif l[2 * i + 6 * j + 1]:
                 lt.append('$%s=%s\\degres$' % (l[2 * i + 6 * j], l[2 * i +
                                                                    6 * j + 1]))
             else:
-                lt.append('la mesure de l\'angle $%s$' % l[2 * i + 6 * j])
+                lt.append(_('la mesure de l\'angle $%s$') % l[2 * i + 6 * j])
         if tmp:
             lt.append(tmp)
     exo.append('\\begin{multicols}{2}')
@@ -611,14 +611,14 @@ def enonce_trigo(exo, cor, v):
     cor.append('\\begin{multicols}{2}')
     cor.append('\\begin{enumerate}')
     tr = nom_triangle(v[0][0])
-    exo.append('\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par ' %
+    exo.append(_('\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par ') %
                (tr, v[0][0][0]))
-    exo.append('%s et %s.\\par\nCalculer %s, arrondie au %s.\\par' % tuple(lt[0:3] + [text_arrondi]))
-    cor.append('\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par ' %
+    exo.append(_('%s et %s.\\par\nCalculer %s, arrondie au %s.\\par') % tuple(lt[0:3] + [text_arrondi]))
+    cor.append(_('\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par ') %
                (tr, v[0][0][0]))
-    cor.append('%s et %s.\\par\nCalculer %s, arrondie au %s.\\par' % tuple(lt[0:3] + [text_arrondi]))
+    cor.append(_('%s et %s.\\par\nCalculer %s, arrondie au %s.\\par') % tuple(lt[0:3] + [text_arrondi]))
     cor.append("\\dotfill{}\\par\\vspace{2ex}")
-    cor.append('Dans le triangle $%s$ rectangle en $%s$,' % (tr, v[0][0][0]))  # résolution
+    cor.append(_('Dans le triangle $%s$ rectangle en $%s$,') % (tr, v[0][0][0]))  # résolution
     v2 = (v[0][1], v[0][2])
     l2 = l[0:6]
     resolution_trigo(cor, v2, l2, arrondi)
@@ -626,15 +626,15 @@ def enonce_trigo(exo, cor, v):
     exo.append('\\columnbreak')
     cor.append('\\columnbreak')
     arrondi = random.randrange(1, 4)
-    text_arrondi = ['dix', 'cent', 'mill'][arrondi - 1] + u'ième'
-    exo.append('\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par' %
+    text_arrondi = [_(u'dix'), _(u'cent'), _(u'mill')][arrondi - 1] + _(u'ième')
+    exo.append(_(u'\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par') %
                (tr, v[1][0][0]))
-    exo.append('%s et %s.\\par\nCalculer %s, arrondie au %s.\\par' % tuple(lt[3:6] + [text_arrondi]))
-    cor.append('\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par' %
+    exo.append(_(u'%s et %s.\\par\nCalculer %s, arrondie au %s.\\par') % tuple(lt[3:6] + [text_arrondi]))
+    cor.append(_(u'\\item $%s$ est un triangle rectangle en $%s$ tel que :\\par') %
                (tr, v[1][0][0]))
-    cor.append('%s et %s.\\par\nCalculer %s, arrondie au %s.\\par' % tuple(lt[3:6] + [text_arrondi]))
+    cor.append(_(u'%s et %s.\\par\nCalculer %s, arrondie au %s.\\par') % tuple(lt[3:6] + [text_arrondi]))
     cor.append("\\dotfill{}\\par\\vspace{2ex}")
-    cor.append('Dans le triangle $%s$ rectangle en $%s$,' % (tr, v[1][0][0]))  # résolution
+    cor.append(_(u'Dans le triangle $%s$ rectangle en $%s$,') % (tr, v[1][0][0]))  # résolution
     v2 = (v[1][1], v[1][2])
     l2 = l[6:12]
     resolution_trigo(cor, v2, l2, arrondi)
@@ -722,7 +722,7 @@ def _tex_trigo():
     return exo, cor
 
 class tex_trigo(LegacyExercise):
-    """Trigonométrie"""
+    description=_("""Trigonométrie""")
 
     tags = ["Troisième"]
     function = _tex_trigo

@@ -132,7 +132,7 @@ def _exo_echelles():
     return exo, cor
 
 class exo_echelles(LegacyExercise):
-    """Échelles"""
+    description=_("""Échelles""")
 
     tags = ["Cinquième"]
     function = _exo_echelles
