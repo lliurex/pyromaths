@@ -473,7 +473,10 @@ class Ui_MainWindow:
                 liste.append(self.exercices[niveau][1][exo])
             self.List = QtWidgets.QListWidget()
             for i in range(len(liste)):
-                item = QtWidgets.QListWidgetItem(_(liste[i].description()))
+                if type(liste[i].description)==type(""):
+                    item = QtWidgets.QListWidgetItem(_(liste[i].description))
+                else:
+                    item = QtWidgets.QListWidgetItem(_(liste[i].description()))
                 item.setFlags(QtCore.Qt.ItemIsEnabled |
                               QtCore.Qt.ItemIsSelectable |
                               QtCore.Qt.ItemIsDragEnabled)
@@ -707,7 +710,7 @@ class Tab(QtWidgets.QWidget):
             self.layout.addItem(spacer, (nb_exos + 1) // 2, 0, 1, 1)
             self.layout.addItem(spacer, (nb_exos + 1) // 2, 1, 1, 1)
         # Ajoute ce tab au widget parent
-        parent.addTab(self.scroll, self.titre)
+        parent.addTab(self.scroll, _(self.titre))
 
 
 
@@ -733,7 +736,10 @@ class Tab(QtWidgets.QWidget):
         layout.addWidget(img)
         # Label
         label = QtWidgets.QLabel(self.widget)
-        label.setText(_(u""+self.exos[i].description()))
+        if type(self.exos[i].description)==type(""):
+            label.setText(_(u""+self.exos[i].description))
+        else:
+            label.setText(_(u""+self.exos[i].description()))
         layout.addWidget(label)
         # Espacements
         spacer = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)

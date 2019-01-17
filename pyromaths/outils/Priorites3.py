@@ -702,7 +702,11 @@ def priorites(calcul):
     while len(calcul) > 1:
         s = effectue_calcul(calcul)
         if s:
-            if s == calcul: s, solution[0]
+            try:
+                if s == calcul: s, solution[0]
+            except:
+                solution.append(s)
+                break
             solution.append(s)
         calcul = list(s)  # dissocie calcul et s
     if 'Polynome(' in calcul[0][:9]:
