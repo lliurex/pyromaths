@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-16 16:38+0100\n"
-"PO-Revision-Date: 2019-01-17 09:03+0100\n"
+"PO-Revision-Date: 2019-01-17 09:33+0100\n"
 "Last-Translator: lliurex <lliurex@lliurexvirtualbox>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -5689,6 +5689,60 @@ msgstr "4º de ESO"
 msgid "Sixième"
 msgstr "6º de Primária"
 
+msgid "Cinquième"
+msgstr "1º de ESO"
+
+msgid "Quatrième"
+msgstr "2º de ESO"
+
+msgid "Troisième"
+msgstr "3º de ESO"
+
+msgid "Seconde"
+msgstr "4º de ESO"
+
+msgid "1èreS"
+msgstr "1º Bachillerato"
+
+msgid "Term STMG"
+msgstr "2º Bachillerato"
+
+msgid "Term S"
+msgstr "2º Bachillerato"
+
+msgid "Term ES"
+msgstr "2º Bachillerato"
+
+msgid "2.Lycée"
+msgstr "2.4º de ESO"
+
+msgid "6.Sixième"
+msgstr "6.6º de Primária"
+
+msgid "5.Cinquième"
+msgstr "5.1º de ESO"
+
+msgid "4.Quatrième"
+msgstr "4.2º de ESO"
+
+msgid "3.Troisième"
+msgstr "3.3º de ESO"
+
+msgid "2.Seconde"
+msgstr "2.4º de ESO"
+
+msgid "1.1èreS"
+msgstr "1. 1º Bachillerato"
+
+msgid "0.Term STMG"
+msgstr "0.2º Bachillerato"
+
+msgid "0.Term S"
+msgstr "0.2º Bachillerato"
+
+msgid "0.Term ES"
+msgstr "0.2º Bachillerato"
+
 #~ msgid "\\item Pour $x \\in \\interval{%s}{%s},\\quad f\\,(x) %s %s$"
 #~ msgstr "\\item Para $x \\in [%s~;~%s],\\quad f\\,(x) %s %s$"
 
@@ -5731,42 +5785,6 @@ msgstr "6º de Primária"
 #~ "{c}\n"
 #~ "  \\end{pspicture}\n"
 #~ "}"
-
-#~ msgid "6.Sixième"
-#~ msgstr "6.6º de Primária"
-
-#~ msgid "5.Cinquième"
-#~ msgstr "5.1º de ESO"
-
-#~ msgid "Cinquième"
-#~ msgstr "1º de ESO"
-
-#~ msgid "2.Lycée"
-#~ msgstr "2.4º de ESO"
-
-#~ msgid "2.Seconde"
-#~ msgstr "2.4º de ESO"
-
-#~ msgid "Seconde"
-#~ msgstr "4º de ESO"
-
-#~ msgid "1.1èreS"
-#~ msgstr "1. 1º Bachillerato"
-
-#~ msgid "1èreS"
-#~ msgstr "1º Bachillerato"
-
-#~ msgid "4.Quatrième"
-#~ msgstr "4.2º de ESO"
-
-#~ msgid "Quatrième"
-#~ msgstr "2º de ESO"
-
-#~ msgid "3.Troisième"
-#~ msgstr "3.3º de ESO"
-
-#~ msgid "Troisième"
-#~ msgstr "3º de ESO"
 
 #~ msgid ""
 #~ "© 2006 – %s Jérôme Ortais<br/>\n"
@@ -5878,12 +5896,6 @@ msgstr "6º de Primária"
 
 #~ msgid "{} précédent"
 #~ msgstr "{} anterior"
-
-#~ msgid "0.Term STMG"
-#~ msgstr "0.2º Bachillerato"
-
-#~ msgid "0.Term S"
-#~ msgstr "0.2º Bachillerato"
 
 #~ msgid "Pour $%s=%s$, on a $%s=%s"
 #~ msgstr "Para $%s=%s$, se tiene $%s=%s"
