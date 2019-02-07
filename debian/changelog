@@ -1,3 +1,9 @@
+pyromaths (18.9.2-1lliurex0) bionic; urgency=medium
+
+  * Bionic first release
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Thu, 07 Feb 2019 16:57:27 +0100
+
 pyromaths (18.9.2-1) bionic; urgency=medium
 
   * Correction d'un bug dans l'exercice Operations `pyromaths generate Operations:6`
