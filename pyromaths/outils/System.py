@@ -149,5 +149,6 @@ class Fiche:
         elif sys.platform == "darwin":  # Cas de Mac OS X.
             subprocess.run(['open', filename])
         else:
-            subprocess.run(['gio', 'open', filename])
+#            subprocess.run(['gio', 'open', filename])
+            subprocess.run(['xdg-open', filename])
 

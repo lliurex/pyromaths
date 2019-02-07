@@ -81,35 +81,35 @@ def valeurs_somme():
         op = "+-"[random.randrange(2)]
         n2, d2 = random.randrange(1, 11), random.randrange(2, 11)
         if op == "-" and 1 - n2 // d2 > 0:
-            l.append(_('1 %s Fraction(%s, %s)') % (op, n2, d2))
+            l.append(('1 %s Fraction(%s, %s)') % (op, n2, d2))
         else:
-            l.append(_('Fraction(%s, %s) %s 1') % (n2, d2, op))
+            l.append(('Fraction(%s, %s) %s 1') % (n2, d2, op))
 
     for dummy in range(2):
         op = "+-"[random.randrange(2)]
         n1 = random.randrange(2, 11)
         n2, d2 = random.randrange(1, 11), random.randrange(2, 11)
         if op == "-" and n1 - n2 // d2 > 0:
-            l.append(_('%s %s Fraction(%s, %s)') % (n1, op, n2, d2))
+            l.append(('%s %s Fraction(%s, %s)') % (n1, op, n2, d2))
         else:
-            l.append(_('Fraction(%s, %s) %s %s') % (n2, d2, op, n1))
+            l.append(('Fraction(%s, %s) %s %s') % (n2, d2, op, n1))
 
     op = "+-"[random.randrange(2)]
     n1 = random.randrange(1, 11)
     n2, d2 = random.randrange(1, 11), random.randrange(2, 11)
     if op == "-" and n1 - n2 > 0:
-        l.append(_('Fraction(%s, %s) %s Fraction(%s, %s)') % (n1, d2, op, n2, d2))
+        l.append(('Fraction(%s, %s) %s Fraction(%s, %s)') % (n1, d2, op, n2, d2))
     else:
-        l.append(_('Fraction(%s, %s) %s Fraction(%s, %s)') % (n2, d2, op, n1, d2))
+        l.append(('Fraction(%s, %s) %s Fraction(%s, %s)') % (n2, d2, op, n1, d2))
 
     for dummy in range(3):
         op = "+-"[random.randrange(2)]
         n1, d1 = random.randrange(1, 11), random.randrange(2, 11)
         n2, d2 = random.randrange(1, 11), random.randrange(2, 11) * d1
         if op == "-" and n1 // d1 - n2 // d2 > 0:
-            l.append(_('Fraction(%s, %s) %s Fraction(%s, %s)') % (n1, d1, op, n2, d2))
+            l.append(('Fraction(%s, %s) %s Fraction(%s, %s)') % (n1, d1, op, n2, d2))
         else:
-            l.append(_('Fraction(%s, %s) %s Fraction(%s, %s)') % (n2, d2, op, n1, d1))
+            l.append(('Fraction(%s, %s) %s Fraction(%s, %s)') % (n2, d2, op, n1, d1))
 
     random.shuffle(l)
     return l
