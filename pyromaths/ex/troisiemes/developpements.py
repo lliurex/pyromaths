@@ -63,21 +63,21 @@ def _id_rem():
 def id_rem1(a, b, details=2):
     """Construit un Polynome de la forme (ax+b)^2
     Renvoie une chaine"""
-    return _(u'Polynome([[%r, 1], [%r, 0]], details=%s)**2') % (a, b, details)
+    return ('Polynome([[%r, 1], [%r, 0]], details=%s)**2') % (a, b, details)
 def id_rem2(a, b, details=2):
     """Construit un Polynome de la forme (ax-b)^2
     Renvoie une chaine"""
-    return _(u'Polynome([[%r, 1], [%r, 0]], details=%s)**2') % (a, -b, details)
+    return ('Polynome([[%r, 1], [%r, 0]], details=%s)**2') % (a, -b, details)
 def id_rem3(a, b, details=2):
     """Construit un Polynome de la forme (ax+b)(ax-b) ou (ax-b)(ax+b)
     Renvoie une chaine"""
     sgn = randrange(2)
-    return _(u'Polynome([[%r, 1], [%r, 0]], details=%s) * Polynome([[%r, 1], [%r, 0]], details=%s)') % (a, (-1) ** sgn * b, details, a, (-1) ** (sgn + 1) * b, details)
+    return ('Polynome([[%r, 1], [%r, 0]], details=%s) * Polynome([[%r, 1], [%r, 0]], details=%s)') % (a, (-1) ** sgn * b, details, a, (-1) ** (sgn + 1) * b, details)
 def id_rem4(a, b, details=2):
     """Construit un Polynome de la forme (ax+b)(bx-a) ou (ax-b)(bx+a)
     Renvoie une chaine"""
     sgn = randrange(2)
-    return _(u'Polynome([[%r, 1], [%r, 0]], details=%s) * Polynome([[%r, 1], [%r, 0]], details=%s))') % (a, (-1) ** sgn * b, details, b, (-1) ** (sgn + 1) * a, details)
+    return ('Polynome([[%r, 1], [%r, 0]], details=%s) * Polynome([[%r, 1], [%r, 0]], details=%s))') % (a, (-1) ** sgn * b, details, b, (-1) ** (sgn + 1) * a, details)
 
 
 class id_rem(LegacyExercise):
