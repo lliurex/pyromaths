@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-16 16:38+0100\n"
-"PO-Revision-Date: 2019-02-11 17:42+0100\n"
+"PO-Revision-Date: 2019-02-11 18:09+0100\n"
 "Last-Translator: lliurex <lliurex@lliurexvirtualbox>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -1303,7 +1303,7 @@ msgstr "y $%s>0$ si $%s>%s$.\\\\"
 msgid ""
 "\\item Dresser le tableau de variations de $%s$ sur $\\mathcal{D}_{%s}$."
 msgstr ""
-"\\item Complete la tabla de varaciones de  $%s$ en $\\mathcal{D}_{%s}$."
+"\\item Completar la tabla de variaciones de  $%s$ en $\\mathcal{D}_{%s}$."
 
 #: pyromaths/ex/lycee/ExoPolynome.py:553
 #, python-format
@@ -1930,7 +1930,7 @@ msgstr "Las figuras 1 y 2 representan el mismo cubo %s%s%s%s%s%s%s%s.\\\\  "
 
 #: pyromaths/ex/sixiemes/espace.py:187 pyromaths/ex/sixiemes/espace.py:239
 msgid "\\item Compléter les sommets manquants de la figure 2."
-msgstr "\\item Complete los vértices que faltan en la Figura 2."
+msgstr "\\item Completar los vértices que faltan en la Figura 2."
 
 #: pyromaths/ex/sixiemes/espace.py:188
 #, python-format
