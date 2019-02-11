@@ -408,7 +408,7 @@ def _exo_thales():
     cor = ["\\exercice*"]
     noms = choix_points(5)  # les noms des sommets
     arrondi = random.randrange(1, 4)
-    text_arrondi = ['dix', 'cent', 'mill'][arrondi - 1] + u'ième'
+    text_arrondi = [_('dix'), _('cent'), _('mill')][arrondi - 1] + _(u'ième')
     while True:
         valeurs = valeurs_thales(70)  # les longueurs en mm
         if valeurs:
