@@ -69,7 +69,7 @@ def _notion_fonction():
     exo.append(u"f:~x \\longmapsto %s \\\\ g:~x \\longmapsto %s" % (fct[0], fct[1]))
     exo.extend([r"\end{array}$", r"\begin{enumerate}", ])
     exo.append(_(u"\\item Quelle est l'image de $%s$ par la fonction $f$ ?") % ant[0])
-    cor = [r"\exercice", r"\begin{multicols}{2}", r"\begin{enumerate}", u"\\item On donne"]
+    cor = [r"\exercice", r"\begin{multicols}{2}", r"\begin{enumerate}", _(u"\\item On donne")]
     cor.append(r"$\begin{array}[t]{l}")
     cor.append(u"f:~x \\longmapsto %s \\\\ g:~x \\longmapsto %s" % (fct[0], fct[1]))
     cor.extend([r"\end{array}$", r"\begin{enumerate}", ])
@@ -127,14 +127,14 @@ def _notion_fonction():
     cor.append(r"\end{enumerate}")
     val_exo3 = choix_points()
     p = Priorites3.plotify(Priorites3.priorites(Lagrange(val_exo3))[-1])
-    exo.extend([_(u"\\item Le graphique ci-dessous représente une fonction $k$ : \\par", r"\begin{center}"),
+    exo.extend([_(u"\\item Le graphique ci-dessous représente une fonction $k$ : \\par"), r"\begin{center}",
                 r"\psset{unit=8mm, algebraic, dotsize=4pt 4}", r"\begin{pspicture*}(-4.2,-4.2)(4.2,4.2)"])
     exo.append(r"\psgrid[subgriddiv=2, gridwidth=.6pt,subgridcolor=lightgray, gridlabels=0pt]")
     exo.append(r"\psaxes[linewidth=1.2pt,]{->}(0,0)(-4.2,-4.2)(4.2,4.2)")
     exo.append(r"\psplot[plotpoints=200, linewidth=1.5pt, linecolor=DarkRed]{-4.2}{4.2}{%s}" % p)
     exo.append(r"\psdots %s" % " ".join([str(val) for val in val_exo3]))
     exo.extend([r"\end{pspicture*}", r"\end{center}", r"\begin{enumerate}"])
-    cor.extend([_(u"\\item Le graphique ci-après représente une fonction $k$ : \\par", r"\begin{center}"),
+    cor.extend([_(u"\\item Le graphique ci-après représente une fonction $k$ : \\par"), r"\begin{center}",
                 r"\psset{unit=8mm, algebraic, dotsize=4pt 4}", r"\begin{pspicture*}(-4.2,-4.2)(4.2,4.2)"])
     cor.append(r"\psgrid[subgriddiv=2, gridwidth=.6pt,subgridcolor=lightgray, gridlabels=0pt]")
     cor.append(r"\psaxes[linewidth=1.2pt,]{->}(0,0)(-4.2,-4.2)(4.2,4.2)")

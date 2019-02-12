@@ -201,12 +201,12 @@ def _Droites():
             '\\renewcommand{\\tabularxcolumn}[1]{m{#1}}',
             '\\begin{tabularx}{\\linewidth}{|X|>{\\centering}m{5cm}|}',
             '\\hline',
-            u'\\textbf{phrase} & \\textbf{Figure} \\tabularnewline \\hline']
+            _(u'\\textbf{phrase} & \\textbf{Figure} \\tabularnewline \\hline')]
     cor = ["\\exercice*", _(u"Compléter les pointillés et les figures :\\par"),
             '\\renewcommand{\\tabularxcolumn}[1]{m{#1}}',
             '\\begin{tabularx}{\\linewidth}{|X|>{\\centering}m{5cm}|}',
             '\\hline',
-            u'\\textbf{Phrase} & \\textbf{Figure} \\tabularnewline \\hline']
+            _(u'\\textbf{Phrase} & \\textbf{Figure} \\tabularnewline \\hline')]
 
     line = choix_ligne(5)
     for i in range(5):
