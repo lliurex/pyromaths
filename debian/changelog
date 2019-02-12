@@ -1,3 +1,9 @@
+pyromaths (18.9.2-1lliurex0.3) bionic; urgency=medium
+
+  * Fix broken exercises
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Tue, 12 Feb 2019 11:01:40 +0100
+
 pyromaths (18.9.2-1lliurex0.2) bionic; urgency=medium
 
   * Bionic first release
