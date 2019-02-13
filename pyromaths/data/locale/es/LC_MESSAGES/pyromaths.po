@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-16 16:38+0100\n"
-"PO-Revision-Date: 2019-02-11 18:09+0100\n"
+"PO-Revision-Date: 2019-02-13 10:34+0100\n"
 "Last-Translator: lliurex <lliurex@lliurexvirtualbox>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -2683,7 +2683,7 @@ msgid ""
 "Sur la figure ci-contre, les droites $(%s)\\text{ et }(%s)$ sont parallèles."
 "\\par\n"
 msgstr ""
-"{En la figura adjunta, las rectas $(%s)$ y $(%s)$ son paralelas.\\par\n"
+"En la figura adjunta, las rectas $(%s)\\text{ y }(%s)$ son paralelas.\\par\n"
 
 #: pyromaths/ex/troisiemes/geometrie.py:211
 #, python-format, python-brace-format
