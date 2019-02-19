@@ -101,11 +101,8 @@
 \pagestyle{fancy}
 \cfoot{\textsl{\footnotesize{Año \number\count1/\number\count2}}}
 \rfoot{\textsl{\tiny{http://www.pyromaths.org}}}
-\lhead{\textsl{\footnotesize{Pág. \thepage/ \pageref{LastPage}}}}
-\chead{\Large{\textsc{(* if titre *)(( titre ))(* else *)Ejercicios(* endif *)}}}
-(* if niveau *)
-\rhead{\textsl{\footnotesize{(( niveau ))}}}
-(* endif *)
+\renewcommand{\headrulewidth}{0pt}% filet en haut de page
+\lhead{} \chead{} \rhead{}
 
 \begin{document}
 \currentpdfbookmark{Los enunciados}{Énoncés}
@@ -113,6 +110,12 @@
 \renewcommand{\thenocalcul}{\Alph{nocalcul}}
 \raggedcolumns
 \setlength{\columnseprule}{0.5pt}
+{\noindent \textbf{NOMBRE :} \hfill \textbf{(( nivel ))}}\par
+\vskip 0.3cm {\noindent \textbf{Prénom :} \hfill
+\begin{center}
+  {\large \textbf{(( titre ))}}\par
+\end{center}
+\vskip 0.3cm \hrule\vspace{\baselineskip}
 
 (* if enonce *)
     (* for exo in exercices *)
@@ -129,7 +132,7 @@
 
 (* if enonce and corrige *)
 \newpage
-\currentpdfbookmark{Corrección de los ejercicios}{Corrigé}
+\currentpdfbookmark{Corrección del ejercicio}{Corrigé}
 \lhead{\textsl{{\footnotesize Pág. \thepage/ \pageref{LastCorPage}}}}
 \setcounter{page}{1}
 \setcounter{exo}{0}
