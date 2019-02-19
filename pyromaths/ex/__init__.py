@@ -15,6 +15,7 @@ import subprocess
 import sys
 import tempfile
 import types
+import locale
 
 from ..outils import jinja2tex
 from .test import test_path
@@ -41,7 +42,17 @@ class TexExercise:
 
     @classmethod
     def thumb(cls):
-        return os.path.join(directories.EXODIR, 'img', "%s.png" % cls.name())
+        langue = locale.getdefaultlocale()[0][0:2]
+        img_dir=os.path.join(directories.EXODIR,'img')
+        if langue == "fr" or langue == "":
+            img_dir=os.path.join(img_dir,"default")
+        else:
+            img_dir=os.path.join(img_dir,langue)
+            if not os.path.isfile(os.path.join("%s"%img_dir,"%s.png"%cls.name())):
+                img_dir=os.path.join(directories.EXODIR,'img','default')
+        exo_img=os.path.join(img_dir,"%s.png"%cls.name())
+#        return os.path.join(directories.EXODIR, 'img', "%s.png" % cls.name())
+        return exo_img
 
     def tex_statement(self):
         """Return problem statement in TeX format."""
@@ -309,12 +320,33 @@ class Jinja2Exercise(TexExercise):
     @property
     def statement_name(self):
         """Nom du fichier de l'énoncé (sans le répertoire)."""
-        return os.path.join("{}-statement.tex".format(self.__class__.__name__))
+        #Match the system locale in order to load the localized file (if any)
+
+        langue = locale.getdefaultlocale()[0][0:2]
+        if langue == "fr" or langue == "":
+            lang = ""
+        else:
+            lang = "_" + langue
+            exo_template=os.path.join("{}-statement%s.tex".format(self.__class__.__name__))%lang
+            if not os.path.isfile("%s/%s"%(templatedir(),exo_template)):
+                lang=''
+
+        return os.path.join("{}-statement%s.tex".format(self.__class__.__name__))%lang
 
     @property
     def answer_name(self):
         """Nom du fichier du corrigé (sans le répertoire)."""
-        return os.path.join("{}-answer.tex".format(self.__class__.__name__))
+        #Match the system locale in order to load the localized file (if any)
+
+        langue = locale.getdefaultlocale()[0][0:2]
+        if langue == "fr" or langue == "":
+            lang = ""
+        else:
+            lang = "_" + langue
+            cor_template=os.path.join("{}-answer%s.tex".format(self.__class__.__name__))%lang
+            if not os.path.isfile("%s/%s"%(templatedir(),cor_template)):
+                lang=''
+        return os.path.join("{}-answer%s.tex".format(self.__class__.__name__))%lang
 
     def tex_statement(self):
         """Génération de l'énoncé"""
