@@ -1,3 +1,9 @@
+pyromaths (18.9.2-1lliurex1) bionic; urgency=medium
+
+  * Add internacionalization support
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Tue, 19 Feb 2019 16:04:23 +0100
+
 pyromaths (18.9.2-1lliurex0.3) bionic; urgency=medium
 
   * Fix broken exercises
