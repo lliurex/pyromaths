@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-16 16:38+0100\n"
-"PO-Revision-Date: 2019-02-13 10:34+0100\n"
+"PO-Revision-Date: 2019-02-19 09:59+0100\n"
 "Last-Translator: lliurex <lliurex@lliurexvirtualbox>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -1154,7 +1154,7 @@ msgstr "Estudio de signo"
 
 #: pyromaths/ex/lycee/ExoPolynome.py:296
 msgid "Sens de variations"
-msgstr "Las variaciones en el significado"
+msgstr "El sentido de las variaciones"
 
 #: pyromaths/ex/lycee/ExoPolynome.py:318
 msgid "Étude de fonctions"

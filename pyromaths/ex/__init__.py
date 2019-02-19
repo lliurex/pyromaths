@@ -42,7 +42,17 @@ class TexExercise:
 
     @classmethod
     def thumb(cls):
-        return os.path.join(directories.EXODIR, 'img', "%s.png" % cls.name())
+        langue = locale.getdefaultlocale()[0][0:2]
+        img_dir=os.path.join(directories.EXODIR,'img')
+        if langue == "fr" or langue == "":
+            img_dir=os.path.join(img_dir,"default")
+        else:
+            img_dir=os.path.join(img_dir,langue)
+            if not os.path.isfile(os.path.join("%s"%img_dir,"%s.png"%cls.name())):
+                img_dir=os.path.join(directories.EXODIR,'img','default')
+        exo_img=os.path.join(img_dir,"%s.png"%cls.name())
+#        return os.path.join(directories.EXODIR, 'img', "%s.png" % cls.name())
+        return exo_img
 
     def tex_statement(self):
         """Return problem statement in TeX format."""
