@@ -2,31 +2,31 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc} % UTF-8
 \usepackage[T1]{fontenc}
-\usepackage{lmodern} % Prévient un bug d'affichage evince lié à [T1]{fontenc}
-\usepackage[frenchb]{babel} % francisation
+\usepackage{lmodern} % Adverteix d'un error de visualització relacionat amb [T1]{fontenc}
+\usepackage[frenchb]{babel} % afrancesament
 \usepackage{adjustbox}
-\usepackage[fleqn]{amsmath} % aligne le mode maths à gauche
-\usepackage{amssymb} % the amsfont symbols
-\usepackage[table, usenames, svgnames]{xcolor} % Couleurs
-\usepackage{multicol} % Multi-colonnes
-\usepackage{fancyhdr} % Mise en page, en-tête et pied de page
-\usepackage{calc} % Opérations
-\usepackage{marvosym} % Martin Vogels Symbole (\EUR)
-\usepackage{cancel} % draw diagonal lines
-\usepackage{units} % typesetting units and nice fractions
-\usepackage[autolanguage]{numprint} % écrituredes virgules
-\usepackage{tabularx} % creates a paragraph-like column whose width
-                          % automatically expands
-\usepackage{wrapfig} % allows figures or tables to have text wrapped around
-\usepackage{pst-eucl, pst-plot} % figures géométriques
+\usepackage[fleqn]{amsmath} % alinea el mode de matemàtiques a l'esquerra
+\usepackage{amssymb} % els símbols amsfont (tipus de lletra de l'American Mathematical Society)
+\usepackage[table, usenames, svgnames]{xcolor} % Colors
+\usepackage{multicol} % Multicolumnes
+\usepackage{fancyhdr} % Disseny, capçalera i peu de pàgina
+\usepackage{calc} % Operacions
+\usepackage{marvosym} % símbols Martin Vogels (\EUR)
+\usepackage{cancel} % dibuixa línies diagonals
+\usepackage{units} % unitats tipogràfiques i fraccions
+\usepackage[autolanguage]{numprint} % escriptura de comes
+\usepackage{tabularx} % crea una columna de tipus paràgraf, l'amplària de la qual 
+							% s'espandeix de forma automàtica 
+\usepackage{wrapfig} % permet figures o tables amb text ajustats al voltant
+\usepackage{pst-eucl, pst-plot} % figures geomètriques
 \usepackage{enumitem}
 \usepackage{interval}
-\usepackage{wasysym} % Symbole Euro
-\usepackage{mathtools} % Encadrement dans align*
+\usepackage{wasysym} % Símbol de l'euro
+\usepackage{mathtools} % enquadrament de l'alineació*
 \usepackage[inline]{asymptote}
 \usepackage{tkz-tab}
-\usetikzlibrary{external} % set up externalization
-\tikzexternalize[shell escape=-enable-write18] % activate externalisation
+\usetikzlibrary{external} % configua l'externalització
+\tikzexternalize[shell escape=-enable-write18] % activa l'externalització
 \tikzset{%
   external/system call={%
     latex \tikzexternalcheckshellescape -halt-on-error
@@ -42,7 +42,7 @@
 \usepackage[a4paper, dvips, left=1.5cm, right=1.5cm, top=2cm,%
   bottom=2cm, marginpar=5mm, marginparsep=5pt]{geometry}
 \newcounter{exo}
-\frenchbsetup{StandardItemLabels} % remet \textbullet pour les listes
+\frenchbsetup{StandardItemLabels} % restableix \textbullet pour les listes
 \setlength{\headheight}{18pt}
 \setlength{\fboxsep}{5pt}
 \setlength\parindent{0em}
@@ -50,9 +50,9 @@
 \setlength{\columnsep}{30pt}
 \usepackage[bookmarks=true, bookmarksnumbered=true, ps2pdf, pagebackref=true,%
             colorlinks=true,linkcolor=blue,plainpages=true,unicode]{hyperref}
-\hypersetup{pdfauthor={Jérôme Ortais},pdfsubject={Ejercicios de
-    matemáticas},pdftitle={Ejercicios creados por Pyromaths, un software libre
-    en Python bajo licencia GPL}}
+\hypersetup{pdfauthor={Jérôme Ortais},pdfsubject={Exercicis de
+    matemátiques},pdftitle={Exercicis creats per Pyromaths, un programari liure
+    en Python sota llicència GPL}}
 
 \def\pshlabel#1{\psframebox*[fillcolor=White,framearc=.2]{\footnotesize $#1$}}
 \def\psvlabel#1{\psframebox*[fillcolor=White,framearc=.2]{\footnotesize $#1$}}
@@ -74,8 +74,8 @@
   \stepcounter{nocalcul}%
   \par\addvspace{1.5\baselineskip minus 1\baselineskip}%
   \@ifstar%
-  {\penalty-130\styleexo[Corrección del ejercicio]}%
-  {\penalty-130\styleexo[Ejercicio]}%
+  {\penalty-130\styleexo[Correcció de l'exercici]}%
+  {\penalty-130\styleexo[Exercici]}%
   }
 \newcommand{\checkedbox}[0]{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0pt}$\checkmark$}}
 \makeatother
@@ -99,13 +99,10 @@
 
 \count1=\year \count2=\year \ifnum\month<8\advance\count1by-1\else\advance\count2by1\fi
 \pagestyle{fancy}
-\cfoot{\textsl{\footnotesize{Año \number\count1/\number\count2}}}
+\cfoot{\textsl{\footnotesize{Any \number\count1/\number\count2}}}
 \rfoot{\textsl{\tiny{http://www.pyromaths.org}}}
-\lhead{\textsl{\footnotesize{Pág. \thepage/ \pageref{LastPage}}}}
-\chead{\Large{\textsc{(* if titre *)(( titre ))(* else *)Ejercicios(* endif *)}}}
-(* if niveau *)
-\rhead{\textsl{\footnotesize{(( niveau ))}}}
-(* endif *)
+\renewcommand{\headrulewidth}{0pt}% filet en la part superior de la pàgina
+\lhead{} \chead{} \rhead{}
 
 \begin{document}
 \currentpdfbookmark{Los enunciados}{Énoncés}
@@ -113,6 +110,12 @@
 \renewcommand{\thenocalcul}{\Alph{nocalcul}}
 \raggedcolumns
 \setlength{\columnseprule}{0.5pt}
+{\noindent \textbf{NOMBRE :} \hfill \textbf{(( nivel ))}}\par
+\vskip 0.3cm {\noindent \textbf{Prénom :} \hfill
+\begin{center}
+  {\large \textbf{(( titre ))}}\par
+\end{center}
+\vskip 0.3cm \hrule\vspace{\baselineskip}
 
 (* if enonce *)
     (* for exo in exercices *)
@@ -129,7 +132,7 @@
 
 (* if enonce and corrige *)
 \newpage
-\currentpdfbookmark{Corrección de los ejercicios}{Corrigé}
+\currentpdfbookmark{Correcció de l'exercici}{Corrigé}
 \lhead{\textsl{{\footnotesize Pág. \thepage/ \pageref{LastCorPage}}}}
 \setcounter{page}{1}
 \setcounter{exo}{0}

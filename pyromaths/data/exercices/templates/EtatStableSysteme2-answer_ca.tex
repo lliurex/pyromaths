@@ -1,5 +1,5 @@
 \exercice*
-Puisque $P$ est l'état stable, alors $P=P\times M$.
+Puesto que $P$ es el estado estable, entonces $P=P\times M$.
 
 \begin{align*}
     P\times M &= \begin{pmatrix}x&y\end{pmatrix}\times
@@ -12,9 +12,9 @@ Puisque $P$ est l'état stable, alors $P=P\times M$.
 \end{pmatrix}
 \end{align*}
 
-Or $\begin{pmatrix}x&y\end{pmatrix}=P=P\times M$, donc les coefficients des matrices sont deux à deux égaux, donc $x=(( a|facteur("x") )) + (( (1-b)|facteur("y") ))$.
+O $\begin{pmatrix}x&y\end{pmatrix}=P=P\times M$, por lo que los coeficientes de la matriz son dos o dos igualesl, entonces $x=(( a|facteur("x") )) + (( (1-b)|facteur("y") ))$.
 
-D'autre part, puisque $P$ est un état probabiliste, alors $x+y=1$, donc $y=1-x$. Donc, en remplaçant $y$ par $1-x$ dans l'équation précédente, on obtient :
+Por otro lado, puesto que $P$ es un estado probabilístico, entonces $x+y=1$, pues $y=1-x$. Así que, reemplazando $y$ por $1-x$ en la ecuación precedente, obtendremos :
 
 \begin{align*}
   x &= (( a|facteur("x") )) + (( (1-b)|facteur ))\,(1-x) \\
@@ -26,9 +26,9 @@ D'autre part, puisque $P$ est un état probabiliste, alors $x+y=1$, donc $y=1-x$
 x &= (( ((1-b)/(2-a-b))|facteur ))
 \end{align*}
 
-Enfin, puisque $y=1-x$, alors $y=1-(( ((1-b)/(2-a-b))|facteur ))=(( ((1-a)/(2-a-b))|facteur ))$.
+Finalmente, puesto que $y=1-x$, entonces $y=1-(( ((1-b)/(2-a-b))|facteur ))=(( ((1-a)/(2-a-b))|facteur ))$.
 
-L'unique état stable de ce graphe est donc $\begin{pmatrix}
+El único estado estable de la gráfica es $\begin{pmatrix}
 (( ((1-b)/(2-a-b))|facteur )) &
 (( ((1-a)/(2-a-b))|facteur ))
 \end{pmatrix}$.
