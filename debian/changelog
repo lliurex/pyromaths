@@ -1,3 +1,9 @@
+pyromaths (18.9.2-1lliurex4) bionic; urgency=medium
+
+  * Fix text translations
+
+ -- Juanma1980 <juanma1980@gmail.com>  Thu, 19 Dec 2019 09:43:30 +0100
+
 pyromaths (18.9.2-1lliurex3) bionic; urgency=medium
 
   * Add translated tex templates
