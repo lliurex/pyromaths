@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-09 17:41+0200\n"
-"PO-Revision-Date: 2019-12-19 12:32+0100\n"
+"PO-Revision-Date: 2019-12-19 13:38+0100\n"
 "Last-Translator: Pilar Embid Giner <embid_mar@gva.es>\n"
 "Language-Team: LliureX\n"
 "Language: ca\n"
@@ -50,7 +50,7 @@ msgstr ""
 
 #: pyromaths/ex/lycee/Vecteurs.py:241
 msgid "$.                  On lit également son ordonnée : $"
-msgstr ""
+msgstr "$.                  Llegim tambè les seues ordenades : $"
 
 #: pyromaths/ex/lycee/Vecteurs.py:242
 #, python-brace-format
@@ -183,7 +183,7 @@ msgstr "El grau és massa elevat."
 
 #: pyromaths/ex/lycee/SecondDegre.py:49
 msgid "Bilan sur les trinômes"
-msgstr ""
+msgstr "Revisió de trinomis"
 
 #: pyromaths/ex/lycee/SecondDegre.py:136
 msgid "Forme canonique"
@@ -304,7 +304,7 @@ msgstr ""
 
 #: pyromaths/ex/lycee/SecondDegre.py:571
 msgid "Caractéristiques d'une parabole"
-msgstr ""
+msgstr "Característiques d'una paràbola"
 
 #: pyromaths/ex/lycee/SecondDegre.py:603
 #, python-format
@@ -329,7 +329,7 @@ msgstr ""
 
 #: pyromaths/ex/lycee/SecondDegre.py:612
 msgid "Polynôme paramétré de degré 2"
-msgstr ""
+msgstr "Polinomi parametrizat de grau 2"
 
 #: pyromaths/ex/lycee/SecondDegre.py:644
 #, python-format
@@ -371,8 +371,6 @@ msgid "Déterminer $a$ pour que $%s$ soit une racine de $Q$.\n"
 msgstr "Calculeu $a$ perquè $%s$ siga una arrel de $Q$.\n"
 
 #: pyromaths/ex/lycee/equations.py:49
-#, fuzzy
-#| msgid "Résoudre l'équation : "
 msgid "Résolution graphique d'équations"
 msgstr "Resoleu l'equació:"
 
@@ -620,7 +618,7 @@ msgstr ""
 #: pyromaths/ex/lycee/VariationsFonctions.py:905
 #: pyromaths/ex/lycee/VariationsFonctions.py:906
 msgid "Pour"
-msgstr ""
+msgstr "Per a"
 
 #: pyromaths/ex/lycee/VariationsFonctions.py:844
 #: pyromaths/ex/lycee/VariationsFonctions.py:845
@@ -765,35 +763,35 @@ msgstr ""
 
 #: pyromaths/ex/lycee/TermesSuite.py:464
 msgid "au terme précédent auquel on ajoute {}"
-msgstr ""
+msgstr "el terme anterior que es suma {}"
 
 #: pyromaths/ex/lycee/TermesSuite.py:466
 msgid "au terme précédent auquel on soustrait {}"
-msgstr ""
+msgstr "el terme anterior que es resta {}"
 
 #: pyromaths/ex/lycee/TermesSuite.py:483
 msgid "à l'opposé du précédent"
-msgstr ""
+msgstr "a l'oposat de l'anterior"
 
 #: pyromaths/ex/lycee/TermesSuite.py:504
 msgid "à l'inverse du précédent"
-msgstr ""
+msgstr "a l'inversa de l'anterior"
 
 #: pyromaths/ex/lycee/TermesSuite.py:607
 msgid "Termes d'une suite"
-msgstr ""
+msgstr "Elements d'una seqüència"
 
 #: pyromaths/ex/lycee/TermesSuite.py:628
 msgid "Pour chacune des suites $u$ suivantes, calculer :"
-msgstr ""
+msgstr "Per a cadascuna de les següents seqncies $u$ calcular :"
 
 #: pyromaths/ex/lycee/TermesSuite.py:629
 msgid " (a) le {} terme ;"
-msgstr ""
+msgstr " (a) el {} element ;"
 
 #: pyromaths/ex/lycee/TermesSuite.py:630
 msgid " (b) le terme de rang {} ;"
-msgstr ""
+msgstr " (b) l'element de rang {} ;"
 
 #: pyromaths/ex/lycee/TermesSuite.py:634
 #, python-brace-format
@@ -801,6 +799,8 @@ msgid ""
 "  \\item ${notation}$ est une suite de premier terme $u_{indice0}={terme0}$, "
 "et dont chaque terme (sauf le premier) est égal {suivant}."
 msgstr ""
+"  \\item ${notation}$ es una seqüencia de primer ordre $u_{indice0}"
+"={terme0}$, a on cadascú dels elements (llevat el primer) es igual {suivant}."
 
 #: pyromaths/ex/lycee/TermesSuite.py:635
 #, python-brace-format
@@ -808,6 +808,8 @@ msgid ""
 "  \\item ${notation}$ est la suite définie pour $n\\geqslant {indice0}$ "
 "par : $u_n={fonction}$."
 msgstr ""
+"  \\item ${notation}$ es la seqüència definidia per a $n\\geqslant "
+"{indice0}$ per : $u_n={fonction}$."
 
 #: pyromaths/ex/lycee/TermesSuite.py:636
 #, python-brace-format
@@ -822,6 +824,15 @@ msgid ""
 "              \\end{{array}}\\right.\\]\n"
 "              "
 msgstr ""
+"\n"
+"            \\item ${notation}$ es la seqüència definida per a $n\\geqslant "
+"{indice0}$ per :\n"
+"                \\[\\left\\{{\\begin{{array}}{{l}}\n"
+"                  u_{indice0}={terme0}\\\\\n"
+"                  \\text{{Per a tot $n\\geqslant {indice0}$ : }} u_{{n+1}}"
+"={fonction}.\n"
+"              \\end{{array}}\\right.\\]\n"
+"              "
 
 #: pyromaths/ex/lycee/TermesSuite.py:650
 #, python-brace-format
@@ -829,31 +840,34 @@ msgid ""
 "  \\item Selon l'énoncé, le premier terme de ${notation}$ est $u_{indice0}"
 "={terme0}$. Puisque chaque terme (sauf le premier) est égal {suivant}, on a :"
 msgstr ""
+"  \\item Segons l'enunciat, el primer element de ${notation}$ es $u_{indice0}"
+"={terme0}$. Donat que cada element (llevat del primer) es igual {suivant}, "
+"doncs :"
 
 #: pyromaths/ex/lycee/TermesSuite.py:665 pyromaths/ex/lycee/TermesSuite.py:679
 #: pyromaths/ex/lycee/TermesSuite.py:733
 msgid " \\item Calcul du {} terme :"
-msgstr ""
+msgstr " \\item Càlcul del {} element :"
 
 #: pyromaths/ex/lycee/TermesSuite.py:668 pyromaths/ex/lycee/TermesSuite.py:682
 #: pyromaths/ex/lycee/TermesSuite.py:736
 #, python-brace-format
 msgid "le {ordinal} terme est $u_{indice}$"
-msgstr ""
+msgstr "el {ordinal} element es $u_{indice}$"
 
 #: pyromaths/ex/lycee/TermesSuite.py:670 pyromaths/ex/lycee/TermesSuite.py:738
 msgid "Le terme demandé est donc : $u_{}={}$."
-msgstr ""
+msgstr "L'element sol·licitat es : $u_{}={}$."
 
 #: pyromaths/ex/lycee/TermesSuite.py:671 pyromaths/ex/lycee/TermesSuite.py:739
 #, python-brace-format
 msgid "\\item Le terme de rang {indice} est : $u_{indice}={valeur}$."
-msgstr ""
+msgstr "\\item L'element de rang {indice} es : $u_{indice}={valeur}$."
 
 #: pyromaths/ex/lycee/TermesSuite.py:672 pyromaths/ex/lycee/TermesSuite.py:740
 #, python-brace-format
 msgid "\\item Nous avons calculé que : $u_{indice}={valeur}$."
-msgstr ""
+msgstr "\\item Calculem que : $u_{indice}={valeur}$."
 
 #: pyromaths/ex/lycee/TermesSuite.py:676
 #, python-brace-format
@@ -861,12 +875,16 @@ msgid ""
 "  \\item La suite ${notation}$ est définie pour $n\\geqslant {indice0}$ "
 "par : $u_n={fonction}$."
 msgstr ""
+"  \\item La seqüència ${notation}$ es definida per a $n\\geqslant {indice0}$ "
+"per : $u_n={fonction}$."
 
 #: pyromaths/ex/lycee/TermesSuite.py:677
 msgid ""
 "Elle est donc définie par son terme général : pour calculer un terme de rang "
 "$n$, on peut calculer directement l'image de $n$ par la suite."
 msgstr ""
+"Es defineix pel seu rang general: per a calcular un element de rang $n$, es\n"
+"pot calcular directament la imatge de $n$ per a la seqüència\""
 
 #: pyromaths/ex/lycee/TermesSuite.py:684
 msgid "Le terme demandé est donc : $u_{}="
@@ -874,28 +892,28 @@ msgstr "El resultat és: $u_{}="
 
 #: pyromaths/ex/lycee/TermesSuite.py:689
 msgid "La solution est $u_{{ {} }}={}$."
-msgstr ""
+msgstr "La solució es $u_{{ {} }}={}$."
 
 #: pyromaths/ex/lycee/TermesSuite.py:690
 #, python-brace-format
 msgid "\\item Le terme de rang {rang} est $u_{{ {rang} }}$."
-msgstr ""
+msgstr "\\item L'element de rang {rang} es $u_{{ {rang} }}$."
 
 #: pyromaths/ex/lycee/TermesSuite.py:692 pyromaths/ex/lycee/TermesSuite.py:701
 msgid "Ce terme a déjà été calculé, et $u_{{ {} }}={}$."
-msgstr ""
+msgstr "Aquet element ja ha estat calculat, i $u_{{ {} }}={}$."
 
 #: pyromaths/ex/lycee/TermesSuite.py:697
 msgid "Le terme demandé est donc : $u_{{ {} }}="
-msgstr ""
+msgstr "L'element sol·licitat es : $u_{{ {} }}="
 
 #: pyromaths/ex/lycee/TermesSuite.py:698 pyromaths/ex/lycee/TermesSuite.py:707
 msgid "La solution est donc  : $u_{{ {} }}={}$."
-msgstr ""
+msgstr "La solució es  : $u_{{ {} }}={}$."
 
 #: pyromaths/ex/lycee/TermesSuite.py:706
 msgid "On a : $u_{{ {} }}="
-msgstr ""
+msgstr "Tenim : $u_{{ {} }}="
 
 #: pyromaths/ex/lycee/TermesSuite.py:711
 #, python-brace-format
@@ -910,6 +928,14 @@ msgid ""
 "              \\end{{array}}\\right.\\]\n"
 "              "
 msgstr ""
+"\n"
+"            \\item La secuencia ${notation}$ es definida per recurrencia, "
+"per a $n\\geqslant {indice0}$, per :\n"
+"                \\[\\left\\{{\\begin{{array}}{{l}}\n"
+"                  u_{indice0}={terme0}\\\\\n"
+"                  \\text{{Per a tot $n\\geqslant {indice0}$ : }} u_{{n+1}}"
+"={fonction}.\n"
+"              \\end{{array}}\\right.\\]"
 
 #: pyromaths/ex/lycee/CercleTrigo.py:160
 #, python-format
@@ -1464,11 +1490,11 @@ msgstr "Les arrels de $%s$ són $%s_1=%s=%s$ i $%s_2=%s=%s$."
 
 #: pyromaths/ex/lycee/matrices.py:59
 msgid "Recherche d'état stable (avec un système)"
-msgstr ""
+msgstr "Recerca de l'estat estable (a través d'un sistema)"
 
 #: pyromaths/ex/lycee/matrices.py:82
 msgid "Interpolation polynomiale en utilisant des matrices"
-msgstr ""
+msgstr "Interpolació de polinomis mitjançant matrius"
 
 #: pyromaths/ex/sixiemes/decimaux.py:353
 msgid " dixième"
@@ -1484,11 +1510,11 @@ msgstr "mil·lèsimes"
 
 #: pyromaths/ex/sixiemes/decimaux.py:360
 msgid " unité et "
-msgstr "unitats"
+msgstr "unitat i"
 
 #: pyromaths/ex/sixiemes/decimaux.py:362
 msgid " unités et "
-msgstr ""
+msgstr "unitats i"
 
 #: pyromaths/ex/sixiemes/decimaux.py:427 pyromaths/ex/sixiemes/decimaux.py:430
 msgid "\\item Écrire en chiffres les nombres suivants."
@@ -1525,15 +1551,15 @@ msgstr "Conversió d'unitats de volum"
 
 #: pyromaths/ex/sixiemes/decimaux.py:804
 msgid "milliers"
-msgstr ""
+msgstr "milers"
 
 #: pyromaths/ex/sixiemes/decimaux.py:804
 msgid "centaines"
-msgstr ""
+msgstr "centenars"
 
 #: pyromaths/ex/sixiemes/decimaux.py:804
 msgid "dizaines"
-msgstr ""
+msgstr "desenes"
 
 #: pyromaths/ex/sixiemes/decimaux.py:804
 msgid "unités"
@@ -1624,20 +1650,20 @@ msgstr "Divisibilitat entre 2, 3, 5, 9, 10"
 
 #: pyromaths/ex/sixiemes/droites.py:35 pyromaths/ex/sixiemes/droites.py:65
 msgid "une droite"
-msgstr ""
+msgstr "una recta"
 
 #: pyromaths/ex/sixiemes/droites.py:37 pyromaths/ex/sixiemes/droites.py:65
 msgid "une demi-droite"
-msgstr ""
+msgstr "una semirecta"
 
 #: pyromaths/ex/sixiemes/droites.py:65
 msgid "un segment"
-msgstr ""
+msgstr "un segment"
 
 #: pyromaths/ex/sixiemes/droites.py:176 pyromaths/ex/sixiemes/droites.py:178
 #, python-format
 msgid "$%s %s%s %s$ est %s &"
-msgstr ""
+msgstr "$%s %s%s %s$ es %s &"
 
 #: pyromaths/ex/sixiemes/droites.py:200 pyromaths/ex/sixiemes/droites.py:205
 msgid "Compléter les pointillés et les figures :\\par"
@@ -1693,11 +1719,15 @@ msgid ""
 "\\end{pspicture*}\n"
 "& & \\\\"
 msgstr ""
+"$(%s%s)//(%s%s)$\\par i\\par $(%s%s)//(%s%s)$ &\n"
+"\\begin{pspicture*}[shift=-1.5](-2.1,-1.6)(2.1,1.6)\n"
+"\\end{pspicture*}\n"
+"& & \\\\"
 
 #: pyromaths/ex/sixiemes/droites.py:557
 #, python-format
 msgid "$(%s%s)//(%s%s)$\\par et\\par $(%s%s)//(%s%s)$ & "
-msgstr ""
+msgstr "$(%s%s)//(%s%s)$\\par i\\par $(%s%s)//(%s%s)$ & "
 
 #: pyromaths/ex/sixiemes/droites.py:561
 #, python-format
@@ -1707,11 +1737,15 @@ msgid ""
 "\\end{pspicture*}\n"
 "& & \\\\"
 msgstr ""
+"$%s//%s$\\par et\\par $%s//%s$ &\n"
+"\\begin{pspicture*}[shift=-1.5](-2.1,-1.6)(2.1,1.6)\n"
+"\\end{pspicture*}\n"
+"& & \\\\"
 
 #: pyromaths/ex/sixiemes/droites.py:566
 #, python-format
 msgid "$%s//%s$\\par et\\par $%s//%s$ & "
-msgstr ""
+msgstr "$%s//%s$\\par i\\par $%s//%s$ & "
 
 #: pyromaths/ex/sixiemes/droites.py:570
 msgid ""
@@ -1729,11 +1763,15 @@ msgid ""
 "\\end{pspicture*}\n"
 "& & \\\\"
 msgstr ""
+"$(%s%s)//(%s%s)$\\par i\\par $(%s%s)\\perp(%s%s)$ &\n"
+"\\begin{pspicture*}[shift=-1.5](-2.1,-1.6)(2.1,1.6)\n"
+"\\end{pspicture*}\n"
+"& & \\\\"
 
 #: pyromaths/ex/sixiemes/droites.py:588
 #, python-format
 msgid "$(%s%s)//(%s%s)$\\par et\\par $(%s%s)\\perp(%s%s)$ &"
-msgstr ""
+msgstr "$(%s%s)//(%s%s)$\\par i\\par $(%s%s)\\perp(%s%s)$ &"
 
 #: pyromaths/ex/sixiemes/droites.py:593
 #, python-format
@@ -1743,11 +1781,15 @@ msgid ""
 "\\end{pspicture*}\n"
 "& & \\\\"
 msgstr ""
+"$%s//%s$\\par i\\par $%s\\perp%s$ &\n"
+"\\begin{pspicture*}[shift=-1.5](-2.1,-1.6)(2.1,1.6)\n"
+"\\end{pspicture*}\n"
+"& & \\\\"
 
 #: pyromaths/ex/sixiemes/droites.py:598
 #, python-format
 msgid "$%s//%s$\\par et\\par $%s\\perp%s$ &"
-msgstr ""
+msgstr "$%s//%s$\\par i\\par $%s\\perp%s$ &"
 
 #: pyromaths/ex/sixiemes/droites.py:605
 msgid ""
@@ -1765,11 +1807,15 @@ msgid ""
 "\\end{pspicture*}\n"
 "& & \\\\"
 msgstr ""
+"$(%s%s)\\perp(%s%s)$\\par i\\par $(%s%s)\\perp(%s%s)$ &\n"
+"\\begin{pspicture*}[shift=-1.5](-2.1,-1.6)(2.1,1.6)\n"
+"\\end{pspicture*}\n"
+"& & \\\\"
 
 #: pyromaths/ex/sixiemes/droites.py:621
 #, python-format
 msgid "$(%s%s)\\perp(%s%s)$\\par et\\par $(%s%s)\\perp(%s%s)$ &"
-msgstr ""
+msgstr "$(%s%s)\\perp(%s%s)$\\par i\\par $(%s%s)\\perp(%s%s)$ &"
 
 #: pyromaths/ex/sixiemes/droites.py:626
 #, python-format
@@ -1779,11 +1825,15 @@ msgid ""
 "\\end{pspicture*}\n"
 "& & \\\\"
 msgstr ""
+"$%s\\perp%s$\\par i\\par $%s\\perp%s$ &\n"
+"\\begin{pspicture*}[shift=-1.5](-2.1,-1.6)(2.1,1.6)\n"
+"\\end{pspicture*}\n"
+"& & \\\\"
 
 #: pyromaths/ex/sixiemes/droites.py:631
 #, python-format
 msgid "$%s\\perp%s$\\par et\\par $%s\\perp%s$ &"
-msgstr ""
+msgstr "$%s\\perp%s$\\par i\\par $%s\\perp%s$ &"
 
 #: pyromaths/ex/sixiemes/droites.py:638
 msgid ""
@@ -1826,11 +1876,11 @@ msgstr "a les desenes"
 
 #: pyromaths/ex/sixiemes/arrondi.py:29
 msgid "à la centaine"
-msgstr ""
+msgstr "a la centena"
 
 #: pyromaths/ex/sixiemes/arrondi.py:29
 msgid "au millier"
-msgstr ""
+msgstr "al miler"
 
 #: pyromaths/ex/sixiemes/arrondi.py:30
 msgid "à la dizaine de milliers"
@@ -1908,19 +1958,19 @@ msgstr "Simetries axials"
 
 #: pyromaths/ex/sixiemes/angles.py:222
 msgid "angle aigu\\par"
-msgstr ""
+msgstr "angle agut\\par"
 
 #: pyromaths/ex/sixiemes/angles.py:224
 msgid "angle obtus\\par"
-msgstr ""
+msgstr "angle obtús\\par"
 
 #: pyromaths/ex/sixiemes/angles.py:226
 msgid "angle droit\\par"
-msgstr ""
+msgstr "angle recte\\par"
 
 #: pyromaths/ex/sixiemes/angles.py:229
 msgid "\\hline angle 1 : & angle 2 : & angle 3 : & angle 4 : \\\\"
-msgstr ""
+msgstr "\\hline angle 1 : & angle 2 : & angle 3 : & angle 4 : \\\\"
 
 #: pyromaths/ex/sixiemes/angles.py:249 pyromaths/ex/sixiemes/angles.py:250
 msgid ""
@@ -2056,23 +2106,23 @@ msgstr "s"
 
 #: pyromaths/ex/sixiemes/fractions.py:269
 msgid "cinqu"
-msgstr ""
+msgstr "quint"
 
 #: pyromaths/ex/sixiemes/fractions.py:270
 msgid "six"
-msgstr ""
+msgstr "sext"
 
 #: pyromaths/ex/sixiemes/fractions.py:271
 msgid "sept"
-msgstr ""
+msgstr "séptim"
 
 #: pyromaths/ex/sixiemes/fractions.py:272
 msgid "huit"
-msgstr ""
+msgstr "octau"
 
 #: pyromaths/ex/sixiemes/fractions.py:273
 msgid "neuv"
-msgstr ""
+msgstr "noven"
 
 #: pyromaths/ex/sixiemes/fractions.py:274
 #: pyromaths/ex/troisiemes/geometrie.py:585
@@ -2080,59 +2130,59 @@ msgstr ""
 #: pyromaths/ex/quatriemes/geometrie.py:738
 #: pyromaths/ex/quatriemes/geometrie.py:754
 msgid "dix"
-msgstr ""
+msgstr "desè"
 
 #: pyromaths/ex/sixiemes/fractions.py:275
 msgid "onz"
-msgstr ""
+msgstr "onzè"
 
 #: pyromaths/ex/sixiemes/fractions.py:276
 msgid "douz"
-msgstr ""
+msgstr "dotzè"
 
 #: pyromaths/ex/sixiemes/fractions.py:277
 msgid "treiz"
-msgstr ""
+msgstr "tretzè"
 
 #: pyromaths/ex/sixiemes/fractions.py:278
 msgid "quatorz"
-msgstr ""
+msgstr "catorzè"
 
 #: pyromaths/ex/sixiemes/fractions.py:279
 msgid "quinz"
-msgstr ""
+msgstr "quinzè"
 
 #: pyromaths/ex/sixiemes/fractions.py:280
 msgid "seiz"
-msgstr ""
+msgstr "setzè"
 
 #: pyromaths/ex/sixiemes/fractions.py:281
 msgid "dix-sept"
-msgstr ""
+msgstr "dissetè"
 
 #: pyromaths/ex/sixiemes/fractions.py:282
 msgid "dix-huit"
-msgstr ""
+msgstr "divuitè"
 
 #: pyromaths/ex/sixiemes/fractions.py:283
 msgid "dix-neuv"
-msgstr ""
+msgstr "dinovè"
 
 #: pyromaths/ex/sixiemes/fractions.py:284
 msgid "vingt"
-msgstr ""
+msgstr "vintè"
 
 #: pyromaths/ex/sixiemes/fractions.py:287
 msgid "demis"
-msgstr ""
+msgstr "meitat"
 
 #: pyromaths/ex/sixiemes/fractions.py:288
 msgid "tiers"
-msgstr ""
+msgstr "terç"
 
 #: pyromaths/ex/sixiemes/fractions.py:289
 msgid "quarts"
-msgstr ""
+msgstr "quart"
 
 #: pyromaths/ex/sixiemes/fractions.py:290
 #, python-format
@@ -2488,6 +2538,9 @@ msgid ""
 "On note $(\\mathrm %s~,~\\mathrm %s)$ l'évènement: \\og{}la première boule "
 "tirée est %s et la deuxième tirée est %s\\fg{} et "
 msgstr ""
+"Anomena $(\\mathrm %s~,~\\mathrm %s)$ l'esdeveniment: \\og{}la primera "
+"tirada es \"\n"
+"\"%s i la segona tirada es %s\\fg{} y \""
 
 #: pyromaths/ex/troisiemes/proba.py:98
 msgid "on utilise l'arbre construit précédemment.\\par"
@@ -2513,6 +2566,8 @@ msgid ""
 "On note $(?~,~\\mathrm %s)$ l'évènement: \\og{}la deuxième boule tirée est %s"
 "\\fg{}. \\par"
 msgstr ""
+"Anomenar $(?~,~\\mathrm %s)$ l'esdevenimentt: \\og{}la segnoa tirada es %s"
+"\\fg{}. \\par"
 
 #: pyromaths/ex/troisiemes/proba.py:120
 msgid "Probabilités"
@@ -2669,7 +2724,7 @@ msgstr ""
 
 #: pyromaths/ex/troisiemes/geometrie.py:266
 msgid "\\quad d'où"
-msgstr ""
+msgstr "\\quad d'on"
 
 #: pyromaths/ex/troisiemes/geometrie.py:321
 #, python-format
@@ -2751,21 +2806,21 @@ msgstr "El recíproc del teorema de Tales"
 #: pyromaths/ex/quatriemes/geometrie.py:738
 #: pyromaths/ex/quatriemes/geometrie.py:754
 msgid "cent"
-msgstr ""
+msgstr "centes"
 
 #: pyromaths/ex/troisiemes/geometrie.py:585
 #: pyromaths/ex/troisiemes/geometrie.py:629
 #: pyromaths/ex/quatriemes/geometrie.py:738
 #: pyromaths/ex/quatriemes/geometrie.py:754
 msgid "mill"
-msgstr ""
+msgstr "milers"
 
 #: pyromaths/ex/troisiemes/geometrie.py:585
 #: pyromaths/ex/troisiemes/geometrie.py:629
 #: pyromaths/ex/quatriemes/geometrie.py:738
 #: pyromaths/ex/quatriemes/geometrie.py:754
 msgid "ième"
-msgstr ""
+msgstr "ima"
 
 #: pyromaths/ex/troisiemes/geometrie.py:601
 #: pyromaths/ex/quatriemes/geometrie.py:725
@@ -2881,7 +2936,7 @@ msgstr "Factoritzacions"
 
 #: pyromaths/ex/troisiemes/notion_de_fonction.py:67
 msgid "\\item On donne"
-msgstr ""
+msgstr "\\item Donats"
 
 #: pyromaths/ex/troisiemes/notion_de_fonction.py:71
 #: pyromaths/ex/troisiemes/notion_de_fonction.py:76
@@ -3125,6 +3180,8 @@ msgid ""
 "Polynome([[%r, 1], [%r, 0]], details=%s) * Polynome([[%r, 1], [%r, 0]], "
 "details=%s)"
 msgstr ""
+"Polinomi([[%r, 1], [%r, 0]], details=%s) * Polinomi([[%r, 1], [%r, 0]], "
+"details=%s)"
 
 #: pyromaths/ex/troisiemes/developpements.py:80
 #, python-format
@@ -3132,6 +3189,8 @@ msgid ""
 "Polynome([[%r, 1], [%r, 0]], details=%s) * Polynome([[%r, 1], [%r, 0]], "
 "details=%s))"
 msgstr ""
+"Polinomi([[%r, 1], [%r, 0]], details=%s) * Polinomi([[%r, 1], [%r, 0]], "
+"details=%s))"
 
 #: pyromaths/ex/troisiemes/developpements.py:84
 msgid "Identités remarquables"
@@ -4152,6 +4211,9 @@ msgid ""
 "10 pour obtenir la longueur (arrondie au dixième) du bâton à dessiner :"
 "\\par\n"
 msgstr ""
+"Com 10\\% son representades per 1cm, cal dividir cada frecuencua per 10 per "
+"a obtindre la llargaria  (arrodonida a la desena) de la barra a dibuixar:"
+"\\par\n"
 
 #: pyromaths/ex/cinquiemes/statistiques.py:200
 msgid "Hauteur (cm)"
@@ -4458,23 +4520,23 @@ msgstr "Grups d'edat"
 
 #: pyromaths/ex/cinquiemes/statistiques.py:486
 msgid "$0 \\leqslant n \\leqslant 20$"
-msgstr ""
+msgstr "$0 \\leqslant n \\leqslant 20$"
 
 #: pyromaths/ex/cinquiemes/statistiques.py:487
 msgid "$20 \\leqslant n \\leqslant 40$"
-msgstr ""
+msgstr "$20 \\leqslant n \\leqslant 40$"
 
 #: pyromaths/ex/cinquiemes/statistiques.py:488
 msgid "$40 \\leqslant n \\leqslant 60$"
-msgstr ""
+msgstr "$40 \\leqslant n \\leqslant 60$"
 
 #: pyromaths/ex/cinquiemes/statistiques.py:489
 msgid "$60 \\leqslant n \\leqslant 80$"
-msgstr ""
+msgstr "$60 \\leqslant n \\leqslant 80$"
 
 #: pyromaths/ex/cinquiemes/statistiques.py:490
 msgid "$80 \\geqslant n$"
-msgstr ""
+msgstr "$80 \\geqslant n$"
 
 #: pyromaths/ex/cinquiemes/statistiques.py:499
 msgid " est partagé en "
@@ -5034,6 +5096,10 @@ msgid ""
 "représente un nombre quelconque et que le contenu des deux cases grises doit "
 "être le même.\\par"
 msgstr ""
+"El principi es el següent: la punta de cada fletxa indica la suma de la \n"
+"línia o de la columna corresponent. Completar, sabent que $x$ \n"
+"representa qualsevol nombre i que el contingut de les 2 casilles grises \n"
+"ha de ser el mateix.\\par"
 
 #: pyromaths/ex/quatriemes/litteral.py:322
 msgid "Réduire des expressions littérales"
@@ -5248,7 +5314,7 @@ msgstr ""
 "$\\qquad\\mathbf{\\cfrac{%s}{%s}=\\cfrac{%s}{%s}=\\cfrac{%s}{%s}}$"
 
 #: pyromaths/ex/quatriemes/geometrie.py:529
-#, fuzzy, python-format
+#, python-format
 msgid "\\vspace{1ex}\\par De plus $%s=%s%s%s=\\unit[%s]{cm}$\n"
 msgstr "\\vspace{1ex} Com que $%s=%s%s%s=\\unit[%s]{cm}$\n"
 
@@ -5287,7 +5353,7 @@ msgstr ""
 
 #: pyromaths/ex/quatriemes/fractions.py:111
 msgid "Sommes de positifs en écriture fractionnaire"
-msgstr ""
+msgstr "Sumes d'enters en escriptura fraccionària"
 
 #: pyromaths/outils/Priorites3.py:595
 msgid "Polynome("
@@ -5700,11 +5766,13 @@ msgid ""
 "\\item Donner la décomposition en facteurs premiers des nombres suivants, et "
 "préciser quand il s'agit d'un nombre premier :\\par"
 msgstr ""
+"\\item Donar la descomposició  en factors cosins dels nombres següents, \n"
+"i especificar quan es tracte d'un nombre cosí"
 
 msgid ""
 "Écrire sous la forme d'une puissance de 10 puis donner l'écriture décimale "
 "de ces nombres :"
-msgstr ""
+msgstr "Escriure com a potencia de 10 i tot seguit escriure"
 
 msgid "$p\\,(\\mathrm %s~,~\\mathrm %s)=%s \\times %s = %s$\\par"
 msgstr "$p\\,(\\mathrm %s~,~\\mathrm %s)=%s \\times %s = %s$\\par"
@@ -5722,6 +5790,17 @@ msgid ""
 "  \\end{pspicture}\n"
 "}"
 msgstr ""
+"\\figureadroite{\n"
+"  \\psset{PointSymbol=none,unit=%s}\n"
+"  \\begin{pspicture}(%s,%s)(%s,%s)\n"
+"    \\SpecialCoor\n"
+"    \\pstTriangle[PosAngleA=%s,PosAngleB=-45,PosAngleC=%s,PointNameA=%s,\n"
+"      PointNameB=%s,PointNameC=%s](0,0){a}(%s,0){b}(%s;%s){c}\n"
+"    \\pstTriangle[PosAngleB=%s,PosAngleC=%s,PointSymbolA=none,\n"
+"      PointName=none,PointNameB=%s,PointNameC=%s](0,0){a}(%s,0){b}(%s;%s)\n"
+"{c}\n"
+"  \\end{pspicture}\n"
+"}"
 
 msgid ""
 "© 2006 – %s Jérôme Ortais<br/>\n"
@@ -5756,98 +5835,99 @@ msgid "Hello, world corrigé!"
 msgstr "Hola món!"
 
 msgid "premier"
-msgstr ""
+msgstr "primer"
 
 msgid "deuxième"
-msgstr ""
+msgstr "segon"
 
 msgid "troisième"
-msgstr ""
+msgstr "tercer"
 
 msgid "quatrième"
-msgstr ""
+msgstr "quart"
 
 msgid "cinquième"
-msgstr ""
+msgstr "cinquè"
 
 msgid "sixième"
-msgstr ""
+msgstr "sisè"
 
 msgid "septième"
-msgstr ""
+msgstr "setè"
 
 msgid "à la moitié du"
-msgstr ""
+msgstr "a la meitat de"
 
 msgid "au tiers du"
-msgstr ""
+msgstr "un terç de la"
 
 msgid "au quart du"
-msgstr ""
+msgstr "un quart de la"
 
 msgid "au cinquième du"
-msgstr ""
+msgstr "a la cinquena del"
 
 msgid "au sixième du"
-msgstr ""
+msgstr "a la sisena del"
 
 msgid "au septième du"
-msgstr ""
+msgstr "a la setena del"
 
 msgid "au huitième du"
-msgstr ""
+msgstr "a la vuitena de"
 
 msgid "au neuvième du"
-msgstr ""
+msgstr "a la novena del"
 
 msgid "au dixième du"
-msgstr ""
+msgstr "a la desena del"
 
 msgid "au double du"
-msgstr ""
+msgstr "el doble del"
 
 msgid "au triple du"
-msgstr ""
+msgstr "el triple del"
 
 msgid "au quadruple du"
-msgstr ""
+msgstr "el quàdruple del"
 
 msgid "à cinq fois le"
-msgstr ""
+msgstr "a cinc vegades el"
 
 msgid "à six fois le"
-msgstr ""
+msgstr "a sis vegades el"
 
 msgid "à sept fois le"
-msgstr ""
+msgstr "a set vegades el"
 
 msgid "à huit fois le"
-msgstr ""
+msgstr "a vuit vegades el"
 
 msgid "à neuf fois le"
-msgstr ""
+msgstr "a nou vegades el"
 
 msgid "à dix fois le"
-msgstr ""
+msgstr "a deu vegades el"
 
 msgid "{} précédent"
-msgstr ""
+msgstr "{} anterior"
 
 msgid "Pour $%s=%s$, on a $%s=%s"
-msgstr ""
+msgstr "Per a $%s=%s$, es té $%s=%s"
 
 msgid "Ainsi \\par"
-msgstr ""
+msgstr "Aixi \\par"
 
 msgid ""
 "Dresser le tableau de variations de chacune des fonctions suivantes.\\par"
 msgstr ""
+"Completar la taula de variacions de cadascuna de les següents funcions.\\par"
 
 msgid "maximum"
-msgstr ""
+msgstr "màxim"
 
 msgid "minimum"
-msgstr ""
+msgstr "mínim"
 
 msgid "\\item Pour $x \\in [%s~;~%s],\\quad f\\,(x) %s \\ldots{}$"
 msgstr "\\item Per a $x \\in [%s~;~%s],\\quad f\\,(x) %s \\ldots{}$"
@@ -5880,13 +5960,13 @@ msgid "\\[\\boxed{\\text{Donc }%s=\\sqrt{%s}=\\unit[%s]{cm}}\\]"
 msgstr "\\[\\boxed{\\text{Per tant }%s=\\sqrt{%s}=\\unit[%s]{cm}}\\]"
 
 msgid "\\subsubsection*{Ligne du bas :}"
-msgstr ""
+msgstr "\\subsubsection*{Línia inferior :}"
 
 msgid "\\subsubsection*{Colonne de droite :}"
-msgstr ""
+msgstr "\\subsubsection*{Columna de la dreta :}"
 
 msgid "\\subsubsection*{Cases grises :}"
-msgstr ""
+msgstr "\\subsubsection*{Celdes ombrejades :}"
 
 msgid "\\item $%s^{%s} \\times %s^{%s} = \\dotfill$"
 msgstr "\\item $%s^{%s} \\times %s^{%s} = \\dotfill$"
@@ -5960,13 +6040,13 @@ msgid "=\\cfrac{%s_{\\div%s}}{%s_{\\div%s}}"
 msgstr "=\\cfrac{%s_{\\div%s}}{%s_{\\div%s}}"
 
 msgid "\\sin"
-msgstr ""
+msgstr "\\sin"
 
 msgid "\\cos"
-msgstr ""
+msgstr "\\cos"
 
 msgid "\\tan"
-msgstr ""
+msgstr "\\tan"
 
 msgid "\\[ \\boxed{%s=%s^{-1}\\left(\\cfrac{%s}{%s}\\right) %s\\degres} \\]"
 msgstr "\\[ \\boxed{%s=%s^{-1}\\left(\\cfrac{%s}{%s}\\right) %s\\degres} \\]"
