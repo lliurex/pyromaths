@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
-
+DEB_BUILD_OPTIONS += nocheck
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 #PYTHON3=$(shell py3versions -vr)
